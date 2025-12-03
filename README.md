@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="300px" src="./docs/public/logo.png">
+  <img width="200px" src="./docs/public/logo.png">
 </p>
 
 <h1 align="center">Vue EP Toolkit</h1>
@@ -39,14 +39,14 @@ pnpm add vue-ep-toolkit
 ## 🚀 Usage
 
 ```ts
-import { createApp } from 'vue'
-import VueEPToolkit from 'vue-ep-toolkit'
-import 'vue-ep-toolkit/dist/style.css'
-import App from './App.vue'
+import { createApp } from "vue"
+import VueEPToolkit from "vue-ep-toolkit"
+import "vue-ep-toolkit/dist/style.css"
+import App from "./App.vue"
 
 const app = createApp(App)
 app.use(VueEPToolkit)
-app.mount('#app')
+app.mount("#app")
 ```
 
 ## 📄 License
