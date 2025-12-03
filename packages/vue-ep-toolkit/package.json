@@ -1,6 +1,6 @@
 {
   "name": "vue-ep-toolkit",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Vue3 + TypeScript + Element Plus + Lodash component library",
   "main": "dist/vue-ep-toolkit.umd.js",
   "module": "dist/vue-ep-toolkit.es.js",
