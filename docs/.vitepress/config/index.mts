@@ -10,7 +10,7 @@ export default defineConfig({
   description: "Vue3 + TypeScript + Element Plus + Lodash component function library",
   base: "/vue-ep-toolkit/",
   ignoreDeadLinks: true,
-  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
+  head: [["link", { rel: "icon", href: "/vue-ep-toolkit/favicon.ico" }]],
   rewrites: {
     "index.md": "en-US/index.md"
   },
@@ -19,7 +19,7 @@ export default defineConfig({
     ...zhCN
   },
   themeConfig: {
-    logo: "/favicon.ico",
+    logo: "/vue-ep-toolkit/favicon.ico",
     search: {
       provider: "local",
       options: {
