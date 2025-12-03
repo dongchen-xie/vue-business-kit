@@ -11,17 +11,12 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Basic: typeof import('./examples/table/basic.vue')['default']
-    ConsistencySvg: typeof import('./.vitepress/vitepress/components/globals/design/element-svg.vue')['default']
-    ControllabilitySvg: typeof import('./.vitepress/vitepress/components/globals/design/controllability-svg.vue')['default']
-    DemoContainer: typeof import('./.vitepress/vitepress/components/demo-container.vue')['default']
     DesignGuide: typeof import('./.vitepress/vitepress/components/globals/design-guide.vue')['default']
     EfficiencySvg: typeof import('./.vitepress/vitepress/components/globals/design/efficiency-svg.vue')['default']
     ElementSvg: typeof import('./.vitepress/vitepress/components/globals/design/element-svg.vue')['default']
     EpButton: typeof import('vue-ep-toolkit')['EpButton']
     EpIcon: typeof import('vue-ep-toolkit')['EpIcon']
     EpTable: typeof import('vue-ep-toolkit')['EpTable']
-    FeedbackSvg: typeof import('./.vitepress/vitepress/components/globals/design/lodash-svg.vue')['default']
     LodashSvg: typeof import('./.vitepress/vitepress/components/globals/design/lodash-svg.vue')['default']
     VpApiTyping: typeof import('./.vitepress/vitepress/components/globals/vp-api-typing.vue')['default']
     VpDemo: typeof import('./.vitepress/vitepress/components/vp-demo.vue')['default']

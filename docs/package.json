@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "vitepress dev",
-    "build": "NODE_ENV=production && vitepress build",
+    "build": "vitepress build",
     "preview": "vitepress preview"
   },
   "dependencies": {

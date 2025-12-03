@@ -8,6 +8,7 @@ import zhCNSearch from "../i18n/pages/zh-CN-search"
 export default defineConfig({
   title: "Vue EP Toolkit",
   description: "Vue3 + TypeScript + Element Plus + Lodash component function library",
+  base: "/vue-ep-toolkit/",
   ignoreDeadLinks: true,
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
   rewrites: {
