@@ -1,126 +1,56 @@
-# Vue EP Toolkit
+<p align="center">
+  <img width="300px" src="./docs/public/logo.png">
+</p>
 
-Vue3 + TypeScript + Element Plus + Lodash 组件函数库的 monorepo 项目。
+<h1 align="center">Vue EP Toolkit</h1>
 
-## 项目结构
+<p align="center">
+  <a href="https://www.npmjs.org/package/vue-ep-toolkit">
+    <img src="https://img.shields.io/npm/v/vue-ep-toolkit.svg" />
+  </a>
+  <a href="https://www.npmjs.org/package/vue-ep-toolkit">
+    <img src="https://img.shields.io/npm/dm/vue-ep-toolkit.svg" />
+  </a>
+  <a href="https://gitee.com/xie-dongchen/vue-ep-toolkit">
+    <img src="https://img.shields.io/badge/node-%20%3E%3D%2018-47c219" />
+  </a>
+  <a href="https://github.com/dongchen-xie/vue-ep-toolkit/blob/main/LICENSE">
+    <img src="https://img.shields.io/npm/l/vue-ep-toolkit" />
+  </a>
+</p>
 
-```
-vue-ep-toolkit/
-├── packages/
-│   └── vue-ep-toolkit/          # 核心库包
-│       ├── src/                 # 源代码
-│       ├── dist/                # 构建输出
-│       └── package.json         # 库包配置
-├── docs/                        # 文档站点
-│   ├── .vitepress/             # VitePress 配置
-│   ├── guide/                  # 指南文档
-│   ├── components/             # 组件文档
-│   ├── utils/                  # 工具函数文档
-│   └── .vitepress/dist/        # 文档构建输出
-└── package.json                # 工作区根配置
-```
+<p align="center">Ready-to-use component library based on Vue3 + TypeScript + Element Plus + Lodash</p>
 
-## 快速开始
+## ✨ Features
 
-### 安装依赖
+- 🚀 **Vue3 + TypeScript** - Built with the latest Vue3 and TypeScript, providing complete type support
+- 📦 **Built-in Element Plus** - No need to install Element Plus separately, all components and icons ready to use
+- 🛠️ **Built-in Lodash** - Integrated Lodash utility functions for rich data processing capabilities
+- 📱 **Ready to Use** - One-time installation, no additional configuration needed, use all features immediately
 
-```bash
-pnpm install
-```
-
-### 开发命令
-
-```bash
-# 构建库包
-pnpm build:lib
-
-# 构建文档
-pnpm build:docs
-
-# 开发文档
-pnpm dev:docs
-
-# 构建所有
-pnpm build
-
-# 发布库包
-pnpm release
-```
-
-## 两种打包方式
-
-### 1. 库包打包 (npm 发布)
-
-```bash
-pnpm build:lib
-```
-
-输出文件：
-- `packages/vue-ep-toolkit/dist/vue-ep-toolkit.es.js` - ES 模块
-- `packages/vue-ep-toolkit/dist/vue-ep-toolkit.umd.js` - UMD 模块
-- `packages/vue-ep-toolkit/dist/vue-ep-toolkit.css` - 样式文件
-- `packages/vue-ep-toolkit/dist/index.d.ts` - TypeScript 声明文件
-
-### 2. 文档打包 (静态部署)
-
-```bash
-pnpm build:docs
-```
-
-输出文件：
-- `docs/.vitepress/dist/` - 静态 HTML 文件，可直接部署到服务器
-
-## 使用方式
-
-### 安装库包
+## 📦 Installation
 
 ```bash
 npm install vue-ep-toolkit
+# or
+pnpm add vue-ep-toolkit
 ```
 
-### 全局注册
+## 🚀 Usage
 
-```typescript
+```ts
 import { createApp } from 'vue'
-import VueEpToolkit from 'vue-ep-toolkit'
-import 'vue-ep-toolkit/dist/vue-ep-toolkit.css'
+import VueEPToolkit from 'vue-ep-toolkit'
+import 'vue-ep-toolkit/dist/style.css'
+import App from './App.vue'
 
 const app = createApp(App)
-app.use(VueEpToolkit)
+app.use(VueEPToolkit)
 app.mount('#app')
 ```
 
-### 按需使用
+## 📄 License
 
-```typescript
-import { ElButton, ElMessage, _, debounce } from 'vue-ep-toolkit'
-```
+Released under the [MIT](https://github.com/dongchen-xie/vue-ep-toolkit/blob/main/LICENSE) License.
 
-## 特性
-
-- 🚀 基于 Vue3 + TypeScript 开发
-- 📦 内置 Element Plus 组件库和图标
-- 🛠️ 内置 Lodash 工具函数
-- 📱 开箱即用，无需额外安装依赖
-- 🎯 完整的 TypeScript 类型支持
-- 📚 完整的文档站点
-
-## 开发
-
-1. 修改 `packages/vue-ep-toolkit/src/` 下的源代码
-2. 运行 `pnpm build:lib` 构建库包
-3. 修改 `docs/` 下的文档
-4. 运行 `pnpm dev:docs` 预览文档
-5. 运行 `pnpm build:docs` 构建文档站点
-
-## 部署
-
-### 库包发布到 npm
-
-```bash
-pnpm release
-```
-
-### 文档部署到服务器
-
-将 `docs/.vitepress/dist/` 目录下的文件上传到 Web 服务器即可。
+Made with ❤️ by Vue EP Toolkit
