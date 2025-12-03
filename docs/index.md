@@ -12,10 +12,10 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /en-US/guide/
+      link: /en-US/guide/design
     - theme: alt
-      text: View on Gitee
-      link: https://gitee.com/xie-dongchen/vue-ep-toolkit
+      text: View on Github
+      link: https://github.com/dongchen-xie/vue-ep-toolkit
 
 features:
   - icon: 🚀

@@ -14,8 +14,8 @@ hero:
       text: 快速开始
       link: /zh-CN/guide/design
     - theme: alt
-      text: 查看 Gitee
-      link: https://gitee.com/xie-dongchen/vue-ep-toolkit
+      text: 查看 Github
+      link: https://github.com/dongchen-xie/vue-ep-toolkit
 
 features:
   - icon: 🚀
