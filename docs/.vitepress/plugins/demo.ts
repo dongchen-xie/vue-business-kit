@@ -1,5 +1,6 @@
 import path from "path"
 import fs from "fs"
+import { docRoot } from "@vue-ep-toolkit/build-utils"
 
 import type { MarkdownRenderer } from "vitepress"
 
@@ -23,10 +24,7 @@ function createDemoContainer(md: MarkdownRenderer): ContainerOpts {
         const sourceFile = sourceFileToken.children?.[0].content ?? ""
 
         if (sourceFileToken.type === "inline") {
-          source = fs.readFileSync(
-            path.resolve(__dirname, "../../examples", `${sourceFile}.vue`),
-            "utf-8"
-          )
+          source = fs.readFileSync(path.resolve(docRoot, "examples", `${sourceFile}.vue`), "utf-8")
         }
         if (!source) throw new Error(`Incorrect source file: ${sourceFile}`)
 
