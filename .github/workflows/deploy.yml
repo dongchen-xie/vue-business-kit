@@ -31,9 +31,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build internal packages
-        run: pnpm --filter "@vue-ep-toolkit/build-utils" build
-
       - name: Build docs
         run: pnpm docs:build
 

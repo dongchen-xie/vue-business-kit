@@ -21,7 +21,10 @@ export const getViteConfig = () => {
     },
     server: {
       host: true,
-      port: 2000
+      port: 2000,
+      watch: {
+        ignored: ["**/.vitepress/dist/**", "**/.vitepress/.temp/**"]
+      }
     },
     resolve: {
       alias: (isProd

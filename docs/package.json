@@ -14,7 +14,6 @@
     "vue-ep-toolkit": "workspace:*"
   },
   "devDependencies": {
-    "@vue-ep-toolkit/build-utils": "workspace:*",
     "markdown-it-container": "^4.0.0",
     "unocss": "^66.5.9",
     "unplugin-vue-components": "^30.0.0",
