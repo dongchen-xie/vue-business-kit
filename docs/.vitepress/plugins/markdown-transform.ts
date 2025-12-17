@@ -29,9 +29,19 @@ export function MarkdownTransform(): Plugin {
 }
 
 const getExampleImports = (componentId: string) => {
-  const examplePath = path.resolve(__dirname, "../../examples", componentId)
-
+  const examplesDir = path.resolve(__dirname, "../../examples")
+  
+  // Find the actual directory name (case-insensitive)
+  let actualDirName = componentId
+  if (fs.existsSync(examplesDir)) {
+    const dirs = fs.readdirSync(examplesDir)
+    const found = dirs.find(dir => dir.toLowerCase() === componentId.toLowerCase())
+    if (found) actualDirName = found
+  }
+  
+  const examplePath = path.resolve(examplesDir, actualDirName)
   if (!fs.existsSync(examplePath)) return []
+  
   const files = fs.readdirSync(examplePath)
   const imports: string[] = []
 
@@ -39,7 +49,7 @@ const getExampleImports = (componentId: string) => {
     if (!/\.vue$/.test(item)) continue
     const file = item.replace(/\.vue$/, "")
     const name = camelize(`Ex-${componentId}-${file}`)
-    imports.push(`import ${name} from '../../../examples/${componentId}/${file}.vue'`)
+    imports.push(`import ${name} from '../../../examples/${actualDirName}/${file}.vue'`)
   }
 
   return imports
