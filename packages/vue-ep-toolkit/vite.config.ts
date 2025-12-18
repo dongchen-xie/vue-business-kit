@@ -8,7 +8,9 @@ export default defineConfig({
     Vue(),
     dts({
       insertTypesEntry: true,
-      cleanVueFileName: true
+      cleanVueFileName: true,
+      rollupTypes: true,
+      outDir: "dist"
     })
   ],
   build: {
@@ -23,6 +25,7 @@ export default defineConfig({
     rollupOptions: {
       external: ["vue"],
       output: {
+        exports: "named",
         globals: {
           vue: "Vue"
         },

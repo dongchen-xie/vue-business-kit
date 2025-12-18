@@ -17,7 +17,7 @@ export * from "element-plus"
 export * from "./components"
 
 // 导出 utils 对象
-export const utils = {
+export const utils: Record<string, any> = {
   ...utilsModule,
   ...lodash
 }
@@ -40,7 +40,7 @@ export function install(app: App, options: VueEpToolkitOptions = {}) {
 }
 
 // 默认导出
-const VueEpToolkit = {
+const VueEpToolkit: Record<string, any> = {
   install,
   utils
 }
