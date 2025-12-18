@@ -15,7 +15,8 @@
       "types": "./dist/utils.d.ts",
       "import": "./dist/utils.es.js",
       "require": "./dist/utils.cjs.js"
-    }
+    },
+    "./dist/index.css": "./dist/index.css"
   },
   "files": [
     "dist"
