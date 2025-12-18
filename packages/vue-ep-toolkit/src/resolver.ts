@@ -13,7 +13,7 @@ export function VueEpToolkitResolver(): ComponentResolver {
   return {
     type: "component",
     resolve: (name: string) => {
-      if (name.startsWith("Ep")) {
+      if (name.startsWith("Ep") || name.startsWith("El")) {
         return {
           name,
           from: "vue-ep-toolkit"
