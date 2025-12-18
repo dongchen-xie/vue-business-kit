@@ -396,9 +396,9 @@ table/number-format
 
 ### Table Slots
 
-| Name         | Description                      |
-| ------------ | -------------------------------- |
-| toolbar-left | Custom content for toolbar left  |
+| Name         | Description                     |
+| ------------ | ------------------------------- |
+| toolbar-left | Custom content for toolbar left |
 
 <details>
 <summary>Element Plus Table Slots</summary>
@@ -442,9 +442,9 @@ table/number-format
 
 Extends all Element Plus TableColumnCtx properties with additional features:
 
-| Name  | Description               | Type                                                                                                                                                                                                                                                                    | Default |
-| ----- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| slots | Custom slot configuration | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean }` - When set to `true`, enables both default and header slots with auto-generated names `{prop}-default` and `{prop}-header`. In object form, each property can be boolean or string | -       |
+| Name  | Description               | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Default |
+| ----- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| slots | Custom slot configuration | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` - When set to `true`, enables all slots with auto-generated names `{prop}-default`, `{prop}-header`, `{prop}-filterIcon`, and `{prop}-expand`. In object form, each property can be boolean or string for custom slot names. Boolean `true` uses auto-generated name, string specifies custom slot name | -       |
 
 <details>
 <summary>Element Plus Table Column Attributes</summary>
