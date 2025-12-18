@@ -8,11 +8,10 @@ import "virtual:uno.css"
 import { globals } from "../vitepress"
 import type { Router } from "vitepress"
 
-NProgress.configure({ showSpinner: false })
-
 export default {
   extends: DefaultTheme,
   enhanceApp({ app, router }: { app: any; router: Router }) {
+    NProgress.configure({ showSpinner: false })
     app.use(VueEpToolkit)
     Object.entries(globals).forEach(([name, Comp]) => {
       app.component(name, Comp)

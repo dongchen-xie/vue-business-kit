@@ -4,6 +4,7 @@ import "element-plus/dist/index.css"
 import "element-plus/theme-chalk/dark/css-vars.css"
 
 import * as lodash from "lodash-es"
+import * as utilsModule from "./utils"
 import { provideLocale } from "./locale"
 import en from "./locale/lang/en"
 import type { Language as ElLanguage } from "element-plus/es/locale"
@@ -12,15 +13,14 @@ import type { VueEpToolkitOptions } from "./types"
 // 导出 Element Plus 组件
 export * from "element-plus"
 
-// 导出 Lodash 函数
-export * from "lodash-es"
-export { lodash as _ }
-
 // 导出自定义组件
 export * from "./components"
 
-// 导出自定义工具函数
-export * from "./utils"
+// 导出 utils 对象
+export const utils = {
+  ...utilsModule,
+  ...lodash
+}
 
 // 导出 locale
 export { provideLocale, type Language, en, zhCn } from "./locale"
@@ -42,7 +42,7 @@ export function install(app: App, options: VueEpToolkitOptions = {}) {
 // 默认导出
 const VueEpToolkit = {
   install,
-  lodash
+  utils
 }
 
 export default VueEpToolkit

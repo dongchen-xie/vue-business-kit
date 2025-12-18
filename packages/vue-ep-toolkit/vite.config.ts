@@ -13,9 +13,12 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
+      entry: {
+        index: resolve(__dirname, "src/index.ts"),
+        utils: resolve(__dirname, "src/utils.ts")
+      },
       name: "VueEpToolkit",
-      fileName: (format) => `index.${format}.js`
+      fileName: (format, entryName) => `${entryName}.${format}.js`
     },
     rollupOptions: {
       external: ["vue"],
