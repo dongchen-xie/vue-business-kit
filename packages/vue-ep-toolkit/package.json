@@ -1,6 +1,6 @@
 {
   "name": "vue-ep-toolkit",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Ready-to-use component library based on Vue3 + TypeScript + Element Plus + Lodash",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
