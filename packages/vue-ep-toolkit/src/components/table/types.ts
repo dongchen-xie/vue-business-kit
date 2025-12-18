@@ -8,10 +8,11 @@ export interface EpTableColumnProps extends Partial<Omit<TableColumnCtx<DefaultR
     | {
         default?: string | boolean
         header?: string | boolean
+        filterIcon?: string | boolean
+        expand?: string | boolean
       }
   children?: EpTableColumnProps[]
 }
-
 export interface EpTableInternalProps {
   rawData?: any[]
   columns?: EpTableColumnProps[]

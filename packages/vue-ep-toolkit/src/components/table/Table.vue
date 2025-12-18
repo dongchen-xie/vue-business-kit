@@ -166,6 +166,8 @@ defineExpose({ tableRef })
 <style scoped>
 .ep-table-container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .ep-table-toolbar {
   display: flex;
@@ -189,6 +191,6 @@ defineExpose({ tableRef })
 }
 .ep-pagination {
   margin-top: 16px;
-  float: right;
+  align-self: flex-end;
 }
 </style>
