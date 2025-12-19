@@ -1,6 +1,6 @@
 {
   "name": "vue-ep-toolkit",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Ready-to-use component library based on Vue3 + TypeScript + Element Plus + Lodash",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -19,13 +19,15 @@
     "./dist/index.css": "./dist/index.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "types/global.d.ts"
   ],
   "sideEffects": false,
   "scripts": {
     "build": "vite build",
     "dev": "vite build --watch",
-    "generate:icons": "tsx scripts/generate-icons.ts"
+    "generate:icons": "tsx scripts/generate-icons.ts",
+    "generate:types": "tsx scripts/generate-component-types.ts"
   },
   "repository": {
     "type": "git",
