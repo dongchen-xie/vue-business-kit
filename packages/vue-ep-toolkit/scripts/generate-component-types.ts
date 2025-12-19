@@ -111,7 +111,7 @@ function generateGlobalDtsContent(components: ComponentInfo[]): string {
 import type { DefineComponent } from "vue"
 import type {
   ${importList.join(",\n  ")}
-} from "./index"
+} from "vue-ep-toolkit"
 
 declare module "@vue/runtime-core" {
   export interface GlobalComponents {
