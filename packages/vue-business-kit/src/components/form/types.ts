@@ -1,6 +1,10 @@
-import type { FormProps, FormItemProps, FormInstance } from "element-plus"
+import type {
+  FormProps as EpFormProps,
+  FormItemProps as EpFormItemProps,
+  FormInstance as EpFormInstance
+} from "element-plus"
 
-export interface BkFormItemConfig extends Partial<FormItemProps> {
+export interface FormItemCtx extends Partial<EpFormItemProps> {
   type: string
   componentProps?: Record<string, any>
   children?: Record<string, any>[]
@@ -13,18 +17,20 @@ export interface BkFormItemConfig extends Partial<FormItemProps> {
       }
 }
 
-export interface BkFormInternalProps {
-  items: BkFormItemConfig[]
+export interface FormInternalProps {
+  items: FormItemCtx[]
 }
 
-export interface BkFormProps extends FormProps, BkFormInternalProps {}
+export interface FormProps extends EpFormProps, FormInternalProps {}
 
-export interface BkFormEmits {
+export interface FormEmits {
   validate: [prop: string, isValid: boolean, message: string]
   submit: [model: Record<string, any>]
   reset: []
 }
 
-export interface BkFormInstance {
-  formRef?: FormInstance
+export interface FormInstance {
+  formRef?: EpFormInstance
 }
+
+export type { FormRules } from "element-plus"

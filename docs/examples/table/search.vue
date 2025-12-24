@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import type { BkTableColumnProps } from "vue-business-kit"
+import type { TableColumnCtx } from "vue-business-kit"
 
 const tableData = [
   {
@@ -28,7 +28,7 @@ const tableData = [
   }
 ]
 
-const columns: BkTableColumnProps[] = [
+const columns: TableColumnCtx[] = [
   {
     prop: "date",
     label: "Date",

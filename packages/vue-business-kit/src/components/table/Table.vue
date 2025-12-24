@@ -3,13 +3,24 @@ import { ref, computed, onMounted, watch, useAttrs } from "vue"
 import { ElTable, ElInput, ElSelect, ElOption, ElPagination } from "element-plus"
 import { useTableSearch, useTablePagination, useTableMerge, useTableFormat } from "./composables"
 import { useLocale } from "../../locale"
-import TableColumn from "./TableColumn.vue"
+import TableColumnRender from "./renderers/TableColumnRender.vue"
 import BkButton from "../button/Button.vue"
-import { BkTableEmits, BkTableInternalProps, BkTableProps } from "./types"
+import { TableEmits, TableInternalProps, TableProps } from "./types"
+import { BkDialog } from "../dialog"
+import { BkDrawer } from "../drawer"
+import { useTableEdit } from "./composables/useTableEdit"
+import { useTableSelection } from "./composables/useTableSelection"
+import { isEmpty } from "lodash-es"
 
-defineOptions({ name: "BkTable", inheritAttrs: false })
-
-const props = withDefaults(defineProps<BkTableInternalProps>(), {
+defineOptions({
+  name: "BkTable",
+  components: {
+    BkDialog,
+    BkDrawer
+  },
+  inheritAttrs: false
+})
+const props = withDefaults(defineProps<TableInternalProps>(), {
   rawData: () => [],
   columns: () => [],
   mergeColumns: () => [],
@@ -21,63 +32,55 @@ const props = withDefaults(defineProps<BkTableInternalProps>(), {
   pagination: false,
   numberFormat: false,
   defaultSelection: undefined,
-  disabledSelection: undefined
+  disabledSelection: undefined,
+  editMode: "dialog", // 'dialog' or 'drawer'
+  editPosition: "outside", // 'outside' or 'inline'
+  showAdd: true,
+  showBatch: false,
+  showEdit: true,
+  showDelete: true,
+  enableEdit: false
 })
 
-const emit = defineEmits<BkTableEmits>()
-const attrs = useAttrs() as Partial<BkTableProps>
+const emits = defineEmits<TableEmits>()
+const attrs = useAttrs() as Partial<TableProps>
+const locale = useLocale()
 
-// el-table ref
 const tableRef = ref<InstanceType<typeof ElTable>>()
+
+const t = computed(() => locale.value.bk.table)
+
+// 使用编辑功能组合式函数
+const {
+  editForm,
+  editVisible,
+  editTitle,
+  isEditEnabled,
+  formItems,
+  handleBatch,
+  handleAdd,
+  handleEdit,
+  handleDelete,
+  handleSave,
+  handleClose
+} = useTableEdit(props, attrs, emits, t)
 
 // 使用组合式函数
 const { searchText, selectedColumns, searchableColumns, searchedData, handleSearch } =
-  useTableSearch(props, emit)
+  useTableSearch(props, emits)
 
 const { filteredData, paginationConfig, handleSizeChange, handleCurrentChange } =
-  useTablePagination(props, searchedData, emit)
+  useTablePagination(props, searchedData, emits)
 
 const { mergedSpanMethod } = useTableMerge(props, searchedData, attrs)
 
 const { shouldFormatNumber, formatCellValue } = useTableFormat(props)
 
-const locale = useLocale()
-const t = computed(() => locale.value.ep.table)
-
-// Default selection
-const initSelection = () => {
-  if (!props.defaultSelection || !tableRef.value) return
-  const hasSelection = props.columns?.some((col) => col.type === "selection")
-  if (!hasSelection) return
-
-  const rowKey = (tableRef.value as any).rowKey
-  if (props.defaultSelection === true) {
-    filteredData.value.forEach((row: any) => tableRef.value!.toggleRowSelection(row, true))
-  } else if (Array.isArray(props.defaultSelection)) {
-    const selectionIds = props.defaultSelection
-    filteredData.value.forEach((row: any) => {
-      const id = rowKey ? row[rowKey] : row.id
-      if (selectionIds.includes(id)) {
-        tableRef.value!.toggleRowSelection(row, true)
-      }
-    })
-  }
-}
-
-// Disable selection
-const selectable = (row: any) => {
-  if (!props.disabledSelection) return true
-  const hasSelection = props.columns?.some((col) => col.type === "selection")
-  if (!hasSelection) return true
-
-  const rowKey = (tableRef.value as any)?.rowKey
-  const id = rowKey ? row[rowKey] : row.id
-  if (props.disabledSelection === true) return false
-  if (Array.isArray(props.disabledSelection)) {
-    return !props.disabledSelection.includes(id)
-  }
-  return true
-}
+const { selectedRow, initSelection, selectable, selectedRows } = useTableSelection(
+  props,
+  tableRef,
+  filteredData
+)
 
 onMounted(() => {
   initSelection()
@@ -91,26 +94,65 @@ watch(
 )
 
 const handleRefresh = () => {
-  emit("refresh")
+  emits("refresh")
 }
 
 const handleExport = () => {
-  emit("export", filteredData.value, props.columns || [])
+  emits("export", filteredData.value, props.columns || [])
 }
 
-// 暴露 el-table 的所有方法
 defineExpose({ tableRef })
 </script>
 <template>
-  <div class="bk-table-container">
+  <div class="bk-table">
     <div class="bk-table-toolbar">
       <div class="bk-table-toolbar-left">
-        <BkButton v-if="showRefresh" @click="handleRefresh" icon="tabler:refresh">
+        <bk-button v-if="showRefresh" @click="handleRefresh" icon="tabler:refresh">
           {{ t.refresh }}
-        </BkButton>
-        <BkButton v-if="showExport" @click="handleExport" icon="tabler:file-export">
+        </bk-button>
+        <bk-button v-if="showExport" @click="handleExport" icon="tabler:file-export">
           {{ t.export }}
-        </BkButton>
+        </bk-button>
+        <template v-if="isEditEnabled">
+          <bk-button
+            v-if="props.showAdd"
+            @click="handleBatch"
+            type="primary"
+            icon="tabler:cash-edit"
+          >
+            {{ t.batch }}
+          </bk-button>
+          <bk-button
+            v-if="props.showAdd"
+            @click="handleAdd"
+            type="primary"
+            icon="tabler:circle-plus"
+          >
+            {{ t.add }}
+          </bk-button>
+          <template v-if="props.editPosition === 'outside'">
+            <bk-button
+              v-if="props.showEdit"
+              @click="handleEdit"
+              type="primary"
+              icon="tabler:edit"
+              plain
+              :disabled="isEmpty(selectedRows) || selectedRows.length > 1"
+            >
+              {{ t.edit }}
+            </bk-button>
+            <bk-button
+              v-if="props.showDelete"
+              @click="handleDelete(selectedRows)"
+              type="danger"
+              icon="tabler:trash"
+              plain
+              :disabled="isEmpty(selectedRows)"
+            >
+              {{ t.delete }}
+            </bk-button>
+          </template>
+        </template>
         <slot name="toolbar-left" />
       </div>
       <div class="bk-table-toolbar-right">
@@ -141,8 +183,14 @@ defineExpose({ tableRef })
         </el-input>
       </div>
     </div>
-    <el-table ref="tableRef" v-bind="$attrs" :data="filteredData" :span-method="mergedSpanMethod">
-      <TableColumn
+    <el-table
+      ref="tableRef"
+      v-bind="$attrs"
+      :data="filteredData"
+      :span-method="mergedSpanMethod"
+      @current-change="(row) => (selectedRow = [row])"
+    >
+      <TableColumnRender
         v-for="column in columns"
         :key="column.prop || column.label"
         :column="column.type === 'selection' ? { ...column, selectable } : column"
@@ -152,7 +200,35 @@ defineExpose({ tableRef })
         <template v-for="(_, name) in $slots" #[name]="scope">
           <slot :name="name" v-bind="scope" />
         </template>
-      </TableColumn>
+      </TableColumnRender>
+      <!-- 行内编辑操作列 -->
+      <el-table-column
+        v-if="isEditEnabled && props.editPosition === 'inline'"
+        :label="t.operations"
+        width="210"
+        fixed="right"
+      >
+        <template #default="{ row }">
+          <bk-button
+            v-if="props.showEdit"
+            @click="handleEdit(row)"
+            type="primary"
+            icon="tabler:edit"
+            plain
+          >
+            {{ t.edit }}
+          </bk-button>
+          <bk-button
+            v-if="props.showDelete"
+            @click="handleDelete([row])"
+            type="danger"
+            icon="tabler:trash"
+            plain
+          >
+            {{ t.delete }}
+          </bk-button>
+        </template>
+      </el-table-column>
       <slot />
     </el-table>
     <el-pagination
@@ -162,36 +238,66 @@ defineExpose({ tableRef })
       @current-change="handleCurrentChange"
       class="bk-pagination"
     />
+
+    <component
+      :is="props.editMode === 'dialog' ? 'bk-dialog' : 'bk-drawer'"
+      v-model="editVisible"
+      :title="editTitle"
+      width="40%"
+    >
+      <bk-form :model="editForm" :items="formItems" label-width="auto"></bk-form>
+      <template #footer>
+        <bk-button @click="handleClose">{{ t.cancel }}</bk-button>
+        <bk-button type="primary" @click="handleSave">{{ t.submit }}</bk-button>
+      </template>
+    </component>
   </div>
 </template>
-<style scoped>
-.bk-table-container {
+<style lang="scss" scoped>
+.bk-table {
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  &-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+
+    &-left {
+      display: flex;
+      gap: 8px;
+    }
+
+    &-right {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  .bk-search-input {
+    width: 400px;
+  }
+  .bk-search-select {
+    width: 140px;
+  }
+  .bk-pagination {
+    margin-top: 10px;
+    align-self: flex-end;
+  }
 }
-.bk-table-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
+
+// 编辑弹框样式
+.bk-edit-dialog {
+  .el-dialog__body {
+    padding: 20px;
+  }
 }
-.bk-table-toolbar-left {
-  display: flex;
-  gap: 8px;
-}
-.bk-table-toolbar-right {
-  display: flex;
-  gap: 8px;
-}
-.bk-search-input {
-  width: 400px;
-}
-.bk-search-select {
-  width: 140px;
-}
-.bk-pagination {
-  margin-top: 16px;
-  align-self: flex-end;
+
+.bk-edit-drawer {
+  .el-drawer__body {
+    padding: 20px;
+  }
 }
 </style>

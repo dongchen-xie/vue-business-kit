@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import { computed, reactive } from "vue"
 
-import type { BkFormItemConfig } from "vue-business-kit"
+import type { FormItemCtx } from "vue-business-kit"
 
 const formLabelAlign = reactive({
   labelPosition: "right",
@@ -71,6 +71,6 @@ const items = computed(() => {
       type: "input",
       prop: "type"
     }
-  ] as BkFormItemConfig[]
+  ] as FormItemCtx[]
 })
 </script>

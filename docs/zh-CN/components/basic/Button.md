@@ -71,7 +71,7 @@ button/icon
 
 显示为按钮组，可用于分组一系列类似的操作。
 
-:::demo 使用 `<el-button-group>` 标签来分组你的按钮。
+:::demo 使用 `<bk-button-group>` 标签来分组你的按钮。
 
 button/group
 
@@ -215,7 +215,7 @@ button/tag
 import type { ButtonProps } from "element-plus"
 import type { Component } from "vue"
 
-export interface BkButtonProps extends Omit<ButtonProps, "icon"> {
+export interface ButtonProps extends Omit<ButtonProps, "icon"> {
   icon?: string | Component
 }
 ```

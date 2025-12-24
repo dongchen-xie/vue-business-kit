@@ -89,16 +89,3 @@ icon/basic
 | default | 自定义默认内容 |
 
 </details>
-
-## 类型声明
-
-<details>
-  <summary>显示声明</summary>
-
-```ts
-export interface BkIconProps {
-  icon?: string
-}
-```
-
-</details>

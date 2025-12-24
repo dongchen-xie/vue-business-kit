@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
 import { reactive } from "vue"
-import { BkFormItemConfig } from "vue-business-kit"
+import type { FormItemCtx } from "vue-business-kit"
 
 const formInline = reactive({
   user: "",
@@ -16,7 +16,7 @@ const formInline = reactive({
   date: ""
 })
 
-const items: BkFormItemConfig[] = [
+const items: FormItemCtx[] = [
   {
     label: "Approved by",
     type: "input",

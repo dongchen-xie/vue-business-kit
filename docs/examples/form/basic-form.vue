@@ -9,9 +9,9 @@
 
 <script lang="ts" setup>
 import { reactive } from "vue"
-import type { BkFormItemConfig } from "vue-business-kit"
+import type { FormItemCtx } from "vue-business-kit"
 
-const items: BkFormItemConfig[] = [
+const items: FormItemCtx[] = [
   {
     label: "Activity name",
     type: "input",

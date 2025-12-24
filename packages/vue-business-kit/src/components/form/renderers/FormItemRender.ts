@@ -26,7 +26,7 @@ import {
 } from "element-plus"
 import { omit } from "lodash-es"
 export default defineComponent({
-  name: "BkFormItemRender",
+  name: "FormItemRender",
   props: {
     item: { type: Object, required: true },
     model: { type: Object, required: true }
@@ -73,6 +73,9 @@ export default defineComponent({
               h(
                 Comp,
                 {
+                  style: {
+                    width: "100%"
+                  },
                   modelValue: props.model[item.prop],
                   "onUpdate:modelValue": (val: any) => (props.model[item.prop] = val),
                   ...(item.componentProps || {})
@@ -120,6 +123,9 @@ export default defineComponent({
         {
           default: () =>
             h(Comp, {
+              style: {
+                width: "100%"
+              },
               modelValue: props.model[item.prop],
               "onUpdate:modelValue": (val: any) => (props.model[item.prop] = val),
               ...(item.componentProps || {})

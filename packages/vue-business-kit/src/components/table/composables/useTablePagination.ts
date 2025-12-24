@@ -1,9 +1,9 @@
 import { ref, computed } from "vue"
 import { slice, merge } from "lodash-es"
-import type { BkTableProps } from "../types"
+import type { TableProps } from "../types"
 
 export function useTablePagination(
-  props: Pick<BkTableProps, "pagination">,
+  props: Pick<TableProps, "pagination">,
   searchedData: any,
   emit: any
 ) {

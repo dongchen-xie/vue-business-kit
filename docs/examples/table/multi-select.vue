@@ -23,7 +23,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { BkTableColumnProps, BkTableInstance } from "vue-business-kit"
+import type { TableColumnCtx, TableInstance } from "vue-business-kit"
 
 interface User {
   id: number
@@ -32,7 +32,7 @@ interface User {
   address: string
 }
 
-const multipleTableRef = ref<BkTableInstance>()
+const multipleTableRef = ref<TableInstance>()
 const multipleSelection = ref<User[]>([])
 const disabledSelection = ref<number[]>([1, 2])
 const defaultSelection = ref<number[]>([7])
@@ -95,7 +95,7 @@ const tableData: User[] = [
   }
 ]
 
-const columns: BkTableColumnProps[] = [
+const columns: TableColumnCtx[] = [
   {
     type: "selection",
     width: 55

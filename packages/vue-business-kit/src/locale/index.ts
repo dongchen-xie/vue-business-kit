@@ -3,7 +3,7 @@ import en from "./lang/en"
 
 export type Language = {
   name: string
-  ep: {
+  bk: {
     [key: string]: any
   }
 }

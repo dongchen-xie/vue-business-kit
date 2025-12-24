@@ -35,7 +35,7 @@ function readComponentTypes(componentDir: string): ComponentInfo | null {
   }
 
   // 查找该组件对应的 BkXxxProps（精确匹配）
-  // 例如：BkTableProps, BkButtonProps, 但不匹配 BkTableColumnProps
+  // 例如：TableProps, ButtonProps, 但不匹配 TableColumnCtx
   const targetPropsName = `${epName}Props`
   const propsRegex = new RegExp(`export\\s+interface\\s+${targetPropsName}\\s+`)
   const propsMatch = content.match(propsRegex)

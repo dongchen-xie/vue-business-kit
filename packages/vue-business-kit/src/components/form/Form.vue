@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import BkFormItemRender from "./renderers/FormItemRender"
-import type { BkFormInternalProps, BkFormEmits } from "./types"
+import type { FormInternalProps, FormEmits } from "./types"
 import { ElForm } from "element-plus"
 
 defineOptions({ name: "BkForm", inheritAttrs: false })
 
-const props = withDefaults(defineProps<BkFormInternalProps>(), {
+const props = withDefaults(defineProps<FormInternalProps>(), {
   items: () => []
 })
-const emit = defineEmits<BkFormEmits>()
+const emit = defineEmits<FormEmits>()
 
 // el-form ref
 const formRef = ref<InstanceType<typeof ElForm>>()

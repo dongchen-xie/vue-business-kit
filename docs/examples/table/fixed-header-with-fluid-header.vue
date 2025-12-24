@@ -11,7 +11,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { BkTableColumnProps } from "vue-business-kit"
+import type { TableColumnCtx } from "vue-business-kit"
 
 const now = new Date()
 
@@ -42,7 +42,7 @@ const tableData = ref([
   }
 ])
 
-const columns: BkTableColumnProps[] = [
+const columns: TableColumnCtx[] = [
   {
     prop: "date",
     label: "Date",

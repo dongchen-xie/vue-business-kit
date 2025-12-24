@@ -293,18 +293,25 @@ table/number-format
 
 ### Table 属性
 
-| 名称           | 说明               | 类型                                        | 默认值  |
-| -------------- | ------------------ | ------------------------------------------- | ------- |
-| raw-data       | 表格数据源         | ^[array]`any[]`                             | `[]`    |
-| columns        | 列配置             | ^[array]`BkTableColumnProps[]`              | `[]`    |
-| merge-columns  | 需要合并单元格的列 | ^[array]`string[]`                          | `[]`    |
-| show-search    | 显示搜索功能       | `boolean`                                   | `false` |
-| search-value   | 默认搜索值         | `string`                                    | `''`    |
-| search-columns | 默认选中搜索列     | ^[array]`string[]`                          | `[]`    |
-| show-refresh   | 显示刷新按钮       | `boolean`                                   | `false` |
-| show-export    | 显示导出按钮       | `boolean`                                   | `false` |
-| pagination     | 启用分页           | `boolean` \| ^[object]`PaginationProps`     | `false` |
-| number-format  | 启用数字格式化     | `boolean` \| ^[object]`FormatNumberOptions` | `false` |
+| 名称           | 说明                          | 类型                                        | 默认值      |
+| -------------- | ----------------------------- | ------------------------------------------- | ----------- |
+| raw-data       | 表格数据源                    | ^[array]`any[]`                             | `[]`        |
+| columns        | 列配置                        | ^[array]`TableColumnCtx[]`                  | `[]`        |
+| merge-columns  | 需要合并单元格的列            | ^[array]`string[]`                          | `[]`        |
+| show-search    | 显示搜索功能                  | `boolean`                                   | `false`     |
+| search-value   | 默认搜索值                    | `string`                                    | `''`        |
+| search-columns | 默认选中搜索列                | ^[array]`string[]`                          | `[]`        |
+| show-refresh   | 显示刷新按钮                  | `boolean`                                   | `false`     |
+| show-export    | 显示导出按钮                  | `boolean`                                   | `false`     |
+| pagination     | 启用分页                      | `boolean` \| ^[object]`PaginationProps`     | `false`     |
+| number-format  | 启用数字格式化                | `boolean` \| ^[object]`FormatNumberOptions` | `false`     |
+| edit-mode      | 编辑模式（dialog 或 drawer）  | ^[enum]`'dialog' \| 'drawer'`               | `'dialog'`  |
+| edit-position  | 编辑位置（outside 或 inline） | ^[enum]`'outside' \| 'inline'`              | `'outside'` |
+| show-add       | 显示添加按钮                  | `boolean`                                   | `true`      |
+| show-batch     | 显示批量操作按钮              | `boolean`                                   | `false`     |
+| show-edit      | 显示编辑按钮                  | `boolean`                                   | `true`      |
+| show-delete    | 显示删除按钮                  | `boolean`                                   | `true`      |
+| enable-edit    | 启用编辑功能                  | `boolean`                                   | `false`     |
 
 <details>
 <summary>Element Plus Table 属性</summary>
@@ -360,12 +367,12 @@ table/number-format
 
 ### Table 事件
 
-| 名称              | 说明             | 类型                                                      |
-| ----------------- | ---------------- | --------------------------------------------------------- |
-| refresh           | 点击刷新按钮触发 | ^[Function]`()`                                           |
-| export            | 点击导出按钮触发 | ^[Function]`(data: any[], columns: BkTableColumnProps[])` |
-| search            | 执行搜索时触发   | ^[Function]`(value: string, columns: string[])`           |
-| pagination-change | 分页变化时触发   | ^[Function]`(page: number, size: number)`                 |
+| 名称              | 说明             | 类型                                                  |
+| ----------------- | ---------------- | ----------------------------------------------------- |
+| refresh           | 点击刷新按钮触发 | ^[Function]`()`                                       |
+| export            | 点击导出按钮触发 | ^[Function]`(data: any[], columns: TableColumnCtx[])` |
+| search            | 执行搜索时触发   | ^[Function]`(value: string, columns: string[])`       |
+| pagination-change | 分页变化时触发   | ^[Function]`(page: number, size: number)`             |
 
 <details>
 <summary>Element Plus Table 事件</summary>
@@ -446,7 +453,7 @@ table/number-format
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
 | slots         | 自定义插槽配置，为 `true` 时启用所有插槽，自动生成名称 `{prop}`、`{prop}-header`、`{prop}-filterIcon` 和 `{prop}-expand`。对象形式每个属性可为 `boolean`（true 使用自动生成名称）或 `string`（指定自定义插槽名称） | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -      |
 | number-format | 数字格式化配置，为 `true` 时使用默认数字格式化。为对象时提供自定义格式化选项。此设置将覆盖该列的表格级别 `numberFormat` 配置                                                                                       | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -      |
-| children      | 子列配置，用于实现表头分组。每个子列也可以拥有自己的 `children` 属性实现嵌套分组。用于创建多级表头                                                                                                                 | ^[array]`BkTableColumnProps[]`                                                                                                                   | -      |
+| children      | 子列配置，用于实现表头分组。每个子列也可以拥有自己的 `children` 属性实现嵌套分组。用于创建多级表头                                                                                                                 | ^[array]`TableColumnCtx[]`                                                                                                                       | -      |
 
 <details>
 <summary>Element Plus Table-column 属性</summary>

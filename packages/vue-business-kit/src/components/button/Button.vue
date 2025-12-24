@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { computed, h, ref } from "vue"
 import { ElButton } from "element-plus"
-import type { BkButtonInternalProps } from "./types"
+import type { ButtonInternalProps } from "./types"
 import Icon from "../icon/Icon.vue"
 
 defineOptions({ name: "BkButton", inheritAttrs: false })
 
-const props = defineProps<BkButtonInternalProps>()
+const props = defineProps<ButtonInternalProps>()
 
 const buttonRef = ref<InstanceType<typeof ElButton>>()
 
 const iconComponent = computed(() => {
   if (!props.icon) return undefined
   if (typeof props.icon === "string") {
-    return h(Icon, { icon: props.icon })
+    return h(Icon, { icon: props.icon, size: 16 })
   }
   return props.icon
 })
@@ -21,7 +21,7 @@ const iconComponent = computed(() => {
 const loadingIconComponent = computed(() => {
   if (!props.loadingIcon) return undefined
   if (typeof props.loadingIcon === "string") {
-    return h(Icon, { icon: props.loadingIcon })
+    return h(Icon, { icon: props.loadingIcon, size: 16 })
   }
   return props.loadingIcon
 })

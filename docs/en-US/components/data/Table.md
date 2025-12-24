@@ -289,22 +289,37 @@ table/number-format
 
 :::
 
+## Edit Data
+
+:::demo
+
+table/edit
+
+:::
+
 ## Table API
 
 ### Table Attributes
 
-| Name           | Description                     | Type                                        | Default |
-| -------------- | ------------------------------- | ------------------------------------------- | ------- |
-| raw-data       | Table data source               | ^[array]`any[]`                             | `[]`    |
-| columns        | Column configuration            | ^[array]`BkTableColumnProps[]`              | `[]`    |
-| merge-columns  | Columns to merge cells          | ^[array]`string[]`                          | `[]`    |
-| show-search    | Show search functionality       | `boolean`                                   | `false` |
-| search-value   | Default search value            | `string`                                    | `''`    |
-| search-columns | Default selected search columns | ^[array]`string[]`                          | `[]`    |
-| show-refresh   | Show refresh button             | `boolean`                                   | `false` |
-| show-export    | Show export button              | `boolean`                                   | `false` |
-| pagination     | Enable pagination               | `boolean` \| ^[object]`PaginationProps`     | `false` |
-| number-format  | Enable number formatting        | `boolean` \| ^[object]`FormatNumberOptions` | `false` |
+| Name           | Description                       | Type                                        | Default     |
+| -------------- | --------------------------------- | ------------------------------------------- | ----------- |
+| raw-data       | Table data source                 | ^[array]`any[]`                             | `[]`        |
+| columns        | Column configuration              | ^[array]`TableColumnCtx[]`                  | `[]`        |
+| merge-columns  | Columns to merge cells            | ^[array]`string[]`                          | `[]`        |
+| show-search    | Show search functionality         | `boolean`                                   | `false`     |
+| search-value   | Default search value              | `string`                                    | `''`        |
+| search-columns | Default selected search columns   | ^[array]`string[]`                          | `[]`        |
+| show-refresh   | Show refresh button               | `boolean`                                   | `false`     |
+| show-export    | Show export button                | `boolean`                                   | `false`     |
+| pagination     | Enable pagination                 | `boolean` \| ^[object]`PaginationProps`     | `false`     |
+| number-format  | Enable number formatting          | `boolean` \| ^[object]`FormatNumberOptions` | `false`     |
+| edit-mode      | Edit mode (dialog or drawer)      | ^[enum]`'dialog' \| 'drawer'`               | `'dialog'`  |
+| edit-position  | Edit position (outside or inline) | ^[enum]`'outside' \| 'inline'`              | `'outside'` |
+| show-add       | Show add button                   | `boolean`                                   | `true`      |
+| show-batch     | Show batch operation button       | `boolean`                                   | `false`     |
+| show-edit      | Show edit button                  | `boolean`                                   | `true`      |
+| show-delete    | Show delete button                | `boolean`                                   | `true`      |
+| enable-edit    | Enable edit functionality         | `boolean`                                   | `false`     |
 
 <details>
 <summary>Element Plus Table Attributes</summary>
@@ -360,12 +375,12 @@ table/number-format
 
 ### Table Events
 
-| Name              | Description                              | Type                                                      |
-| ----------------- | ---------------------------------------- | --------------------------------------------------------- |
-| refresh           | Triggered when refresh button is clicked | ^[Function]`()`                                           |
-| export            | Triggered when export button is clicked  | ^[Function]`(data: any[], columns: BkTableColumnProps[])` |
-| search            | Triggered when search is performed       | ^[Function]`(value: string, columns: string[])`           |
-| pagination-change | Triggered when pagination changes        | ^[Function]`(page: number, size: number)`                 |
+| Name              | Description                              | Type                                                  |
+| ----------------- | ---------------------------------------- | ----------------------------------------------------- |
+| refresh           | Triggered when refresh button is clicked | ^[Function]`()`                                       |
+| export            | Triggered when export button is clicked  | ^[Function]`(data: any[], columns: TableColumnCtx[])` |
+| search            | Triggered when search is performed       | ^[Function]`(value: string, columns: string[])`       |
+| pagination-change | Triggered when pagination changes        | ^[Function]`(page: number, size: number)`             |
 
 <details>
 <summary>Element Plus Table Events</summary>
@@ -446,7 +461,7 @@ Extends all Element Plus TableColumnCtx properties with additional features:
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
 | slots         | Custom slot configuration, When set to `true`, enables all slots with auto-generated names `{prop}`, `{prop}-header`, `{prop}-filterIcon`, and `{prop}-expand`. In object form, each property can be boolean or string for custom slot names. Boolean `true` uses auto-generated name, string specifies custom slot name | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -       |
 | number-format | Number formatting config, When set to `true`, use default number formatting. When set to an object, provide custom formatting options. This overrides the table-level `numberFormat` setting for this specific column                                                                                                    | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -       |
-| children      | Array of child columns for grouping headers. Each child column can also have its own `children` for nested grouping. Used for creating multi-level table headers                                                                                                                                                         | ^[array]`BkTableColumnProps[]`                                                                                                                   | -       |
+| children      | Array of child columns for grouping headers. Each child column can also have its own `children` for nested grouping. Used for creating multi-level table headers                                                                                                                                                         | ^[array]`TableColumnCtx[]`                                                                                                                       | -       |
 
 <details>
 <summary>Element Plus Table Column Attributes</summary>

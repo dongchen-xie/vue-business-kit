@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { TableColumnCtx, BkTableColumnProps } from "vue-business-kit"
+import type { TableColumnCtx } from "vue-business-kit"
 
 interface User {
   id: string
@@ -102,7 +102,7 @@ const tableData: User[] = [
   }
 ]
 
-const columns: BkTableColumnProps[] = [
+const columns: TableColumnCtx[] = [
   {
     prop: "id",
     label: "ID",

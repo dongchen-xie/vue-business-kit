@@ -8,9 +8,9 @@
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { BkTableColumnProps, TableInstance } from "vue-business-kit"
+import type { TableColumnCtx } from "vue-business-kit"
 
-const tableLayout = ref<TableInstance["tableLayout"]>("fixed")
+const tableLayout = ref<string>("fixed")
 
 const tableData = [
   {
@@ -35,7 +35,7 @@ const tableData = [
   }
 ]
 
-const columns: BkTableColumnProps[] = [
+const columns: TableColumnCtx[] = [
   {
     prop: "date",
     label: "Date"

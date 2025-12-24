@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import type { BkTableColumnProps } from "vue-business-kit"
+import type { TableColumnCtx } from "vue-business-kit"
 
 const tableData = Array.from({ length: 50 }, (_, index) => ({
   date: `2016-05-${String(index + 1).padStart(2, "0")}`,
@@ -16,7 +16,7 @@ const tableData = Array.from({ length: 50 }, (_, index) => ({
   address: `No. ${index + 1}, Grove St, Los Angeles`
 }))
 
-const columns: BkTableColumnProps[] = [
+const columns: TableColumnCtx[] = [
   {
     prop: "date",
     label: "Date",

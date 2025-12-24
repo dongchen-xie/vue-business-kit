@@ -12,13 +12,16 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BkButton: typeof import('vue-business-kit')['BkButton']
+    BkButtonGroup: typeof import('vue-business-kit')['BkButtonGroup']
     BkForm: typeof import('vue-business-kit')['BkForm']
     BkIcon: typeof import('vue-business-kit')['BkIcon']
     BkTable: typeof import('vue-business-kit')['BkTable']
+    BkTableColumn: typeof import('vue-business-kit')['BkTableColumn']
     DesignGuide: typeof import('./.vitepress/vitepress/components/globals/design-guide.vue')['default']
     EfficiencySvg: typeof import('./.vitepress/vitepress/components/globals/design/efficiency-svg.vue')['default']
     ElementSvg: typeof import('./.vitepress/vitepress/components/globals/design/element-svg.vue')['default']
     LodashSvg: typeof import('./.vitepress/vitepress/components/globals/design/lodash-svg.vue')['default']
+    TableColumnCtx: typeof import('vue-business-kit')['TableColumnCtx']
     VpApiTyping: typeof import('./.vitepress/vitepress/components/globals/vp-api-typing.vue')['default']
     VpDemo: typeof import('./.vitepress/vitepress/components/vp-demo.vue')['default']
     VpSourceCode: typeof import('./.vitepress/vitepress/components/demo/vp-source-code.vue')['default']

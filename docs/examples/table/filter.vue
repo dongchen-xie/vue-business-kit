@@ -18,7 +18,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { BkTableColumnProps, BkTableInstance, TableColumnCtx } from "vue-business-kit"
+import type { TableColumnCtx, TableInstance } from "vue-business-kit"
 
 interface User {
   date: string
@@ -27,7 +27,7 @@ interface User {
   tag: string
 }
 
-const tableRef = ref<BkTableInstance>()
+const tableRef = ref<TableInstance>()
 
 const resetDateFilter = () => {
   tableRef.value!.tableRef!.clearFilter(["date"])
@@ -42,7 +42,7 @@ const filterTag = (value: string, row: User) => {
   return row.tag === value
 }
 const filterHandler = (value: string, row: User, column: TableColumnCtx<User>) => {
-  const property = column["property"]
+  const property = column["property"] as string
   return row[property] === value
 }
 
@@ -73,7 +73,7 @@ const tableData: User[] = [
   }
 ]
 
-const columns: BkTableColumnProps[] = [
+const columns: TableColumnCtx[] = [
   {
     prop: "date",
     label: "Date",

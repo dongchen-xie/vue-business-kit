@@ -1,8 +1,15 @@
-import type { PaginationProps, TableColumnCtx, TableProps, TableInstance } from "element-plus"
+import type {
+  PaginationProps,
+  TableColumnCtx as EpTableColumnCtx,
+  TableProps as EpTableProps,
+  TableInstance as EpTableInstance
+} from "element-plus"
 import type { FormatNumberOptions } from "../../utils/formatNumber"
 import { DefaultRow } from "element-plus/es/components/table/src/table/defaults.mjs"
+import type { FormItemCtx } from "../form/types"
 
-export interface BkTableColumnProps extends Partial<Omit<TableColumnCtx<DefaultRow>, "children">> {
+export interface TableColumnCtx<T extends DefaultRow = DefaultRow>
+  extends Partial<Omit<EpTableColumnCtx<T>, "children">> {
   slots?:
     | boolean
     | {
@@ -12,11 +19,13 @@ export interface BkTableColumnProps extends Partial<Omit<TableColumnCtx<DefaultR
         expand?: string | boolean
       }
   numberFormat?: boolean | FormatNumberOptions
-  children?: BkTableColumnProps[]
+  children?: TableColumnCtx[]
+  edit?: FormItemCtx
 }
-export interface BkTableInternalProps {
+
+export interface TableInternalProps {
   rawData?: any[]
-  columns?: BkTableColumnProps[]
+  columns?: TableColumnCtx[]
   mergeColumns?: string[]
   showSearch?: boolean
   searchValue?: string
@@ -27,16 +36,43 @@ export interface BkTableInternalProps {
   numberFormat?: boolean | FormatNumberOptions
   defaultSelection?: boolean | (string | number)[]
   disabledSelection?: boolean | (string | number)[]
+  editMode?: "dialog" | "drawer"
+  editPosition?: "outside" | "inline"
+  showAdd?: boolean
+  showBatch?: boolean
+  showEdit?: boolean
+  showDelete?: boolean
+  enableEdit?: boolean
 }
-export interface BkTableProps extends TableProps<any>, BkTableInternalProps {}
+export interface TableProps extends EpTableProps<any>, TableInternalProps {}
 
-export interface BkTableEmits {
+export interface TableEmits {
   refresh: []
-  export: [data: any[], columns: BkTableColumnProps[]]
+  export: [data: any[], columns: TableColumnCtx[]]
   search: [value: string, columns: string[]]
   paginationChange: [page: number, size: number]
+  add: [form: any]
+  edit: [row: any, form: any]
+  delete: [row: any]
+  batch: [form: any]
 }
 
-export interface BkTableInstance {
-  tableRef?: TableInstance
+export interface TableInstance {
+  tableRef?: EpTableInstance
 }
+
+export type {
+  TableColumnInstance,
+  SummaryMethod,
+  Table,
+  TableRefs,
+  ColumnCls,
+  ColumnStyle,
+  CellCls,
+  CellStyle,
+  TreeNode,
+  RenderRowData,
+  Sort,
+  Filter,
+  TableTooltipData
+} from "element-plus"

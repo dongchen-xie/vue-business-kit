@@ -16,11 +16,7 @@
       </el-select>
     </el-form-item>
     <el-form-item label="Activity count" prop="count">
-      <el-select-v2
-        v-model="ruleForm.count"
-        placeholder="Activity count"
-        :options="options"
-      />
+      <el-select-v2 v-model="ruleForm.count" placeholder="Activity count" :options="options" />
     </el-form-item>
     <el-form-item label="Activity time" required>
       <el-col :span="11">
@@ -56,18 +52,10 @@
     </el-form-item>
     <el-form-item label="Activity type" prop="type">
       <el-checkbox-group v-model="ruleForm.type">
-        <el-checkbox value="Online activities" name="type">
-          Online activities
-        </el-checkbox>
-        <el-checkbox value="Promotion activities" name="type">
-          Promotion activities
-        </el-checkbox>
-        <el-checkbox value="Offline activities" name="type">
-          Offline activities
-        </el-checkbox>
-        <el-checkbox value="Simple brand exposure" name="type">
-          Simple brand exposure
-        </el-checkbox>
+        <el-checkbox value="Online activities" name="type"> Online activities </el-checkbox>
+        <el-checkbox value="Promotion activities" name="type"> Promotion activities </el-checkbox>
+        <el-checkbox value="Offline activities" name="type"> Offline activities </el-checkbox>
+        <el-checkbox value="Simple brand exposure" name="type"> Simple brand exposure </el-checkbox>
       </el-checkbox-group>
     </el-form-item>
     <el-form-item label="Resources" prop="resource">
@@ -80,18 +68,16 @@
       <el-input v-model="ruleForm.desc" type="textarea" />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="submitForm(ruleFormRef)">
-        Create
-      </el-button>
+      <el-button type="primary" @click="submitForm(ruleFormRef)"> Create </el-button>
       <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
     </el-form-item>
   </el-form>
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref } from "vue"
 
-import type { FormInstance, FormRules } from 'element-plus'
+import type { FormInstance, FormRules } from "vue-business-kit"
 
 interface RuleForm {
   name: string
@@ -108,89 +94,87 @@ interface RuleForm {
 
 const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive<RuleForm>({
-  name: 'Hello',
-  region: '',
-  count: '',
-  date1: '',
-  date2: '',
+  name: "Hello",
+  region: "",
+  count: "",
+  date1: "",
+  date2: "",
   delivery: false,
-  location: '',
+  location: "",
   type: [],
-  resource: '',
-  desc: '',
+  resource: "",
+  desc: ""
 })
 
-const locationOptions = ['Home', 'Company', 'School']
+const locationOptions = ["Home", "Company", "School"]
 
 const rules = reactive<FormRules<RuleForm>>({
   name: [
-    { required: true, message: 'Please input Activity name', trigger: 'blur' },
-    { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
+    { required: true, message: "Please input Activity name", trigger: "blur" },
+    { min: 3, max: 5, message: "Length should be 3 to 5", trigger: "blur" }
   ],
   region: [
     {
       required: true,
-      message: 'Please select Activity zone',
-      trigger: 'change',
-    },
+      message: "Please select Activity zone",
+      trigger: "change"
+    }
   ],
   count: [
     {
       required: true,
-      message: 'Please select Activity count',
-      trigger: 'change',
-    },
+      message: "Please select Activity count",
+      trigger: "change"
+    }
   ],
   date1: [
     {
-      type: 'date',
+      type: "date",
       required: true,
-      message: 'Please pick a date',
-      trigger: 'change',
-    },
+      message: "Please pick a date",
+      trigger: "change"
+    }
   ],
   date2: [
     {
-      type: 'date',
+      type: "date",
       required: true,
-      message: 'Please pick a time',
-      trigger: 'change',
-    },
+      message: "Please pick a time",
+      trigger: "change"
+    }
   ],
   location: [
     {
       required: true,
-      message: 'Please select a location',
-      trigger: 'change',
-    },
+      message: "Please select a location",
+      trigger: "change"
+    }
   ],
   type: [
     {
-      type: 'array',
+      type: "array",
       required: true,
-      message: 'Please select at least one activity type',
-      trigger: 'change',
-    },
+      message: "Please select at least one activity type",
+      trigger: "change"
+    }
   ],
   resource: [
     {
       required: true,
-      message: 'Please select activity resource',
-      trigger: 'change',
-    },
+      message: "Please select activity resource",
+      trigger: "change"
+    }
   ],
-  desc: [
-    { required: true, message: 'Please input activity form', trigger: 'blur' },
-  ],
+  desc: [{ required: true, message: "Please input activity form", trigger: "blur" }]
 })
 
 const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return
   await formEl.validate((valid, fields) => {
     if (valid) {
-      console.log('submit!')
+      console.log("submit!")
     } else {
-      console.log('error submit!', fields)
+      console.log("error submit!", fields)
     }
   })
 }
@@ -202,6 +186,6 @@ const resetForm = (formEl: FormInstance | undefined) => {
 
 const options = Array.from({ length: 10000 }).map((_, idx) => ({
   value: `${idx + 1}`,
-  label: `${idx + 1}`,
+  label: `${idx + 1}`
 }))
 </script>

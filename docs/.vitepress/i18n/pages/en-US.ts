@@ -47,6 +47,10 @@ export default {
             items: generateSidebar("en-US", "components/data")
           },
           {
+            text: "Feedback",
+            items: generateSidebar("en-US", "components/feedback")
+          },
+          {
             text: "Form",
             items: generateSidebar("en-US", "components/form")
           }

@@ -1,7 +1,11 @@
-import type { IconProps } from "element-plus"
+import type { IconProps as EpIconProps, IconInstance as EpIconInstance } from "element-plus"
 
-export interface BkIconInternalProps {
+export interface IconInternalProps {
   icon?: string
 }
 
-export interface BkIconProps extends IconProps, BkIconInternalProps {}
+export interface IconProps extends EpIconProps, IconInternalProps {}
+
+export interface IconInstance {
+  iconRef?: EpIconInstance
+}

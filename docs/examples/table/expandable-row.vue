@@ -25,7 +25,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { BkTableColumnProps } from "vue-business-kit"
+import type { TableColumnCtx } from "vue-business-kit"
 
 const parentBorder = ref(false)
 const childBorder = ref(false)
@@ -250,7 +250,7 @@ const tableData = [
   }
 ]
 
-const columns: BkTableColumnProps[] = [
+const columns: TableColumnCtx[] = [
   {
     type: "expand",
     slots: {
@@ -267,7 +267,7 @@ const columns: BkTableColumnProps[] = [
   }
 ]
 
-const columns2: BkTableColumnProps[] = [
+const columns2: TableColumnCtx[] = [
   {
     prop: "name",
     label: "Name"

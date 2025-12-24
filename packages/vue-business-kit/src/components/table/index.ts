@@ -1,3 +1,3 @@
 export { default as BkTable } from "./Table.vue"
-export { default as BkTableColumn } from "./TableColumn.vue"
+export { ElTableColumn as BkTableColumn } from "element-plus"
 export * from "./types"

@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { BkTableColumnProps } from "vue-business-kit"
+import type { TableColumnCtx } from "vue-business-kit"
 
 const indexMethod = (index: number) => {
   return index * 2
@@ -47,7 +47,7 @@ const tableData = [
   }
 ]
 
-const columns: BkTableColumnProps[] = [
+const columns: TableColumnCtx[] = [
   {
     type: "index",
     index: indexMethod

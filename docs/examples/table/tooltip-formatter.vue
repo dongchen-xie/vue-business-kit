@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
 import { h } from "vue"
-import { ElLink, type BkTableColumnProps, type TableTooltipData } from "vue-business-kit"
+import { ElLink, type TableColumnCtx, type TableTooltipData } from "vue-business-kit"
 
 type TableData = {
   address: string
@@ -55,7 +55,7 @@ const withVNode = (data: TableTooltipData<TableData>) => {
   return h(ElLink, { type: "primary", href: data.cellValue }, () => h("span", null, data.cellValue))
 }
 
-const columns: BkTableColumnProps[] = [
+const columns: TableColumnCtx[] = [
   {
     prop: "address",
     label: "extends table formatter",

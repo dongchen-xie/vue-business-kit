@@ -46,7 +46,11 @@ export default {
             items: generateSidebar("zh-CN", "components/data")
           },
           {
-            text: "Form 表单",
+            text: "Feedback 反馈组件",
+            items: generateSidebar("zh-CN", "components/feedback")
+          },
+          {
+            text: "Form 表单组件",
             items: generateSidebar("zh-CN", "components/form")
           }
         ],

@@ -18,7 +18,7 @@
 import { h } from "vue"
 
 import type { VNode } from "vue"
-import type { BkTableColumnProps, TableColumnCtx } from "vue-business-kit"
+import type { TableColumnCtx } from "vue-business-kit"
 
 interface Product {
   id: string
@@ -41,7 +41,7 @@ const getSummaries = (param: SummaryMethodProps) => {
       sums[index] = h("div", { style: { textDecoration: "underline" } }, ["Total Cost"])
       return
     }
-    const values = data.map((item) => Number(item[column.property]))
+    const values = data.map((item) => Number(item[column.property as string]))
     if (!values.every((value) => Number.isNaN(value))) {
       sums[index] = `$ ${values.reduce((prev, curr) => {
         const value = Number(curr)
@@ -97,7 +97,7 @@ const tableData: Product[] = [
   }
 ]
 
-const columns: BkTableColumnProps[] = [
+const columns: TableColumnCtx[] = [
   {
     prop: "id",
     label: "ID",
@@ -124,7 +124,7 @@ const columns: BkTableColumnProps[] = [
   }
 ]
 
-const columns1: BkTableColumnProps[] = [
+const columns1: TableColumnCtx[] = [
   {
     prop: "id",
     label: "ID",

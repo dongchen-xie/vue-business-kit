@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed } from "vue"
 import { ElTableColumn } from "element-plus"
-import type { BkTableColumnProps } from "./types"
+import type { TableColumnCtx } from "../types"
 import { omit } from "lodash-es"
 
 defineOptions({ name: "BkTableColumn" })
 
 const props = defineProps<{
-  column: BkTableColumnProps
-  shouldFormatNumber: (column: BkTableColumnProps, value: any) => boolean
-  formatCellValue: (value: any, column?: BkTableColumnProps) => string
+  column: TableColumnCtx
+  shouldFormatNumber: (column: TableColumnCtx, value: any) => boolean
+  formatCellValue: (value: any, column?: TableColumnCtx) => string
 }>()
 
 const isSpecialType = computed(() =>
@@ -45,14 +45,14 @@ const expandSlotName = computed(() => getSlotName("expand"))
     </template>
     <template v-if="!isSpecialType" #default="scope">
       <template v-if="column.children?.length">
-        <TableColumn
+        <TableColumnRender
           v-for="child in column.children"
           :key="child.prop || child.label"
           :column="child"
           :should-format-number="shouldFormatNumber"
           :format-cell-value="formatCellValue"
         >
-        </TableColumn>
+        </TableColumnRender>
       </template>
       <slot v-else-if="defaultSlotName" :name="defaultSlotName" v-bind="scope" />
       <template v-else>

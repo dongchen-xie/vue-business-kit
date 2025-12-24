@@ -1,12 +1,12 @@
 import { ref, computed, watch } from "vue"
 import { compact, isEmpty } from "lodash-es"
-import type { BkTableColumnProps } from "../types"
+import type { TableColumnCtx } from "../types"
 
 export function useTableSearch(
   props: {
     searchValue: string
     searchColumns: string[]
-    columns?: BkTableColumnProps[]
+    columns?: TableColumnCtx[]
     rawData: any[]
   },
   emit: (event: "search", searchText: string, selectedColumns: string[]) => void

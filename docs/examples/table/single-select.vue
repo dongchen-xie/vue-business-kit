@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { BkTableColumnProps, BkTableInstance } from "vue-business-kit"
+import type { TableColumnCtx, TableInstance } from "vue-business-kit"
 
 interface User {
   date: string
@@ -25,7 +25,7 @@ interface User {
 }
 
 const currentRow = ref()
-const singleTableRef = ref<BkTableInstance>()
+const singleTableRef = ref<TableInstance>()
 
 const setCurrent = (row?: User) => {
   singleTableRef.value!.tableRef!.setCurrentRow(row)
@@ -56,7 +56,7 @@ const tableData: User[] = [
   }
 ]
 
-const columns: BkTableColumnProps[] = [
+const columns: TableColumnCtx[] = [
   {
     type: "index",
     width: 50

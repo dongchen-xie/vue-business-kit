@@ -1,7 +1,7 @@
-import type { BkTableProps } from "../types"
+import type { TableProps } from "../types"
 
 export function useTableMerge(
-  props: Pick<BkTableProps, "mergeColumns"> & { spanMethod?: any },
+  props: Pick<TableProps, "mergeColumns"> & { spanMethod?: any },
   searchedData: any,
   attrs: Record<string, any>
 ) {
