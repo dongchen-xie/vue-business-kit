@@ -5,7 +5,9 @@ lang: en-US
 
 # Button
 
-Button component enhanced based on [Element Plus Button](https://element-plus.org/en-US/component/button) with support for Iconify icons.
+Button component enhanced based on [Element Plus Button](https://element-plus.org/en-US/component/button).
+
+Support Iconify icons.
 
 ## Basic Usage
 
@@ -125,10 +127,10 @@ button/tag
 
 ### Button Attributes
 
-| Name         | Description                         | Type                     | Default |
-| ------------ | ----------------------------------- | ------------------------ | ------- |
-| icon         | Icon component or iconify icon name | ^[string] / ^[Component] | —       |
-| loading-icon | customize loading icon component    | ^[string] / ^[Component] | Loading |
+| Name                     | Description                         | Type                     | Default |
+| ------------------------ | ----------------------------------- | ------------------------ | ------- |
+| icon ^(extended)         | Icon component or iconify icon name | ^[string] / ^[Component] | —       |
+| loading-icon ^(extended) | customize loading icon component    | ^[string] / ^[Component] | Loading |
 
 <details>
 <summary>Element Plus Button Attributes</summary>
@@ -144,9 +146,7 @@ button/tag
 | round             | determine whether it's a round button                                                                                                                | ^[boolean]                                                                                                   | false   |
 | circle            | determine whether it's a circle button                                                                                                               | ^[boolean]                                                                                                   | false   |
 | loading           | determine whether it's loading                                                                                                                       | ^[boolean]                                                                                                   | false   |
-| loading-icon      | customize loading icon component                                                                                                                     | ^[string] / ^[Component]                                                                                     | Loading |
 | disabled          | disable the button                                                                                                                                   | ^[boolean]                                                                                                   | false   |
-| icon              | icon component                                                                                                                                       | ^[string] / ^[Component]                                                                                     | —       |
 | autofocus         | same as native button's `autofocus`                                                                                                                  | ^[boolean]                                                                                                   | false   |
 | native-type       | same as native button's `type`                                                                                                                       | ^[enum]`'button' \| 'submit' \| 'reset'`                                                                     | button  |
 | auto-insert-space | automatically insert a space between two chinese characters(this will only take effect when the text length is 2 and all characters are in Chinese.) | ^[boolean]                                                                                                   | false   |

@@ -1,3 +1,4 @@
+export * from "./form"
 export * from "element-plus/es/components/affix/index"
 export * from "element-plus/es/components/alert/index"
 export * from "element-plus/es/components/autocomplete/index"

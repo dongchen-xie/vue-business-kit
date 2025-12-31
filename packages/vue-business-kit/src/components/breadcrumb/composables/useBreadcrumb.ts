@@ -1,11 +1,7 @@
 import { computed } from "vue"
-import type { BreadcrumbItemCtx, BreadcrumbConfig } from "../types"
+import type { BreadcrumbItemCtx, BreadcrumbInternalProps } from "../types"
 
-export function useBreadcrumb(
-  config: BreadcrumbConfig = {},
-  data: BreadcrumbItemCtx[] = [],
-  currentRoute: string = ""
-) {
+export function useBreadcrumb(props: BreadcrumbInternalProps) {
   const defaultConfig = {
     idKey: "id",
     iconKey: "icon",
@@ -14,7 +10,7 @@ export function useBreadcrumb(
     childrenKey: "children"
   }
 
-  const mergedConfig = { ...defaultConfig, ...config }
+  const mergedConfig = { ...defaultConfig, ...props.config }
 
   // 查找当前路由对应的面包屑路径
   const findBreadcrumbPath = (
@@ -42,9 +38,9 @@ export function useBreadcrumb(
 
   // 生成面包屑项
   const breadcrumbItems = computed(() => {
-    if (!currentRoute || !data.length) return []
+    if (!props.currentRoute || !props.data?.length) return []
 
-    const path = findBreadcrumbPath(data, currentRoute)
+    const path = findBreadcrumbPath(props.data, props.currentRoute)
     return path.map((item) => {
       const {
         [mergedConfig.idKey]: id,

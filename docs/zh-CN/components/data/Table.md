@@ -1,17 +1,19 @@
 ---
-title: 表格
+title: Table
 lang: zh-CN
 ---
 
-# 表格
+# Table 表格
 
-基于 [Element Plus Table](https://element-plus.org/zh-CN/component/table) 增强的表格组件，增加了搜索、分页、导出、数字格式化等功能。
+基于 [Element Plus Table](https://element-plus.org/zh-CN/component/table.html) 增强的表格组件。
 
-## 基础用法
+以类似格式展示多条数据。你可以在表格中对数据进行排序、筛选、对比等操作。
 
-使用原始数据和列配置的基础表格。
+## 基本用法
 
-:::demo 使用 `raw-data` 提供表格数据，`columns` 定义表格结构。每个列对象支持所有 Element Plus 表格列属性。
+通过原始数据和列配置实现基础表格展示。
+
+:::demo 使用 `raw-data` 提供表格数据，通过 `bk-table-column` 组件或 `columns` 属性定义表格结构。每列可配置 `prop`（字段名）、`label`（列标题）、`width`（宽度）等属性。
 
 table/basic
 
@@ -19,9 +21,9 @@ table/basic
 
 ## 斑马纹表格
 
-斑马纹表格更易于区分不同行。
+斑马纹表格更容易区分不同行数据。
 
-:::demo 属性 `stripe` 接受一个 `Boolean`。为 `true` 时，表格为斑马纹。
+:::demo `stripe` 属性接受布尔值，设置为 `true` 时表格将显示斑马纹效果。
 
 table/striped
 
@@ -29,7 +31,7 @@ table/striped
 
 ## 带边框的表格
 
-:::demo 默认情况下，表格没有纵向边框。如需显示，可将属性 `border` 设为 `true`。
+:::demo 默认情况下表格无垂直边框，如需显示可将 `border` 属性设置为 `true`。
 
 table/with-border
 
@@ -37,69 +39,69 @@ table/with-border
 
 ## 带状态的表格
 
-你可以高亮表格内容以区分“成功、信息、警告、危险”等状态。
+你可以通过高亮表格内容来区分「成功、信息、警告、危险」等状态。
 
-:::demo 在 `el-table` 中使用 `row-class-name` 为某一行添加自定义类名，然后可用自定义类进行样式设置。
+:::demo 使用 `bk-table` 的 `row-class-name` 为指定行添加自定义类名，然后通过自定义类名实现样式高亮。
 
 table/with-status
 
 :::
 
-## 超出显示 Tooltip 的表格
+## 内容溢出时显示 tooltip
 
-内容过长时会换行，可用 `show-overflow-tooltip` 保持单行显示。
+当单元格内容过长时会自动换行，你可以使用 `show-overflow-tooltip` 使其单行显示并在溢出时展示 tooltip。
 
-:::demo 属性 `show-overflow-tooltip` 接受 `Boolean`。为 `true` 时，超出内容悬浮显示 Tooltip。
+:::demo `show-overflow-tooltip` 属性接受布尔值，设置为 `true` 时，鼠标悬浮在单元格上会通过 tooltip 显示完整内容。
 
 table/show-overflow-tooltip
 
 :::
 
-## 固定表头的表格
+## 固定表头
 
-数据行较多时可使用固定表头。
+当表格行数过多时，可固定表头方便查看。
 
-:::demo 通过设置 `el-table` 的 `height` 属性即可固定表头，无需其他代码。
+:::demo 只需为 `bk-table` 设置 `height` 属性，即可固定表头，无需额外代码。
 
 table/fixed-header
 
 :::
 
-## 固定列的表格
+## 固定列
 
-列较多时可固定部分列。
+当表格列数过多时，可固定指定列在左侧/右侧。
 
-:::demo 在 `columns` 中使用 `fixed` 属性，接受 `Boolean`。为 `true` 时固定在左侧，也可用 'left' 或 'right' 字符串分别固定左右。
+:::demo 在 `columns` 属性（或 `bk-table-column` 组件）配置中使用 `fixed` 属性，接受布尔值（`true` 表示固定在左侧）或字符串（`left`/`right`，分别表示固定在左/右侧）。
 
 table/fixed-column
 
 :::
 
-## 固定列和表头的表格
+## 固定列和表头
 
-数据量大时可同时固定表头和列。
+当表格数据量极大时，可同时固定表头和指定列。
 
-:::demo 结合上面两个示例即可同时固定列和表头。
+:::demo 结合上述两个示例，同时固定表头和列。
 
 table/fixed-column-and-header
 
 :::
 
-## 流式高度固定表头（及列）
+## 流体高度表格（固定表头/列）
 
-数据动态变化时，可能希望表格有最大高度并在超出时显示滚动条。
+当数据动态变化时，你可能希望表格有最大高度限制，超出时显示滚动条而非固定高度。
 
-:::demo 设置 `el-table` 的 `max-height` 属性即可固定表头，只有当行高超出最大高度时表体才会滚动。
+:::demo 为 `bk-table` 设置 `max-height` 属性，表头将固定，仅当行高总和超过最大高度时，表格主体才会出现滚动条。
 
 table/fixed-header-with-fluid-header
 
 :::
 
-## 分组表头
+## 表头分组
 
-数据结构复杂时可用分组表头展示层级。
+数据结构复杂时，可通过表头分组展示数据层级。
 
-:::demo 给列对象添加 `children` 数组属性即可分组，每个子项也可有自己的 `children` 实现嵌套分组。
+:::demo 为列配置对象添加 `children` 数组属性即可实现表头分组，子列也可嵌套 `children` 实现多级分组。
 
 table/grouping-header
 
@@ -107,9 +109,9 @@ table/grouping-header
 
 ## 单选
 
-支持单行选择。
+支持单行选中功能。
 
-:::demo 表格支持单行选择，添加 `highlight-current-row` 属性即可。行选择变化时会触发 `current-change` 事件，参数为变更前后的行：`currentRow` 和 `oldCurrentRow`。如需显示行号，在 `columns` 中添加 `type: 'index'` 的列即可，默认从 1 开始。
+:::demo 表格支持单行选中，添加 `highlight-current-row` 属性即可激活。选中行变化时会触发 `current-change` 事件，参数为变化后的当前行 `currentRow` 和变化前的行 `oldCurrentRow`。如需显示行索引，只需在 `columns`属性（或 `bk-table-column` 组件）中添加 `type` 属性值为 `index` 的列配置，索引将从 1 开始显示。
 
 table/single-select
 
@@ -117,13 +119,13 @@ table/single-select
 
 ## 多选
 
-支持多行选择，支持默认选中和禁用选择。
+支持多行选择，包含默认选中、禁用指定行选择等功能。
 
-用 `default-selection` 设置默认选中（设为 `true` 全选，或传行 ID 数组），用 `disabled-selection` 禁用特定行（设为 `true` 全禁用，或传行 ID 数组）。注意使用这些功能时需设置 `row-key`。
+激活多选功能只需添加 `type` 为 `selection` 的列。通过 `default-selection` 设置初始选中行（设为 `true` 选中所有行，或传入行 ID 数组）；通过 `disabled-selection` 禁用指定行选择（设为 `true` 禁用所有行，或传入行 ID 数组）。注意：使用这些功能时必须设置 `row-key` 属性。
 
-`toggleRowSelection` 支持第三个参数 `ignoreSelectable`，用于是否忽略可选属性。
+`toggleRowSelection` 方法支持第三个参数 `ignoreSelectable`，用于控制是否忽略行的可选状态。
 
-:::demo 激活多选只需在 `columns` 数组中添加 `type: 'selection'` 的列对象。
+:::demo 激活多选功能只需在 `columns` 数组中添加 `type: 'selection'` 的列配置对象。
 
 table/multi-select
 
@@ -131,9 +133,9 @@ table/multi-select
 
 ## 排序
 
-可对数据排序，便于查找或对比。
+对数据进行排序，快速查找或对比数据。
 
-:::demo 在某列设置 `sortable` 属性即可排序，接受 `Boolean`，默认 `false`。表格属性 `default-sort` 可设置默认排序列和顺序。自定义排序用 `sort-method` 或 `sort-by`。如需后端排序，将 `sortable` 设为 `custom` 并监听 `sort-change` 事件，事件参数包含排序列和顺序，可据此请求 API。本例还用 `formatter` 格式化列值，接受两个参数：`row` 和 `column`，可自定义处理。
+:::demo 为指定列设置 `sortable` 属性可基于该列排序，接受布尔值（默认 `false`）。设置表格的 `default-sort` 属性可指定默认排序列和排序方式。如需自定义排序规则，可使用 `sort-method` 或 `sort-by`。若需后端远程排序，将 `sortable` 设置为 `custom`，并监听表格的 `sort-change` 事件，在事件处理函数中获取排序列和排序方式，从接口获取排序后的数据。本示例中还使用了 `formatter` 属性格式化列值，该属性接受一个函数，参数为 `row`（行数据）和 `column`（列配置），可按需处理。
 
 table/sort
 
@@ -141,15 +143,15 @@ table/sort
 
 ## 筛选
 
-可筛选表格数据。
+筛选表格数据，快速找到目标内容。
 
-:::demo 在 `columns` 数组中设置 `filters` 和 `filter-method` 属性即可筛选。`filters` 为数组，`filter-method` 为函数，参数为 `value`、`row`、`column`。
+:::demo 为 `bk-table-column` 设置 `filters` 和 `filter-method` 属性可启用列筛选功能。`filters` 为筛选选项数组，`filter-method` 为筛选方法，参数为 `value`（筛选值）、`row`（行数据）、`column`（列配置），用于判断行是否显示。
 
 table/filter
 
 :::
 
-:::demo 用 `show-search` 属性开启搜索。用户可全列或指定列搜索。
+:::demo 通过 `show-search` 属性启用搜索功能，用户可跨所有列搜索或选择指定列搜索。
 
 table/search
 
@@ -157,9 +159,9 @@ table/search
 
 ## 自定义列模板
 
-可自定义列内容，集成其他组件。
+自定义表格列内容，支持集成其他组件。
 
-:::demo 通过 [slot](https://v3.cn.vuejs.org/guide/component-slots.html) 可访问 row、column、$index、store（表格状态管理）。
+:::demo 通过 [插槽](https://cn.vuejs.org/guide/components/slots.html) 可访问以下数据：row（行数据）、column（列配置）、$index（行索引）、store（表格状态管理）。
 
 table/custom-column
 
@@ -167,9 +169,9 @@ table/custom-column
 
 ## 自定义表头
 
-可自定义表头内容。
+自定义表头样式，实现更个性化的展示。
 
-:::demo 通过 header [slots](https://v3.cn.vuejs.org/guide/component-slots.html) 自定义表头。
+:::demo 通过表头 [插槽](https://cn.vuejs.org/guide/components/slots.html) 自定义表头展示形式。
 
 table/custom-header
 
@@ -177,11 +179,11 @@ table/custom-header
 
 ## 可展开行
 
-行内容过长且不想显示横向滚动条时可用可展开行。
+当行内容过长且不想显示水平滚动条时，可使用可展开行功能。
 
-`preserve-expanded-content` 用于控制收起时是否保留展开行内容在 DOM 中。
+新增 `preserve-expanded-content` 属性，用于控制折叠时是否保留展开行内容在 DOM 中。
 
-:::demo 添加 type="expand" 和 slot 激活可展开行。el-table-column 的模板会作为展开行内容渲染，可访问自定义列模板 slot 的同样属性。
+:::demo 添加 `type="expand"` 的列和对应插槽即可激活可展开行。`bk-table-column` 的模板将渲染为展开行内容，可访问与自定义列模板插槽相同的属性。
 
 table/expandable-row
 
@@ -189,15 +191,15 @@ table/expandable-row
 
 ## 树形数据与懒加载
 
-:::demo 可展示树形结构数据。行含 `children` 字段即为嵌套数据，渲染嵌套数据需设置 `row-key`。子行数据可异步加载，表格 `lazy` 设为 true 并提供 `load` 方法。用 `hasChildren` 指定哪些行有子节点，`children` 和 `hasChildren` 可通过 `tree-props` 配置。
+:::demo 支持展示树形结构数据。当行数据包含 `children` 字段时，将被视为嵌套数据；渲染嵌套数据时必须设置 `row-key` 属性。子行数据也可异步加载：将表格的 `lazy` 属性设为 `true`，并配置 `load` 方法；通过行数据的 `hasChildren` 属性标记是否包含子行（`children` 和 `hasChildren` 均可通过 `tree-props` 配置）。
 
 table/tree-and-lazy
 
 :::
 
-## 可选树
+## 可选择的树形表格
 
-:::demo 当 `treeProps.checkStrictly` 为 true 时，父子节点选择状态不再关联；为 false 时，父节点选中则所有子节点也选中。
+:::demo 当 `treeProps.checkStrictly` 为 `true` 时，父子节点的选中状态不再关联（父节点选中时子节点不会被选中）；当 `treeProps.checkStrictly` 为 `false` 时，父子节点选中状态关联（父节点选中时所有子节点均被选中）。
 
 table/check-strictly
 
@@ -205,25 +207,25 @@ table/check-strictly
 
 ## 合计行
 
-数字表格可在底部增加合计行。
+针对数值型表格，可在表格底部添加合计行，展示每列的求和结果。
 
-:::demo 设置 `show-summary` 为 `true` 显示合计行。默认第一列显示“合计”（可用 `sum-text` 配置），其他列自动求和。可自定义合计行为，传递 `summary-method` 方法，返回数组，每个元素显示在对应列。第二个表格为详细示例。
+:::demo 设置 `show-summary` 为 `true` 即可显示合计行。默认情况下，合计行第一列显示「合计」（可通过 `sum-text` 配置显示文本），其余列显示对应列的数值总和。你也可以通过 `summary-method` 自定义合计逻辑：该方法返回一个数组，数组每个元素将作为合计行对应列的内容（支持 VNode 或字符串）。本示例的第二个表格展示了自定义合计的详细用法。
 
 table/summary
 
 :::
 
-## 行列合并
+## 合并单元格
 
-配置 rowspan 和 colspan 可合并单元格。
+配置 rowspan 和 colspan 实现单元格合并。
 
-:::demo 用 `span-method` 属性配置行列合并，接受一个方法，参数包含当前行、列、行索引、列索引。方法返回两个数字数组，分别为 rowspan 和 colspan，也可返回对象。
+:::demo 使用 `span-method` 属性配置合并规则，该属性接受一个方法，参数为包含 `row`（当前行）、`column`（当前列）、`rowIndex`（当前行索引）、`columnIndex`（当前列索引）的对象；方法需返回一个包含两个数字的数组（第一个为 `rowspan`，第二个为 `colspan`），或返回包含 `rowspan` 和 `colspan` 属性的对象。
 
 table/rowspan-and-colspan
 
 :::
 
-:::demo 也可用 `merge-columns` 属性自动合并指定列值相同的单元格。
+:::demo 也可使用 `merge-columns` 属性，自动合并指定列中值相同的单元格。
 
 table/merge-columns
 
@@ -231,9 +233,9 @@ table/merge-columns
 
 ## 自定义索引
 
-可自定义 `type=index` 列的行号。
+自定义 `type=index` 列的行索引展示规则。
 
-:::demo 设置列配置 `type: "index"` 并用 `index` 属性自定义行号。为数字时所有索引有偏移量，也可为函数，参数为每行索引（从 0 开始），返回值为显示索引。
+:::demo 为列配置 `type: "index"` 并设置 `index` 属性即可自定义索引：若为数字，所有索引将偏移该数值；若为函数（参数为原始索引，从 0 开始），返回值将作为显示的索引。
 
 table/custom-index
 
@@ -241,7 +243,7 @@ table/custom-index
 
 ## 表格布局
 
-[table-layout](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout) 属性设置表格单元格、行、列的布局算法。
+[table-layout](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout) 属性用于设置表格单元格、行、列的布局算法。
 
 :::demo
 
@@ -249,9 +251,9 @@ table/table-layout
 
 :::
 
-## Tooltip 格式化
+## Tooltip 格式化器
 
-可用 `tooltip-formatter` 自定义 Tooltip 内容。
+使用 `tooltip-formatter` 自定义 tooltip 内容。
 
 :::demo
 
@@ -261,9 +263,9 @@ table/tooltip-formatter
 
 ## 工具栏
 
-可自定义表格工具栏及操作按钮。
+自定义表格工具栏，包含操作按钮。
 
-:::demo 用 `show-refresh`、`show-export` 属性显示内置按钮，或用 `toolbar-left` slot 完全自定义工具栏内容。监听 `refresh`、`export` 事件处理用户操作。
+:::demo 使用 `show-refresh` 和 `show-export` 属性显示内置操作按钮，或通过 `toolbar-left` 插槽完全自定义工具栏内容；监听 `refresh` 和 `export` 事件处理用户操作。
 
 table/toolbar
 
@@ -271,9 +273,9 @@ table/toolbar
 
 ## 分页
 
-内置分页，适合大数据集。
+内置分页功能，适配大数据集展示。
 
-:::demo 设置 `pagination` 为 `true` 启用基础分页，或传递配置对象自定义分页行为。
+:::demo 设置 `pagination` 为 `true` 启用基础分页，或传入配置对象自定义分页行为。
 
 table/pagination
 
@@ -281,11 +283,21 @@ table/pagination
 
 ## 数字格式化
 
-自动格式化表格单元格中的数字。
+自动格式化表格单元格中的数值。
 
-:::demo 启用 `number-format` 自动用千分位和小数格式化数字。（使用 [formatNumber](/zh-CN/utils/number/formatNumber.html)）
+:::demo 启用 `number-format` 可自动为数字添加千分位分隔符和指定小数位数（基于 [formatNumber](/zh-CN/utils/number/formatNumber.html) 实现）。
 
 table/number-format
+
+:::
+
+## 编辑数据
+
+表格组件支持数据编辑，包含自定义编辑模式和编辑位置。
+
+:::demo 设置 `enable-edit` 为 `true` 启用编辑功能；通过 `edit-mode` 配置编辑模式（默认：'dialog' 对话框），`edit-position` 配置编辑位置（默认：'outside' 外部）；每列可通过 `edit` 属性配置是否启用编辑。
+
+table/edit
 
 :::
 
@@ -293,75 +305,75 @@ table/number-format
 
 ### Table 属性
 
-| 名称           | 说明                          | 类型                                        | 默认值      |
-| -------------- | ----------------------------- | ------------------------------------------- | ----------- |
-| raw-data       | 表格数据源                    | ^[array]`any[]`                             | `[]`        |
-| columns        | 列配置                        | ^[array]`TableColumnCtx[]`                  | `[]`        |
-| merge-columns  | 需要合并单元格的列            | ^[array]`string[]`                          | `[]`        |
-| show-search    | 显示搜索功能                  | `boolean`                                   | `false`     |
-| search-value   | 默认搜索值                    | `string`                                    | `''`        |
-| search-columns | 默认选中搜索列                | ^[array]`string[]`                          | `[]`        |
-| show-refresh   | 显示刷新按钮                  | `boolean`                                   | `false`     |
-| show-export    | 显示导出按钮                  | `boolean`                                   | `false`     |
-| pagination     | 启用分页                      | `boolean` \| ^[object]`PaginationProps`     | `false`     |
-| number-format  | 启用数字格式化                | `boolean` \| ^[object]`FormatNumberOptions` | `false`     |
-| edit-mode      | 编辑模式（dialog 或 drawer）  | ^[enum]`'dialog' \| 'drawer'`               | `'dialog'`  |
-| edit-position  | 编辑位置（outside 或 inline） | ^[enum]`'outside' \| 'inline'`              | `'outside'` |
-| show-add       | 显示添加按钮                  | `boolean`                                   | `true`      |
-| show-batch     | 显示批量操作按钮              | `boolean`                                   | `false`     |
-| show-edit      | 显示编辑按钮                  | `boolean`                                   | `true`      |
-| show-delete    | 显示删除按钮                  | `boolean`                                   | `true`      |
-| enable-edit    | 启用编辑功能                  | `boolean`                                   | `false`     |
+| 名称           | 说明                    | 类型                                        | 默认值      |
+| -------------- | ----------------------- | ------------------------------------------- | ----------- |
+| raw-data       | 表格数据源              | ^[array]`any[]`                             | `[]`        |
+| columns        | 列配置项                | ^[array]`TableColumnCtx[]`                  | `[]`        |
+| merge-columns  | 需要合并的列名数组      | ^[array]`string[]`                          | `[]`        |
+| show-search    | 是否显示搜索功能        | `boolean`                                   | `false`     |
+| search-value   | 默认搜索值              | `string`                                    | `''`        |
+| search-columns | 默认选中的搜索列        | ^[array]`string[]`                          | `[]`        |
+| show-refresh   | 是否显示刷新按钮        | `boolean`                                   | `false`     |
+| show-export    | 是否显示导出按钮        | `boolean`                                   | `false`     |
+| pagination     | 是否启用分页            | `boolean` \| ^[object]`PaginationProps`     | `false`     |
+| number-format  | 是否启用数字格式化      | `boolean` \| ^[object]`FormatNumberOptions` | `false`     |
+| edit-mode      | 编辑模式（对话框/抽屉） | ^[enum]`'dialog' \| 'drawer'`               | `'dialog'`  |
+| edit-position  | 编辑位置（外部/行内）   | ^[enum]`'outside' \| 'inline'`              | `'outside'` |
+| show-add       | 是否显示新增按钮        | `boolean`                                   | `true`      |
+| show-batch     | 是否显示批量操作按钮    | `boolean`                                   | `false`     |
+| show-edit      | 是否显示编辑按钮        | `boolean`                                   | `true`      |
+| show-delete    | 是否显示删除按钮        | `boolean`                                   | `true`      |
+| enable-edit    | 是否启用编辑功能        | `boolean`                                   | `false`     |
 
 <details>
-<summary>Element Plus Table 属性</summary>
+<summary>Element Plus 表格原生属性</summary>
 
-| 名称                      | 说明                                                                                                                                                         | 类型                                                                                                                                                                 | 默认值                                                                                                                  |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| data                      | 表格数据                                                                                                                                                     | ^[array]`any[]`                                                                                                                                                      | []                                                                                                                      |
-| height                    | 表格高度，默认自适应。为数字时单位为像素，为字符串时赋值给 style.height，受外部样式影响                                                                      | ^[string] / ^[number]                                                                                                                                                | —                                                                                                                       |
-| max-height                | 表格最大高度，合法值为数字或 px 高度                                                                                                                         | ^[string] / ^[number]                                                                                                                                                | —                                                                                                                       |
-| stripe                    | 是否为斑马纹表格                                                                                                                                             | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
-| border                    | 是否带有纵向边框                                                                                                                                             | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
-| size                      | 表格尺寸                                                                                                                                                     | ^[enum]`'' \| 'large' \| 'default' \| 'small'`                                                                                                                       | —                                                                                                                       |
-| fit                       | 列宽是否自适应容器                                                                                                                                           | ^[boolean]                                                                                                                                                           | true                                                                                                                    |
-| show-header               | 是否显示表头                                                                                                                                                 | ^[boolean]                                                                                                                                                           | true                                                                                                                    |
-| highlight-current-row     | 是否高亮当前行                                                                                                                                               | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
-| current-row-key           | 当前行 key，仅设置用                                                                                                                                         | ^[string] / ^[number]                                                                                                                                                | —                                                                                                                       |
-| row-class-name            | 返回自定义行类名的函数或字符串                                                                                                                               | ^[Function]`(data: { row: any, rowIndex: number }) => string` / ^[string]                                                                                            | —                                                                                                                       |
-| row-style                 | 返回自定义行样式的函数或对象                                                                                                                                 | ^[Function]`(data: { row: any, rowIndex: number }) => CSSProperties` / ^[object]`CSSProperties`                                                                      | —                                                                                                                       |
-| cell-class-name           | 返回自定义单元格类名的函数或字符串                                                                                                                           | ^[Function]`(data: { row: any, column: TableColumnCtx<T>, rowIndex: number, columnIndex: number }) => string` / ^[string]                                            | —                                                                                                                       |
-| cell-style                | 返回自定义单元格样式的函数或对象                                                                                                                             | ^[Function]`(data: { row: any, column: TableColumnCtx<T>, rowIndex: number, columnIndex: number }) => CSSProperties` / ^[object]`CSSProperties`                      | —                                                                                                                       |
-| header-row-class-name     | 返回表头行自定义类名的函数或字符串                                                                                                                           | ^[Function]`(data: { row: any, rowIndex: number }) => string` / ^[string]                                                                                            | —                                                                                                                       |
-| header-row-style          | 返回表头行自定义样式的函数或对象                                                                                                                             | ^[Function]`(data: { row: any, rowIndex: number }) => CSSProperties` / ^[object]`CSSProperties`                                                                      | —                                                                                                                       |
-| header-cell-class-name    | 返回表头单元格自定义类名的函数或字符串                                                                                                                       | ^[Function]`(data: { row: any, column: TableColumnCtx<T>, rowIndex: number, columnIndex: number }) => string` / ^[string]                                            | —                                                                                                                       |
-| header-cell-style         | 返回表头单元格自定义样式的函数或对象                                                                                                                         | ^[Function]`(data: { row: any, column: TableColumnCtx<T>, rowIndex: number, columnIndex: number }) => CSSProperties` / ^[object]`CSSProperties`                      | —                                                                                                                       |
-| row-key                   | 行数据的 key，用于优化渲染。启用 `reserve-selection` 或树形数据时必填。为字符串时支持多级访问，如 `user.info.id`，但不支持 `user.info[0].id`，此时应使用函数 | ^[function]`(row: any) => string` / ^[string]                                                                                                                        | —                                                                                                                       |
-| empty-text                | 数据为空时显示的文本，可用 `#empty` 自定义                                                                                                                   | ^[string]                                                                                                                                                            | 暂无数据                                                                                                                |
-| default-expand-all        | 是否默认展开所有行，适用于 type="expand" 或树形结构表格                                                                                                      | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
-| expand-row-keys           | 通过该属性设置展开的行，值为行 key，需先设置 row-key                                                                                                         | ^[object]`Array<string>`                                                                                                                                             | —                                                                                                                       |
-| default-sort              | 设置默认排序列和顺序，`prop` 为列，`order` 为顺序                                                                                                            | ^[object]`Sort`                                                                                                                                                      | 若设置 `prop`，未设置 `order`，则默认升序                                                                               |
-| tooltip-effect            | 溢出 tooltip 的 `effect`                                                                                                                                     | ^[enum]`'dark' \| 'light'`                                                                                                                                           | dark                                                                                                                    |
-| tooltip-options           | 溢出 tooltip 的选项，[见下方 tooltip 组件](tooltip.html#attributes)                                                                                          | ^[object]`Pick<ElTooltipProps, 'effect' \| 'enterable' \| 'hideAfter' \| 'offset' \| 'placement' \| 'popperClass' \| 'popperOptions' \| 'showAfter' \| 'showArrow'>` | ^[object]`{ enterable: true, placement: 'top', showArrow: true, hideAfter: 200, popperOptions: { strategy: 'fixed' } }` |
-| append-filter-panel-to    | 筛选面板挂载的元素                                                                                                                                           | ^[string]                                                                                                                                                            | —                                                                                                                       |
-| show-summary              | 是否显示合计行                                                                                                                                               | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
-| sum-text                  | 合计行首列显示文本                                                                                                                                           | ^[string]                                                                                                                                                            | 合计                                                                                                                    |
-| summary-method            | 自定义合计方法                                                                                                                                               | ^[Function]`(data: { columns: any[], data: any[] }) => (VNode \| string)[]`                                                                                          | —                                                                                                                       |
-| span-method               | 返回 rowspan 和 colspan 的方法                                                                                                                               | ^[Function]`(data: { row: any, column: TableColumnCtx<T>, rowIndex: number, columnIndex: number }) => number[] \| { rowspan: number, colspan: number } \| void`      | —                                                                                                                       |
-| select-on-indeterminate   | 多选表格主复选框部分选中时的行为。为 true 时全选，为 false 时全不选                                                                                          | ^[boolean]                                                                                                                                                           | true                                                                                                                    |
-| indent                    | 树形数据缩进                                                                                                                                                 | ^[number]                                                                                                                                                            | 16                                                                                                                      |
-| lazy                      | 是否懒加载数据                                                                                                                                               | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
-| load                      | 懒加载子行数据的方法，仅在 `lazy` 为 true 时生效                                                                                                             | ^[Function]`(row: any, treeNode: TreeNode, resolve: (data: any[]) => void) => void`                                                                                  | —                                                                                                                       |
-| tree-props                | 嵌套数据渲染配置                                                                                                                                             | ^[object]`{ hasChildren?: string, children?: string, checkStrictly?: boolean }`                                                                                      | ^[object]`{ hasChildren: 'hasChildren', children: 'children', checkStrictly: false }`                                   |
-| table-layout              | 设置表格单元格、行、列的布局算法                                                                                                                             | ^[enum]`'fixed' \| 'auto'`                                                                                                                                           | fixed                                                                                                                   |
-| scrollbar-always-on       | 总是显示滚动条                                                                                                                                               | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
-| show-overflow-tooltip     | 超出内容悬浮显示 Tooltip，影响所有列，详见 [tooltip-options](#table-attributes)                                                                              | ^[boolean] / [`object`](#table-attributes)                                                                                                                           | —                                                                                                                       |
-| flexible                  | 主轴最小尺寸不随内容变化                                                                                                                                     | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
-| scrollbar-tabindex        | 滚动条容器 tabindex                                                                                                                                          | ^[string] / ^[number]                                                                                                                                                | —                                                                                                                       |
-| allow-drag-last-column    | 是否允许拖动最后一列                                                                                                                                         | ^[boolean]                                                                                                                                                           | true                                                                                                                    |
-| tooltip-formatter         | 自定义溢出 Tooltip 内容                                                                                                                                      | ^[Function]`(data: { row: any, column: TableColumnCtx<T>, cellValue: any }) => VNode \| string`                                                                      | —                                                                                                                       |
-| preserve-expanded-content | 收起时是否保留展开行内容在 DOM 中                                                                                                                            | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
-| native-scrollbar          | 是否使用原生滚动条                                                                                                                                           | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
+| 名称                      | 说明                                                                                                                                                             | 类型                                                                                                                                                                 | 默认值                                                                                                                  |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| data                      | 表格数据                                                                                                                                                         | ^[array]`any[]`                                                                                                                                                      | []                                                                                                                      |
+| height                    | 表格高度。默认自动高度；若为数字，单位为像素；若为字符串，直接赋值给 style.height，高度受外部样式影响                                                            | ^[string] / ^[number]                                                                                                                                                | —                                                                                                                       |
+| max-height                | 表格最大高度，合法值为数字或带 px 单位的高度字符串                                                                                                               | ^[string] / ^[number]                                                                                                                                                | —                                                                                                                       |
+| stripe                    | 是否为斑马纹表格                                                                                                                                                 | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
+| border                    | 是否带有纵向边框                                                                                                                                                 | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
+| size                      | 表格尺寸                                                                                                                                                         | ^[enum]`'' \| 'large' \| 'default' \| 'small'`                                                                                                                       | —                                                                                                                       |
+| fit                       | 列的宽度是否自适配容器                                                                                                                                           | ^[boolean]                                                                                                                                                           | true                                                                                                                    |
+| show-header               | 是否显示表头                                                                                                                                                     | ^[boolean]                                                                                                                                                           | true                                                                                                                    |
+| highlight-current-row     | 是否高亮当前行                                                                                                                                                   | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
+| current-row-key           | 当前行的 key，仅可设置                                                                                                                                           | ^[string] / ^[number]                                                                                                                                                | —                                                                                                                       |
+| row-class-name            | 行的自定义类名，支持字符串或函数                                                                                                                                 | ^[Function]`(data: { row: any, rowIndex: number }) => string` / ^[string]                                                                                            | —                                                                                                                       |
+| row-style                 | 行的自定义样式，支持对象或函数                                                                                                                                   | ^[Function]`(data: { row: any, rowIndex: number }) => CSSProperties` / ^[object]`CSSProperties`                                                                      | —                                                                                                                       |
+| cell-class-name           | 单元格的自定义类名，支持字符串或函数                                                                                                                             | ^[Function]`(data: { row: any, column: TableColumnCtx<T>, rowIndex: number, columnIndex: number }) => string` / ^[string]                                            | —                                                                                                                       |
+| cell-style                | 单元格的自定义样式，支持对象或函数                                                                                                                               | ^[Function]`(data: { row: any, column: TableColumnCtx<T>, rowIndex: number, columnIndex: number }) => CSSProperties` / ^[object]`CSSProperties`                      | —                                                                                                                       |
+| header-row-class-name     | 表头行的自定义类名，支持字符串或函数                                                                                                                             | ^[Function]`(data: { row: any, rowIndex: number }) => string` / ^[string]                                                                                            | —                                                                                                                       |
+| header-row-style          | 表头行的自定义样式，支持对象或函数                                                                                                                               | ^[Function]`(data: { row: any, rowIndex: number }) => CSSProperties` / ^[object]`CSSProperties`                                                                      | —                                                                                                                       |
+| header-cell-class-name    | 表头单元格的自定义类名，支持字符串或函数                                                                                                                         | ^[Function]`(data: { row: any, column: TableColumnCtx<T>, rowIndex: number, columnIndex: number }) => string` / ^[string]                                            | —                                                                                                                       |
+| header-cell-style         | 表头单元格的自定义样式，支持对象或函数                                                                                                                           | ^[Function]`(data: { row: any, column: TableColumnCtx<T>, rowIndex: number, columnIndex: number }) => CSSProperties` / ^[object]`CSSProperties`                      | —                                                                                                                       |
+| row-key                   | 行数据的唯一标识，用于优化渲染；使用 `reserve-selection` 或树形数据时必填；若为字符串，支持多级访问（如 `user.info.id`），不支持 `user.info[0].id`（需使用函数） | ^[function]`(row: any) => string` / ^[string]                                                                                                                        | —                                                                                                                       |
+| empty-text                | 空数据时显示的文本，可通过 `#empty` 插槽自定义                                                                                                                   | ^[string]                                                                                                                                                            | 暂无数据                                                                                                                |
+| default-expand-all        | 是否默认展开所有行（仅对含展开列或树形数据的表格生效）                                                                                                           | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
+| expand-row-keys           | 展开行的 key 数组，使用前需设置 row-key                                                                                                                          | ^[object]`Array<string>`                                                                                                                                             | —                                                                                                                       |
+| default-sort              | 默认排序配置，`prop` 为默认排序列，`order` 为默认排序方式                                                                                                        | ^[object]`Sort`                                                                                                                                                      | 若设置了 `prop` 但未设置 `order`，则默认升序                                                                            |
+| tooltip-effect            | 溢出提示的主题样式                                                                                                                                               | ^[enum]`'dark' \| 'light'`                                                                                                                                           | dark                                                                                                                    |
+| tooltip-options           | 溢出提示的配置项，[参考 tooltip 组件](https://element-plus.org/zh-CN/component/tooltip.html#attributes)                                                          | ^[object]`Pick<ElTooltipProps, 'effect' \| 'enterable' \| 'hideAfter' \| 'offset' \| 'placement' \| 'popperClass' \| 'popperOptions' \| 'showAfter' \| 'showArrow'>` | ^[object]`{ enterable: true, placement: 'top', showArrow: true, hideAfter: 200, popperOptions: { strategy: 'fixed' } }` |
+| append-filter-panel-to    | 筛选面板挂载的目标元素（选择器）                                                                                                                                 | ^[string]                                                                                                                                                            | —                                                                                                                       |
+| show-summary              | 是否显示合计行                                                                                                                                                   | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
+| sum-text                  | 合计行第一列显示的文本                                                                                                                                           | ^[string]                                                                                                                                                            | 合计                                                                                                                    |
+| summary-method            | 自定义合计方法，返回值为合计行各列内容（支持 VNode 或字符串）                                                                                                    | ^[Function]`(data: { columns: any[], data: any[] }) => (VNode \| string)[]`                                                                                          | —                                                                                                                       |
+| span-method               | 合并单元格方法，返回值为 [rowspan, colspan] 或 { rowspan, colspan }                                                                                              | ^[Function]`(data: { row: any, column: TableColumnCtx<T>, rowIndex: number, columnIndex: number }) => number[] \| { rowspan: number, colspan: number } \| void`      | —                                                                                                                       |
+| select-on-indeterminate   | 多选表格中，当仅部分行被选中时，全选框的行为：true 表示选中所有行，false 表示取消选中                                                                            | ^[boolean]                                                                                                                                                           | true                                                                                                                    |
+| indent                    | 树形数据的缩进距离（像素）                                                                                                                                       | ^[number]                                                                                                                                                            | 16                                                                                                                      |
+| lazy                      | 是否开启懒加载                                                                                                                                                   | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
+| load                      | 懒加载加载子行数据的方法（仅 lazy 为 true 时生效），参数：row（当前行）、treeNode（树形节点）、resolve（加载完成的回调，需传入子行数据）                         | ^[Function]`(row: any, treeNode: TreeNode, resolve: (data: any[]) => void) => void`                                                                                  | —                                                                                                                       |
+| tree-props                | 树形数据配置，`hasChildren` 为是否有子节点的字段名，`children` 为子节点字段名，`checkStrictly` 为是否取消父子节点选中关联                                        | ^[object]`{ hasChildren?: string, children?: string, checkStrictly?: boolean }`                                                                                      | ^[object]`{ hasChildren: 'hasChildren', children: 'children', checkStrictly: false }`                                   |
+| table-layout              | 表格布局算法                                                                                                                                                     | ^[enum]`'fixed' \| 'auto'`                                                                                                                                           | fixed                                                                                                                   |
+| scrollbar-always-on       | 是否始终显示滚动条                                                                                                                                               | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
+| show-overflow-tooltip     | 是否在单元格内容溢出时显示 tooltip，将影响所有列，参考表格 [tooltip-options](#表格属性)                                                                          | ^[boolean] / [`object`](#表格属性)                                                                                                                                   | —                                                                                                                       |
+| flexible                  | 确保主轴最小尺寸不跟随内容变化                                                                                                                                   | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
+| scrollbar-tabindex        | 表格主体滚动容器的 tabindex 属性                                                                                                                                 | ^[string] / ^[number]                                                                                                                                                | —                                                                                                                       |
+| allow-drag-last-column    | 是否允许拖动最后一列调整宽度                                                                                                                                     | ^[boolean]                                                                                                                                                           | true                                                                                                                    |
+| tooltip-formatter         | 自定义 `show-overflow-tooltip` 启用时的 tooltip 内容，参数：{ row: 行数据, column: 列配置, cellValue: 单元格值 }                                                 | ^[Function]`(data: { row: any, column: TableColumnCtx<T>, cellValue: any }) => VNode \| string`                                                                      | —                                                                                                                       |
+| preserve-expanded-content | 折叠时是否保留展开行内容在 DOM 中                                                                                                                                | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
+| native-scrollbar          | 是否使用原生滚动条                                                                                                                                               | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
 
 </details>
 
@@ -369,166 +381,158 @@ table/number-format
 
 | 名称              | 说明               | 类型                                                         |
 | ----------------- | ------------------ | ------------------------------------------------------------ |
-| refresh           | 点击刷新按钮触发   | ^[Function]`()`                                              |
-| export            | 点击导出按钮触发   | ^[Function]`(data: any[], columns: TableColumnCtx[])`        |
-| search            | 执行搜索时触发     | ^[Function]`(value: string, columns: string[])`              |
-| pagination-change | 分页变化时触发     | ^[Function]`(page: number, size: number)`                    |
-| add               | 执行添加操作时触发 | ^[Function]`(data: { action: 'add'; data: any })`            |
+| refresh           | 点击刷新按钮时触发 | ^[Function]`()`                                              |
+| export            | 点击导出按钮时触发 | ^[Function]`(data: any[], columns: TableColumnCtx[])`        |
+| search            | 执行搜索操作时触发 | ^[Function]`(value: string, columns: string[])`              |
+| pagination-change | 分页状态变化时触发 | ^[Function]`(page: number, size: number)`                    |
+| add               | 执行新增操作时触发 | ^[Function]`(data: { action: 'add'; data: any })`            |
 | edit              | 执行编辑操作时触发 | ^[Function]`(data: { action: 'edit'; data: any }, row: any)` |
 | delete            | 执行删除操作时触发 | ^[Function]`(data: { action: 'delete'; data: any })`         |
 | batch             | 执行批量操作时触发 | ^[Function]`(data: { action: 'batch'; data: any })`          |
 
 <details>
-<summary>Element Plus Table 事件</summary>
+<summary>Element Plus 表格原生事件</summary>
 
-| 名称               | 说明                   | 类型                                                                                                    |
-| ------------------ | ---------------------- | ------------------------------------------------------------------------------------------------------- |
-| select             | 勾选某一行复选框时触发 | ^[Function]`<T = any>(selection: T[], row: T) => void`                                                  |
-| select-all         | 勾选表头复选框时触发   | ^[Function]`(selection: any[]) => void`                                                                 |
-| selection-change   | 复选框选项变化时触发   | ^[Function]`(newSelection: any[]) => void`                                                              |
-| cell-mouse-enter   | 鼠标移入单元格时触发   | ^[Function]`(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void`    |
-| cell-mouse-leave   | 鼠标移出单元格时触发   | ^[Function]`(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void`    |
-| cell-click         | 点击单元格时触发       | ^[Function]`(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void`    |
-| cell-dblclick      | 双击单元格时触发       | ^[Function]`(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void`    |
-| cell-contextmenu   | 右键单元格时触发       | ^[Function]`(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void`    |
-| row-click          | 点击行时触发           | ^[Function]`(row: any, column: TableColumnCtx<T>, event: Event) => void`                                |
-| row-contextmenu    | 右键行时触发           | ^[Function]`(row: any, column: TableColumnCtx<T>, event: Event) => void`                                |
-| row-dblclick       | 双击行时触发           | ^[Function]`(row: any, column: TableColumnCtx<T>, event: Event) => void`                                |
-| header-click       | 点击表头时触发         | ^[Function]`(column: TableColumnCtx<T>, event: Event) => void`                                          |
-| header-contextmenu | 右键表头时触发         | ^[Function]`(column: TableColumnCtx<T>, event: Event) => void`                                          |
-| sort-change        | 排序条件变化时触发     | ^[Function]`(data: {column: TableColumnCtx<T>, prop: string, order: any }) => void`                     |
-| filter-change      | 筛选条件变化时触发     | ^[Function]`(newFilters: any) => void`                                                                  |
-| current-change     | 当前行变化时触发       | ^[Function]`(currentRow: any, oldCurrentRow: any) => void`                                              |
-| header-dragend     | 拖动表头改变列宽后触发 | ^[Function]`(newWidth: number, oldWidth: number, column: TableColumnCtx<T>, event: MouseEvent) => void` |
-| expand-change      | 展开/收起行时触发      | ^[Function]`(row: any, expandedRows: any[]) => void & (row: any, expanded: boolean) => void`            |
-| scroll             | 滚动后触发             | ^[Function]`({ scrollLeft: number, scrollTop: number }) => void`                                        |
+| 名称               | 说明                                                                                    | 类型                                                                                                    |
+| ------------------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| select             | 点击行复选框时触发                                                                      | ^[Function]`<T = any>(selection: T[], row: T) => void`                                                  |
+| select-all         | 点击表头复选框时触发                                                                    | ^[Function]`(selection: any[]) => void`                                                                 |
+| selection-change   | 选中项变化时触发                                                                        | ^[Function]`(newSelection: any[]) => void`                                                              |
+| cell-mouse-enter   | 鼠标移入单元格时触发                                                                    | ^[Function]`(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void`    |
+| cell-mouse-leave   | 鼠标移出单元格时触发                                                                    | ^[Function]`(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void`    |
+| cell-click         | 点击单元格时触发                                                                        | ^[Function]`(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void`    |
+| cell-dblclick      | 双击单元格时触发                                                                        | ^[Function]`(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void`    |
+| cell-contextmenu   | 右键点击单元格时触发                                                                    | ^[Function]`(row: any, column: TableColumnCtx<T>, cell: HTMLTableCellElement, event: Event) => void`    |
+| row-click          | 点击行时触发                                                                            | ^[Function]`(row: any, column: TableColumnCtx<T>, event: Event) => void`                                |
+| row-contextmenu    | 右键点击行时触发                                                                        | ^[Function]`(row: any, column: TableColumnCtx<T>, event: Event) => void`                                |
+| row-dblclick       | 双击行时触发                                                                            | ^[Function]`(row: any, column: TableColumnCtx<T>, event: Event) => void`                                |
+| header-click       | 点击列表头时触发                                                                        | ^[Function]`(column: TableColumnCtx<T>, event: Event) => void`                                          |
+| header-contextmenu | 右键点击列表头时触发                                                                    | ^[Function]`(column: TableColumnCtx<T>, event: Event) => void`                                          |
+| sort-change        | 表格排序状态变化时触发                                                                  | ^[Function]`(data: {column: TableColumnCtx<T>, prop: string, order: any }) => void`                     |
+| filter-change      | 表格筛选状态变化时触发                                                                  | ^[Function]`(newFilters: any) => void`                                                                  |
+| current-change     | 当前选中行变化时触发                                                                    | ^[Function]`(currentRow: any, oldCurrentRow: any) => void`                                              |
+| header-dragend     | 拖动列表头边框调整列宽后触发                                                            | ^[Function]`(newWidth: number, oldWidth: number, column: TableColumnCtx<T>, event: MouseEvent) => void` |
+| expand-change      | 展开/折叠行时触发（展开行表格：第二个参数为展开行数组；树形表格：第二个参数为是否展开） | ^[Function]`(row: any, expandedRows: any[]) => void & (row: any, expanded: boolean) => void`            |
+| scroll             | 表格滚动时触发                                                                          | ^[Function]`({ scrollLeft: number, scrollTop: number }) => void`                                        |
 
 </details>
 
 ### Table 插槽
 
-| 名称         | 说明           |
-| ------------ | -------------- |
-| toolbar-left | 工具栏左侧内容 |
+| 名称         | 说明                 |
+| ------------ | -------------------- |
+| toolbar-left | 工具栏左侧自定义内容 |
 
 <details>
-<summary>Element Plus Table 插槽</summary>
+<summary>Element Plus 表格原生插槽</summary>
 
-| 名称    | 说明                                   | 子标签       |
-| ------- | -------------------------------------- | ------------ |
-| default | 自定义表格内容                         | Table-column |
-| append  | 插入在最后一行后的内容，适合无限滚动等 | —            |
-| empty   | 数据为空时自定义内容                   | —            |
+| 名称    | 说明                                                                                                       | 子标签       |
+| ------- | ---------------------------------------------------------------------------------------------------------- | ------------ |
+| default | 表格主体自定义内容                                                                                         | Table-column |
+| append  | 插入到表格最后一行之后的内容，如需实现表格无限滚动可使用此插槽；若存在合计行，该插槽内容将显示在合计行上方 | —            |
+| empty   | 空数据时的自定义内容                                                                                       | —            |
 
 </details>
 
-### Table 暴露方法
+### Table 暴露的方法
 
 <details>
-<summary>Element Plus Table 暴露方法</summary>
+<summary>Element Plus 表格原生暴露方法</summary>
 
-| 方法               | 说明                                                         | 类型                                                                         |
-| ------------------ | ------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| clearSelection     | 多选表格清空用户选择                                         | ^[Function]`() => void`                                                      |
-| getSelectionRows   | 返回当前选中的行                                             | ^[Function]`() => any[]`                                                     |
-| toggleRowSelection | 多选表格切换某行选中状态，第二参数可直接设置选中与否         | ^[Function]`(row: any, selected?: boolean, ignoreSelectable = true) => void` |
-| toggleAllSelection | 多选表格切换全选/全不选                                      | ^[Function]`() => void`                                                      |
-| toggleRowExpansion | 可展开/树形表格切换某行展开状态，第二参数可直接设置展开/收起 | ^[Function]`(row: any, expanded?: boolean) => void`                          |
-| setCurrentRow      | 单选表格设置某行为选中，不传参数则清空选中                   | ^[Function]`(row: any) => void`                                              |
-| clearSort          | 清除排序，恢复原始顺序                                       | ^[Function]`() => void`                                                      |
-| clearFilter        | 清除指定列（通过 columnKey）或全部列的筛选                   | ^[Function]`(columnKeys?: string[]) => void`                                 |
-| doLayout           | 刷新表格布局，表格可见性变化时需调用以获取正确布局           | ^[Function]`() => void`                                                      |
-| sort               | 手动排序，`prop` 为列，`order` 为顺序                        | ^[Function]`(prop: string, order: string) => void`                           |
-| scrollTo           | 滚动到指定坐标                                               | ^[Function]`(options: number \| ScrollToOptions, yCoord?: number) => void`   |
-| setScrollTop       | 设置垂直滚动位置                                             | ^[Function]`(top?: number) => void`                                          |
-| setScrollLeft      | 设置水平滚动位置                                             | ^[Function]`(left?: number) => void`                                         |
-| columns            | 获取表格列上下文                                             | ^[array]`TableColumnCtx<T>[]`                                                |
-| updateKeyChildren  | 懒加载表格（需设置 rowKey）更新 key 子节点                   | ^[Function]`(key: string, data: T[]) => void`                                |
+| 方法               | 说明                                                                                                   | 类型                                                                         |
+| ------------------ | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| clearSelection     | 多选表格专用，清空用户选中的行                                                                         | ^[Function]`() => void`                                                      |
+| getSelectionRows   | 返回当前选中的行数据数组                                                                               | ^[Function]`() => any[]`                                                     |
+| toggleRowSelection | 多选表格专用，切换指定行的选中状态；第二个参数可直接设置行是否选中（true 选中，false 取消）            | ^[Function]`(row: any, selected?: boolean, ignoreSelectable = true) => void` |
+| toggleAllSelection | 多选表格专用，切换全选/取消全选状态                                                                    | ^[Function]`() => void`                                                      |
+| toggleRowExpansion | 展开行表格/树形表格专用，切换指定行的展开状态；第二个参数可直接设置行是否展开（true 展开，false 折叠） | ^[Function]`(row: any, expanded?: boolean) => void`                          |
+| setCurrentRow      | 单选表格专用，设置指定行为当前选中行；无参数时清空选中                                                 | ^[Function]`(row: any) => void`                                              |
+| clearSort          | 清空排序状态，恢复数据原始顺序                                                                         | ^[Function]`() => void`                                                      |
+| clearFilter        | 清空筛选状态：传入 columnKey 数组时清空指定列筛选，无参数时清空所有列筛选                              | ^[Function]`(columnKeys?: string[]) => void`                                 |
+| doLayout           | 刷新表格布局，当表格可见性变化时，可能需要调用此方法确保布局正确                                       | ^[Function]`() => void`                                                      |
+| sort               | 手动触发表格排序：`prop` 为排序列字段名，`order` 为排序方式（'ascending' 升序，'descending' 降序）     | ^[Function]`(prop: string, order: string) => void`                           |
+| scrollTo           | 滚动表格到指定坐标位置                                                                                 | ^[Function]`(options: number \| ScrollToOptions, yCoord?: number) => void`   |
+| setScrollTop       | 设置表格垂直滚动位置（像素）                                                                           | ^[Function]`(top?: number) => void`                                          |
+| setScrollLeft      | 设置表格水平滚动位置（像素）                                                                           | ^[Function]`(left?: number) => void`                                         |
+| columns            | 获取表格列配置上下文数组                                                                               | ^[array]`TableColumnCtx<T>[]`                                                |
+| updateKeyChildren  | 懒加载表格专用（需设置 row-key），更新指定 key 对应的子行数据                                          | ^[Function]`(key: string, data: T[]) => void`                                |
 
 </details>
 
-## Table-column API
+## TableColumn API
 
-### Table-column 属性
+### TableColumn 属性
 
-继承所有 Element Plus TableColumnCtx 属性并扩展：
+继承所有 Element Plus TableColumnCtx 属性，并新增以下增强功能：
 
-| 名称          | 说明                                                                                                                                                                                                               | 类型                                                                                                                                             | 默认值 |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
-| slots         | 自定义插槽配置，为 `true` 时启用所有插槽，自动生成名称 `{prop}`、`{prop}-header`、`{prop}-filterIcon` 和 `{prop}-expand`。对象形式每个属性可为 `boolean`（true 使用自动生成名称）或 `string`（指定自定义插槽名称） | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -      |
-| number-format | 数字格式化配置，为 `true` 时使用默认数字格式化。为对象时提供自定义格式化选项。此设置将覆盖该列的表格级别 `numberFormat` 配置                                                                                       | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -      |
-| children      | 子列配置，用于实现表头分组。每个子列也可以拥有自己的 `children` 属性实现嵌套分组。用于创建多级表头                                                                                                                 | ^[array]`TableColumnCtx[]`                                                                                                                       | -      |
-| edit          | 编辑表单配置，用于内联编辑。设置为 `FormItemCtx` 时，启用此列的表单编辑功能。                                                                                                                                      | ^[object]`FormItemCtx`                                                                                                                           | -      |
+| 名称          | 说明                                                                                                                                                                                                                                            | 类型                                                                                                                                             | 默认值 |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
+| slots         | 自定义插槽配置：设为 `true` 时，自动生成 `{prop}`（列内容）、`{prop}-header`（表头）、`{prop}-filterIcon`（筛选图标）、`{prop}-expand`（展开按钮）插槽；设为对象时，每个属性支持布尔值（true 启用并使用自动生成名称）或字符串（自定义插槽名称） | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -      |
+| number-format | 数字格式化配置：设为 `true` 时使用默认数字格式化；设为对象时传入自定义格式化选项，优先级高于表格级的 `numberFormat` 设置                                                                                                                        | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -      |
+| children      | 表头分组的子列数组，子列可嵌套 `children` 实现多级分组，用于创建多层级表头                                                                                                                                                                      | ^[array]`TableColumnCtx[]`                                                                                                                       | -      |
+| edit          | 编辑表单配置（用于行内编辑）：设为 `FormItemCtx` 时启用该列编辑功能，`FormItemCtx` 接口继承 Element Plus FormItemProps，包含额外属性：`type`（组件类型字符串）、`componentProps`（组件额外属性）、`children`（嵌套表单项配置）                  | ^[object]`FormItemCtx`                                                                                                                           | -      |
 
 <details>
-<summary>Element Plus Table-column 属性</summary>
+<summary>Element Plus 表格列原生属性</summary>
 
-| 名称                  | 说明                                                                                 | 类型                                                                                                                                                                        | 默认值                            |
-| --------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
-| type                  | 列类型。`selection` 显示复选框，`index` 显示行号（从 1 开始），`expand` 显示展开图标 | ^[enum]`'default' \| 'selection' \| 'index' \| 'expand'`                                                                                                                    | default                           |
-| index                 | 自定义行号，仅对 `type=index` 有效                                                   | ^[number] / ^[Function]`(index: number) => number`                                                                                                                          | —                                 |
-| label                 | 列标题                                                                               | ^[string]                                                                                                                                                                   | —                                 |
-| column-key            | 列 key，筛选事件需用此属性区分列                                                     | ^[string]                                                                                                                                                                   | —                                 |
-| prop                  | 字段名，别名 `property`                                                              | ^[string]                                                                                                                                                                   | —                                 |
-| width                 | 列宽                                                                                 | ^[string] / ^[number]                                                                                                                                                       | ''                                |
-| min-width             | 最小列宽，`width` 固定宽度，`min-width` 按比例分配                                   | ^[string] / ^[number]                                                                                                                                                       | ''                                |
-| fixed                 | 是否固定在左/右，`true` 固定左侧                                                     | ^[enum]`'left' \| 'right'` / ^[boolean]                                                                                                                                     | false                             |
-| render-header         | 表头渲染函数                                                                         | ^[Function]`(data: { column: TableColumnCtx<T>, $index: number }) => void`                                                                                                  | —                                 |
-| sortable              | 是否可排序，远程排序设为 'custom' 并监听 `sort-change`                               | ^[boolean] / ^[string]                                                                                                                                                      | false                             |
-| sort-method           | 排序方法，`sortable` 为 true 时生效，返回值同 Array.sort                             | ^[Function]`<T = any>(a: T, b: T) => number`                                                                                                                                | —                                 |
-| sort-by               | 指定排序字段，`sortable` 为 true 且未设置 `sort-method` 时生效                       | ^[Function]`(row: any, index: number) => string` / ^[string] / ^[object]`string[]`                                                                                          | —                                 |
-| sort-orders           | 排序顺序，`sortable` 为 true 时生效，点击表头按顺序切换                              | ^[object]`('ascending' \| 'descending' \| null)[]`                                                                                                                          | ['ascending', 'descending', null] |
-| resizable             | 是否可调整列宽，`border` 为 true 时生效                                              | ^[boolean]                                                                                                                                                                  | true                              |
-| formatter             | 格式化单元格内容的函数                                                               | ^[function]`(row: any, column: TableColumnCtx<T>, cellValue: any, index: number) => VNode \| string`                                                                        | —                                 |
-| show-overflow-tooltip | 超出内容悬浮显示 Tooltip                                                             | ^[boolean] / [`object`](#table-attributes)                                                                                                                                  | undefined                         |
-| align                 | 对齐方式                                                                             | ^[enum]`'left' \| 'center' \| 'right'`                                                                                                                                      | left                              |
-| header-align          | 表头对齐方式，未设置时同 `align`                                                     | ^[enum]`'left' \| 'center' \| 'right'`                                                                                                                                      | left                              |
-| class-name            | 列单元格类名                                                                         | ^[string]                                                                                                                                                                   | —                                 |
-| label-class-name      | 列标题类名                                                                           | ^[string]                                                                                                                                                                   | —                                 |
-| selectable            | 多选列判断行是否可选的函数，`type=selection` 时生效                                  | ^[Function]`(row: any, index: number) => boolean`                                                                                                                           | —                                 |
-| reserve-selection     | 多选列数据刷新后是否保留选中，需设置 `row-key`                                       | ^[boolean]                                                                                                                                                                  | false                             |
-| filters               | 筛选选项数组，每项需有 `text` 和 `value`                                             | ^[array]`Array<{text: string, value: string}>`                                                                                                                              | —                                 |
-| filter-placement      | 筛选下拉位置                                                                         | ^[enum]`'top' \| 'top-start' \| 'top-end' \| 'bottom' \| 'bottom-start' \| 'bottom-end' \| 'left' \| 'left-start' \| 'left-end' \| 'right' \| 'right-start' \| 'right-end'` | —                                 |
-| filter-class-name     | 筛选下拉类名                                                                         | ^[string]                                                                                                                                                                   | —                                 |
-| filter-multiple       | 筛选是否多选                                                                         | ^[boolean]                                                                                                                                                                  | true                              |
-| filter-method         | 筛选方法，`filter-multiple` 为 true 时每行多次调用，任一返回 true 则显示             | ^[function]`(value: any, row: any, column: TableColumnCtx<T>) => void`                                                                                                      | —                                 |
-| filtered-value        | 已选筛选值，表头用 `render-header` 时有用                                            | ^[object]`string[]`                                                                                                                                                         | —                                 |
-| tooltip-formatter     | 自定义溢出 Tooltip 内容                                                              | ^[Function]`(data: { row: any, column: TableColumnCtx<T>, cellValue: any }) => VNode \| string`                                                                             | —                                 |
+| 名称                  | 说明                                                                                                                                                                                             | 类型                                                                                                                                                                        | 默认值                            |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| type                  | 列类型：`selection`（复选框列）、`index`（索引列）、`expand`（展开按钮列）、`default`（默认列）                                                                                                  | ^[enum]`'default' \| 'selection' \| 'index' \| 'expand'`                                                                                                                    | default                           |
+| index                 | 索引列自定义索引：支持数字（索引偏移量）或函数（参数为原始索引，返回自定义索引），仅对 `type=index` 的列生效                                                                                     | ^[number] / ^[Function]`(index: number) => number`                                                                                                                          | —                                 |
+| label                 | 列标题                                                                                                                                                                                           | ^[string]                                                                                                                                                                   | —                                 |
+| column-key            | 列的唯一标识，使用 `filter-change` 事件时需通过该属性识别列                                                                                                                                      | ^[string]                                                                                                                                                                   | —                                 |
+| prop                  | 列对应的行数据字段名，别名：`property`                                                                                                                                                           | ^[string]                                                                                                                                                                   | —                                 |
+| width                 | 列宽度                                                                                                                                                                                           | ^[string] / ^[number]                                                                                                                                                       | ''                                |
+| min-width             | 列最小宽度：`width` 为固定宽度，`min-width` 为自适应宽度（按比例分配剩余空间）                                                                                                                   | ^[string] / ^[number]                                                                                                                                                       | ''                                |
+| fixed                 | 列固定位置：`true`/`left`（固定在左侧）、`right`（固定在右侧）                                                                                                                                   | ^[enum]`'left' \| 'right'` / ^[boolean]                                                                                                                                     | false                             |
+| render-header         | 表头自定义渲染函数，参数：{ column: 列配置, $index: 列索引 }                                                                                                                                     | ^[Function]`(data: { column: TableColumnCtx<T>, $index: number }) => void`                                                                                                  | —                                 |
+| sortable              | 是否支持排序：`true`（启用默认排序）、`custom`（远程排序，需监听表格 `sort-change` 事件）                                                                                                        | ^[boolean] / ^[string]                                                                                                                                                      | false                             |
+| sort-method           | 自定义排序方法（`sortable` 为 `true` 时生效），返回值规则同 `Array.sort`（负数：a 在 b 前，正数：a 在 b 后，0：位置不变）                                                                        | ^[Function]`<T = any>(a: T, b: T) => number`                                                                                                                                | —                                 |
+| sort-by               | 排序依据字段（`sortable` 为 `true` 且未设置 `sort-method` 时生效）：支持字符串（单个字段）、数组（多字段排序，前字段相等时按后字段排序）、函数（参数：row 行数据、index 行索引，返回排序字段值） | ^[Function]`(row: any, index: number) => string` / ^[string] / ^[object]`string[]`                                                                                          | —                                 |
+| sort-orders           | 排序顺序选项（`sortable` 为 `true` 时生效）：数组元素为 `'ascending'`（升序）、`'descending'`（降序）、`null`（取消排序），用户点击表头时按数组顺序切换                                          | ^[object]`('ascending' \| 'descending' \| null)[]`                                                                                                                          | ['ascending', 'descending', null] |
+| resizable             | 是否允许拖动列宽（仅表格 `border` 为 `true` 时生效）                                                                                                                                             | ^[boolean]                                                                                                                                                                  | true                              |
+| formatter             | 单元格内容格式化函数，参数：row（行数据）、column（列配置）、cellValue（单元格原始值）、index（行索引），返回值支持 VNode 或字符串                                                               | ^[function]`(row: any, column: TableColumnCtx<T>, cellValue: any, index: number) => VNode \| string`                                                                        | —                                 |
+| show-overflow-tooltip | 单元格内容溢出时是否显示 tooltip，优先级高于表格级配置                                                                                                                                           | ^[boolean] / [`object`](#表格属性)                                                                                                                                          | undefined                         |
+| align                 | 单元格内容对齐方式：`left`（左对齐）、`center`（居中）、`right`（右对齐）                                                                                                                        | ^[enum]`'left' \| 'center' \| 'right'`                                                                                                                                      | left                              |
+| header-align          | 表头内容对齐方式，未设置时继承 `align` 属性值                                                                                                                                                    | ^[enum]`'left' \| 'center' \| 'right'`                                                                                                                                      | left                              |
+| class-name            | 单元格自定义类名                                                                                                                                                                                 | ^[string]                                                                                                                                                                   | —                                 |
+| label-class-name      | 表头标题自定义类名                                                                                                                                                                               | ^[string]                                                                                                                                                                   | —                                 |
+| selectable            | 多选列专用，控制行是否可选中（`type` 为 `selection` 时生效），参数：row（行数据）、index（行索引），返回布尔值                                                                                   | ^[Function]`(row: any, index: number) => boolean`                                                                                                                           | —                                 |
+| reserve-selection     | 多选列专用，数据刷新后是否保留选中状态（`type` 为 `selection` 时生效），使用前需设置表格 `row-key`                                                                                               | ^[boolean]                                                                                                                                                                  | false                             |
+| filters               | 列筛选选项数组，每个元素需包含 `text`（显示文本）和 `value`（筛选值）                                                                                                                            | ^[array]`Array<{text: string, value: string}>`                                                                                                                              | —                                 |
+| filter-placement      | 筛选下拉框挂载位置，可选值：`top`/`top-start`/`top-end`/`bottom`/`bottom-start`/`bottom-end`/`left`/`left-start`/`left-end`/`right`/`right-start`/`right-end`                                    | ^[enum]`'top' \| 'top-start' \| 'top-end' \| 'bottom' \| 'bottom-start' \| 'bottom-end' \| 'left' \| 'left-start' \| 'left-end' \| 'right' \| 'right-start' \| 'right-end'` | —                                 |
+| filter-class-name     | 筛选下拉框自定义类名                                                                                                                                                                             | ^[string]                                                                                                                                                                   | —                                 |
+| filter-multiple       | 筛选是否支持多选                                                                                                                                                                                 | ^[boolean]                                                                                                                                                                  | true                              |
+| filter-method         | 筛选方法：`filter-multiple` 为 `true` 时，每行将多次调用该方法（每个筛选值一次），只要有一次返回 `true` 该行即显示；参数：value（筛选值）、row（行数据）、column（列配置）                       | ^[function]`(value: any, row: any, column: TableColumnCtx<T>) => void`                                                                                                      | —                                 |
+| filtered-value        | 筛选选中值（表头自定义渲染时可能需要用到）                                                                                                                                                       | ^[object]`string[]`                                                                                                                                                         | —                                 |
+| tooltip-formatter     | 自定义 `show-overflow-tooltip` 启用时的 tooltip 内容，参数：{ row: 行数据, column: 列配置, cellValue: 单元格值 }                                                                                 | ^[Function]`(data: { row: any, column: TableColumnCtx<T>, cellValue: any }) => VNode \| string`                                                                             | —                                 |
 
 </details>
 
-### Table-column 插槽
+### TableColumn 插槽
 
 <details>
-<summary>Element Plus Table-column 插槽</summary>
+<summary>Element Plus 表格列原生插槽</summary>
 
 | 名称        | 说明           | 类型                                                               |
 | ----------- | -------------- | ------------------------------------------------------------------ |
-| default     | 自定义列内容   | ^[object]`{ row: any, column: TableColumnCtx<T>, $index: number }` |
-| header      | 自定义表头内容 | ^[object]`{ column: TableColumnCtx<T>, $index: number }`           |
-| filter-icon | 自定义筛选图标 | ^[object]`{ filterOpened: boolean }`                               |
-| expand      | 自定义展开内容 | ^[object]`{ expanded: boolean }`                                   |
+| default     | 列内容自定义   | ^[object]`{ row: any, column: TableColumnCtx<T>, $index: number }` |
+| header      | 表头内容自定义 | ^[object]`{ column: TableColumnCtx<T>, $index: number }`           |
+| filter-icon | 筛选图标自定义 | ^[object]`{ filterOpened: boolean }`                               |
+| expand      | 展开按钮自定义 | ^[object]`{ expanded: boolean }`                                   |
 
 </details>
 
-## 常见问题
+## 常见问题（FAQ）
 
-#### 如何在表格中使用图片预览？
+#### 如何在表格中实现图片预览？
 
 ```vue{4}
 <template>
-  <el-table-column width="180">
+  <bk-table-column width="180">
     <template #default="scope">
       <el-image preview-teleported :preview-src-list="srcList" />
     </template>
-  </el-table-column>
+  </bk-table-column>
 </template>
 ```
-
-#### 为什么用 DOM 模板时列未渲染？
-
-典型问题：[#5046](https://github.com/element-plus/element-plus/issues/5046) [#5862](https://github.com/element-plus/element-plus/issues/5862) [#6919](https://github.com/element-plus/element-plus/issues/6919)
-
-这是因为 HTML 规范只允许少数元素省略闭合标签，常见如 `<input>` 和 `<img>`。其他元素省略闭合标签时，原生 HTML 解析器会认为未终止开始标签。
-
-详情见 [vue 文档](https://cn.vuejs.org/guide/essentials/component-basics.html#self-closing-tags)

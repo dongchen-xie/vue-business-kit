@@ -1,29 +1,31 @@
 ---
-title: Icon 图标
+title: Icon
 lang: zh-CN
 ---
 
 # Icon 图标
 
-基于 [Element Plus Icon](https://element-plus.org/zh-CN/component/icon) 增强的图标组件，支持 Iconify 图标。
+基于 [Element Plus Icon](https://element-plus.org/zh-CN/component/icon) 增强的图标组件。
 
-## 图标使用
+支持 Iconify 图标。
 
-有多种方式使用图标：
+## 图标使用方式
 
-### 1. 直接使用 Iconify（推荐）
+图标提供多种使用方式，可根据场景选择：
 
-您可以直接使用 Iconify 的 [Tabler Icons](https://icon-sets.iconify.design/tabler)，无需安装。查看[基础用法](#基础用法)了解示例。
+### 1. 直接使用 Iconify 图标（推荐）
 
-### 2. 安装图标集配合 UnoCSS
+无需安装任何依赖，可直接使用 Iconify 中的 [Tabler Icons](https://icon-sets.iconify.design/tabler) 图标库。使用示例可参考 [基本用法](#基本用法)。
 
-安装您喜欢的 Iconify 图标集合并配合 UnoCSS 使用：
+### 2. 通过 UnoCSS 安装图标集
+
+安装你所需的 Iconify 图标合集，并结合 UnoCSS 使用
 
 ```bash
 pnpm add -D @iconify-json/mdi
 ```
 
-然后使用 `i-` 前缀：
+然后通过 `i-` 前缀使用：
 
 ```vue
 <bk-icon icon="i-mdi:home" />
@@ -31,7 +33,7 @@ pnpm add -D @iconify-json/mdi
 
 ### 3. Element Plus 图标
 
-安装并使用 Element Plus 图标集合：
+安装 Element Plus 图标集并使用：
 
 ```bash
 pnpm add @element-plus/icons-vue
@@ -49,9 +51,9 @@ import { Edit } from "@element-plus/icons-vue"
 
 ## 基础用法
 
-使用 Iconify 图标名称显示图标。
+通过 Iconify 图标名称展示图标。
 
-:::demo 使用 `icon` 属性配合 Iconify 图标名称（例如 'tabler:home'）。组件会自动添加 'i-' 前缀（如果不存在）。
+:::demo 使用 `icon` 属性配合 Iconify 图标名称（例如 'tabler:home'）。若未传入 `i-` 前缀，组件会自动补充。
 
 icon/basic
 
@@ -66,7 +68,7 @@ icon/basic
 | icon | Iconify 图标名称 | ^[string] | —      |
 
 <details>
-<summary>Element Plus Icon 属性</summary>
+<summary>Element Plus Icon 原生属性</summary>
 
 | 名称  | 说明                   | 类型                  | 默认值         |
 | ----- | ---------------------- | --------------------- | -------------- |
@@ -77,15 +79,6 @@ icon/basic
 
 ### Icon 插槽
 
-| 名称    | 说明           |
-| ------- | -------------- |
-| default | 自定义默认内容 |
-
-<details>
-<summary>Element Plus Icon 插槽</summary>
-
-| 名称    | 说明           |
-| ------- | -------------- |
-| default | 自定义默认内容 |
-
-</details>
+| 名称                | 说明           |
+| ------------------- | -------------- |
+| default ^(extended) | 自定义默认内容 |

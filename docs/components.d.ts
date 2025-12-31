@@ -11,9 +11,12 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BkBreadcrumb: typeof import('vue-business-kit')['BkBreadcrumb']
+    BkBreadcrumbItem: typeof import('vue-business-kit')['BkBreadcrumbItem']
     BkButton: typeof import('vue-business-kit')['BkButton']
     BkButtonGroup: typeof import('vue-business-kit')['BkButtonGroup']
     BkForm: typeof import('vue-business-kit')['BkForm']
+    BkFormItem: typeof import('vue-business-kit')['BkFormItem']
     BkIcon: typeof import('vue-business-kit')['BkIcon']
     BkTable: typeof import('vue-business-kit')['BkTable']
     BkTableColumn: typeof import('vue-business-kit')['BkTableColumn']

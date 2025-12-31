@@ -1,15 +1,36 @@
 <template>
-  <bk-form :model="form" :items="items" label-width="auto" style="max-width: 600px">
-    <el-form-item>
+  <div>
+    <el-radio-group v-model="size" aria-label="size control">
+      <el-radio-button value="large">large</el-radio-button>
+      <el-radio-button value="default">default</el-radio-button>
+      <el-radio-button value="small">small</el-radio-button>
+    </el-radio-group>
+    <el-radio-group v-model="labelPosition" aria-label="position control">
+      <el-radio-button value="left">Left</el-radio-button>
+      <el-radio-button value="right">Right</el-radio-button>
+      <el-radio-button value="top">Top</el-radio-button>
+    </el-radio-group>
+  </div>
+  <br />
+  <bk-form
+    style="max-width: 600px"
+    :model="sizeForm"
+    :items="items"
+    label-width="auto"
+    :label-position="labelPosition"
+    :size="size"
+  >
+    <bk-form-item>
       <bk-button type="primary" @click="onSubmit">Create</bk-button>
       <bk-button>Cancel</bk-button>
-    </el-form-item>
+    </bk-form-item>
   </bk-form>
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue"
-import type { FormItemCtx } from "vue-business-kit"
+import { reactive, ref } from "vue"
+
+import type { ComponentSize, FormItemCtx, FormProps } from "vue-business-kit"
 
 const items: FormItemCtx[] = [
   {
@@ -63,19 +84,13 @@ const items: FormItemCtx[] = [
       { label: "Sponsor", value: "Sponsor" },
       { label: "Venue", value: "Venue" }
     ]
-  },
-  {
-    label: "Activity form",
-    type: "input",
-    prop: "desc",
-    componentProps: {
-      type: "textarea"
-    }
   }
 ]
 
-// do not use same name with ref
-const form = reactive({
+const size = ref<ComponentSize>("default")
+const labelPosition = ref<FormProps["labelPosition"]>("right")
+
+const sizeForm = reactive({
   name: "",
   region: "",
   date1: "",
@@ -86,7 +101,13 @@ const form = reactive({
   desc: ""
 })
 
-const onSubmit = () => {
+function onSubmit() {
   console.log("submit!")
 }
 </script>
+
+<style>
+.el-radio-group {
+  margin-right: 12px;
+}
+</style>

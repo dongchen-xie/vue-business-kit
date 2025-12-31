@@ -19,6 +19,9 @@ export const utils: Record<string, any> = {
   ...lodash
 }
 
+// 导出常量
+export * from "./constants"
+
 // 导出 locale
 export { provideLocale, type Language, en, zhCn } from "./locale"
 export { useLocale as useBkLocale } from "./locale"

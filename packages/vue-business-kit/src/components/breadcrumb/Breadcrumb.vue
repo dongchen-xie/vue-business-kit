@@ -14,7 +14,7 @@ const props = defineProps<BreadcrumbInternalProps>()
 
 const breadcrumbRef = ref<InstanceType<typeof ElBreadcrumb>>()
 
-const { breadcrumbItems } = useBreadcrumb(props.config, props.data, props.currentRoute)
+const { breadcrumbItems } = useBreadcrumb(props)
 
 defineExpose({ breadcrumbRef })
 </script>

@@ -52,6 +52,10 @@ export default {
           {
             text: "Form 表单组件",
             items: generateSidebar("zh-CN", "components/form")
+          },
+          {
+            text: "Navigation 导航",
+            items: generateSidebar("zh-CN", "components/navigation")
           }
         ],
         "/zh-CN/utils/": [

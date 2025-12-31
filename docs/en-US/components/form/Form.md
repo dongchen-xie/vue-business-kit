@@ -1,11 +1,13 @@
 ---
 title: Form
-lang: en-US
+lang: zh-CN
 ---
 
-# Form
+# 表单
 
-Form component enhanced based on [Element Plus Form](https://element-plus.org/en-US/component/form), which consists of `input`, `radio`, `select`, `checkbox` and so on, enabling data collection, verification and submission.
+Form component enhanced based on [Element Plus Form](https://element-plus.org/en-US/component/form).
+
+Form consists of `input`, `radio`, `select`, `checkbox` and so on. With form, you can collect, verify and submit data.
 
 :::tip
 
@@ -15,11 +17,11 @@ The component has been upgraded with a flex layout to replace the old float layo
 
 ## Basic Usage
 
-It includes all kinds of input items, such as `input`, `select`, `radio` and `checkbox`.
+It includes all kinds of input items, such as `input`, `select`, `radio`, `checkbox`, `date-picker`, `time-picker`, and `switch`.
 
-:::demo In each `form` component, you need to define form items using the `items` prop, which contains configuration objects for each input field. The actual form item rendering is handled internally by the component.
+:::demo Use the `items` prop to define form structure in a configuration-driven way, or use `bk-form-item` components to define form items manually. Each form item supports configuration options such as `prop`, `label`, and related field attributes.
 
-form/basic-form
+form/basic
 
 :::
 
@@ -33,13 +35,13 @@ To prevent this behavior, you can add `@submit.prevent` on `<bk-form>`.
 
 :::
 
-## Inline Form
+## Multi-Column Form
 
 When the vertical space is limited and the form is relatively simple, you can put it in one line.
 
-:::demo Set the `inline` attribute to `true` and the form will be inline.
+:::demo Set the `col-num` attribute to specify the number of columns for the form layout.
 
-form/inline-form
+form/multi-column-form
 
 :::
 
@@ -59,7 +61,7 @@ form/alignment
 
 Form component allows you to verify your data, helping you find and correct errors.
 
-:::demo Just add the `rules` attribute for `Form` component, pass validation rules, and set `prop` attribute for `FormItem` as a specific key that needs to be validated. See more information at [async-validator](https://github.com/yiminghe/async-validator).
+:::demo Just add the `rules` attribute to the `Form` component and provide validation rules. Each form item should define a `prop` field in the `items` configuration(Or the `bk-form-item` component) to bind validation to the corresponding model field. See more information at [async-validator](https://github.com/yiminghe/async-validator).
 
 form/validation
 
@@ -69,7 +71,7 @@ form/validation
 
 This example shows how to customize your own validation rules to finish a two-factor password verification.
 
-:::dem Here we use `status-icon` to reflect validation result as an icon.
+:::demo Here we use `status-icon` to reflect validation result as an icon.
 
 form/custom-validation
 
@@ -83,7 +85,7 @@ Custom validate callback function must be called. See more advanced usage at [as
 
 ## Add/Delete Form Item
 
-:::dem In addition to passing all validation rules at once on the form component, you can also pass the validation rules or delete rules on a single form field dynamically.
+:::demo In addition to passing all validation rules at once on the form component, you can also pass the validation rules or delete rules on a single form field dynamically.
 
 form/form-items
 
@@ -91,7 +93,7 @@ form/form-items
 
 ## Number Validate
 
-:::dem Number Validate need a `.number` modifier added on the input `v-model` binding，it's used to transform the string value to the number which is provided by Vue.
+:::demo Number Validate need a `.number` modifier added on the input `v-model` binding，it's used to transform the string value to the number which is provided by Vue.
 
 form/number-validate
 
@@ -99,7 +101,7 @@ form/number-validate
 
 :::tip
 
-When an `el-form-item` is nested in another `el-form-item`, its label width will be `0`. You can set `label-width` on that `el-form-item` if needed.
+When an `bk-form-item` is nested in another `bk-form-item`, its label width will be `0`. You can set `label-width` on that `bk-form-item` if needed.
 
 :::
 
@@ -107,7 +109,7 @@ When an `el-form-item` is nested in another `el-form-item`, its label width will
 
 All components in a Form inherit their `size` attribute from that Form. Similarly, FormItem also has a `size` attribute.
 
-:::dem Still you can fine tune each component's `size` if you don't want that component to inherit its size from From or FormItem.
+:::demo Still you can fine tune each component's `size` if you don't want that component to inherit its size from From or FormItem.
 
 form/size-control
 
@@ -115,9 +117,9 @@ form/size-control
 
 ## Accessibility
 
-When only a single input (or related control such as select or checkbox) is inside of a `el-form-item`, the form item's label will automatically be attached to that input. However, if multiple inputs are inside of the `el-form-item`, the form item will be assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [group](https://www.w3.org/TR/wai-aria/#group) instead. In this case, it is your responsibility to assign assistive labels to the individual inputs.
+When only a single input (or related control such as select or checkbox) is inside of a `bk-form-item`, the form item's label will automatically be attached to that input. However, if multiple inputs are inside of the `bk-form-item`, the form item will be assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [group](https://www.w3.org/TR/wai-aria/#group) instead. In this case, it is your responsibility to assign assistive labels to the individual inputs.
 
-:::dem
+:::demo
 
 form/accessibility
 
@@ -127,6 +129,11 @@ form/accessibility
 
 ### Form Attributes
 
+| Name   | Description                                                                                  | Type                    | Default |
+| ------ | -------------------------------------------------------------------------------------------- | ----------------------- | ------- |
+| items  | Configuration array for form items, each item can specify type, componentProps, and children | ^[array]`FormItemCtx[]` | —       |
+| colNum | Number of columns for multi-column form layout                                               | ^[number]               | 1       |
+
 <details>
 <summary>Element Plus Form Attributes</summary>
 
@@ -134,7 +141,7 @@ form/accessibility
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ------- |
 | model                     | Data of form component.                                                                                                                                                                  | ^[object]`Record<string, any>`                 | —       |
 | rules                     | Validation rules of form.                                                                                                                                                                | ^[object]`FormRules`                           | —       |
-| inline                    | Whether the form is inline.                                                                                                                                                              | ^[boolean]                                     | false   |
+| inline                    | Whether the form is inline. (It is recommended to use the `col-num` attribute)                                                                                                           | ^[boolean]                                     | false   |
 | label-position            | Position of label. If set to `'left'` or `'right'`, `label-width` prop is also required.                                                                                                 | ^[enum]`'left' \| 'right' \| 'top'`            | right   |
 | label-width               | Width of label, e.g. `'50px'`. All its direct child form items will inherit this value. `auto` is supported.                                                                             | ^[string] / ^[number]                          | ''      |
 | label-suffix              | Suffix of the label.                                                                                                                                                                     | ^[string]                                      | ''      |
@@ -193,6 +200,12 @@ form/accessibility
 ## FormItem API
 
 ### FormItem Attributes
+
+| Name             | Description                                                        | Type                            | Default |
+| ---------------- | ------------------------------------------------------------------ | ------------------------------- | ------- |
+| type ^(required) | Type of the form item component (e.g., 'input', 'select', 'radio') | ^[string]                       | —       |
+| componentProps   | Additional props to pass to the underlying component               | ^[object]`Record<string, any>`  | —       |
+| children         | Nested form items for complex layouts                              | ^[array]`Record<string, any>[]` | —       |
 
 <details>
 <summary>Element Plus FormItem Attributes</summary>

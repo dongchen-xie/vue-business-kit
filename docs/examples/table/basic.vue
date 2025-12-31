@@ -1,4 +1,10 @@
 <template>
+  <bk-table :raw-data="tableData">
+    <bk-table-column prop="date" label="Date" width="180"> </bk-table-column>
+    <bk-table-column prop="name" label="Name" width="180"> </bk-table-column>
+    <bk-table-column prop="address" label="Address"> </bk-table-column>
+  </bk-table>
+  <el-divider />
   <bk-table :raw-data="tableData" :columns="columns"> </bk-table>
 </template>
 
@@ -9,8 +15,7 @@ const tableData = [
   {
     date: "2016-05-03",
     name: "Tom",
-    address: "No. 189, Grove St, Los Angeles",
-    date1: "2016-05-03"
+    address: "No. 189, Grove St, Los Angeles"
   },
   {
     date: "2016-05-02",

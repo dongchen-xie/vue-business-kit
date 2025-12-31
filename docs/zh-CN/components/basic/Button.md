@@ -1,15 +1,17 @@
 ---
-title: Button 按钮
+title: Button
 lang: zh-CN
 ---
 
 # Button 按钮
 
-基于 [Element Plus Button](https://element-plus.org/zh-CN/component/button) 增强的按钮组件，支持 Iconify 图标。
+基于 [Element Plus Button](https://element-plus.org/zh-CN/component/button.html) 增强的按钮组件。
 
-## 基础用法
+支持 Iconify 图标。
 
-:::demo 使用 `type`、`plain`、`round`、`circle` 和 `icon` 来定义按钮的样式。（`icon` 属性支持 Element Plus 图标和 Iconify 图标名称，例如 'tabler:refresh'）
+## 基本用法
+
+:::demo 使用 `type`、`plain`、`round`、`circle` 和 `icon` 来定义按钮的样式。（`icon` 属性同时支持 Element Plus 内置图标和 Iconify 图标名称，例如 'tabler:refresh'。）
 
 button/basic
 
@@ -17,7 +19,9 @@ button/basic
 
 ## 禁用状态
 
-:::demo 使用 `disabled` 属性来定义按钮是否被禁用。该属性接受一个 `Boolean` 类型的值。
+`disabled` 属性用于控制按钮是否禁用，接受布尔值。
+
+:::demo 通过 `disabled` 属性设置按钮是否禁用，该属性值为布尔类型。
 
 button/disabled
 
@@ -27,9 +31,9 @@ button/disabled
 
 :::warning
 
-`type="text"` 已被 **废弃**，将在 <el-tag round effect="plain" size="small">3.0.0</el-tag> 版本中移除，请考虑切换到新的 API。
+`type="text"` 已被**废弃**，Element Plus 计划在 <el-tag round effect="plain" size="small">3.0.0</el-tag> 版本中移除该用法，请切换至新的 API。
 
-新的 API `link` 已在 <el-tag round effect="plain" size="small">2.2.1</el-tag> 版本中添加，你可以使用 `type` API 来设置链接按钮的主题。
+新 API `link` 已在 Element Plus <el-tag round effect="plain" size="small">2.2.1</el-tag> 版本中新增，你可以通过 `type` API 为链接按钮设置主题样式。
 
 :::
 
@@ -43,13 +47,13 @@ button/link
 
 :::tip
 
-文字按钮已升级为新设计，如果你想使用之前的版本，可以查看 [Link](https://element-plus.org/zh-CN/component/link#basic)。
+文字按钮已升级全新设计，如果你希望使用旧版文字按钮样式，可参考 [Link 链接](https://element-plus.org/zh-CN/component/link#basic) 组件。
 
-API 也已更新，因为 `type` 属性也代表按钮的样式。所以 Element Plus 必须为文字按钮创建一个新的 API `text: boolean`。
+同时 API 也已更新：由于 `type` 属性需要表征按钮样式，因此 Element Plus 新增了 `text: boolean` 专属 API 用于定义文字按钮。
 
 :::
 
-没有边框和背景色的按钮。
+无边框、无背景色的纯文字按钮。
 
 :::demo
 
@@ -59,9 +63,9 @@ button/text
 
 ## 图标按钮
 
-使用图标为按钮添加更多含义。你也可以单独使用图标来节省空间，或者与文字一起使用。
+通过图标为按钮增加额外的视觉含义，可单独使用图标节省空间，也可搭配文字使用。
 
-:::demo 使用 `icon` 属性来添加图标。你可以使用 Iconify 图标名称（例如 'tabler:home'）或在 Element Plus 图标组件中查找图标列表。在文字右侧添加图标可以通过 `<i>` 标签实现。也可以使用自定义图标。以下示例使用 Iconify。
+:::demo 使用 `icon` 属性添加图标，支持 Iconify 图标名称（例如 'tabler:home'）或 Element Plus 内置图标组件。如需在文字右侧添加图标，可通过 `<i>` 标签实现，也支持自定义图标。以下示例使用 Iconify 图标。
 
 button/icon
 
@@ -69,25 +73,23 @@ button/icon
 
 ## 按钮组
 
-显示为按钮组，可用于分组一系列类似的操作。
+将一系列同类操作的按钮组合展示，使用 `<bk-button-group>` 标签包裹即可。
 
-:::demo 使用 `<bk-button-group>` 标签来分组你的按钮。
+:::demo 使用 `<bk-button-group>` 标签对按钮进行分组。
 
 button/group
 
 :::
 
-## 加载状态按钮
+## 加载状态
 
-点击按钮来加载数据，然后按钮显示加载状态。
+点击按钮后触发数据加载，按钮展示加载状态。
 
-设置 `loading` 属性为 `true` 来显示加载状态。
+设置 `loading` 属性为 `true` 即可展示加载状态。
 
 :::tip
 
-你可以使用 `loading` 插槽或 `loadingIcon` 来自定义加载组件。
-
-注意：`loading` 插槽的优先级高于 loadingIcon
+你可以通过 `loading` 插槽或 `loadingIcon` 属性自定义加载组件，其中 `loading` 插槽优先级高于 loadingIcon 属性。
 
 :::
 
@@ -99,17 +101,17 @@ button/loading
 
 ## 尺寸
 
-除了默认尺寸外，按钮组件还提供了三个额外的尺寸供你在不同场景中选择。
+除默认尺寸外，按钮组件提供了 `large`、`small` 两种额外尺寸，适配不同场景。
 
-:::demo 使用 `size` 属性来设置额外的尺寸，可选值包括 `large`、`small`。
+:::demo 使用 `size` 属性设置按钮尺寸，可选值为 `large`、`small`。
 
 button/size
 
 :::
 
-## 标签
+## 自定义标签
 
-你可以自定义元素标签，例如 button、div、a、router-link、nuxt-link。
+可自定义按钮渲染的根元素标签，例如 button、div、a、router-link、nuxt-link 等。
 
 :::demo
 
@@ -121,62 +123,60 @@ button/tag
 
 ### Button 属性
 
-| 名称         | 说明                      | 类型                     | 默认值  |
-| ------------ | ------------------------- | ------------------------ | ------- |
-| icon         | 图标组件或 iconify 图标名 | ^[string] / ^[Component] | —       |
-| loading-icon | 自定义加载图标组件        | ^[string] / ^[Component] | Loading |
+| 名称                     | 说明                        | 类型                     | 默认值  |
+| ------------------------ | --------------------------- | ------------------------ | ------- |
+| icon ^(extended)         | 图标组件或 Iconify 图标名称 | ^[string] / ^[Component] | —       |
+| loading-icon ^(extended) | 自定义加载图标组件          | ^[string] / ^[Component] | Loading |
 
 <details>
-<summary>Element Plus Button 属性</summary>
+<summary>Element Plus Button 原生属性</summary>
 
-| 名称              | 说明                                                                        | 类型                                                                                                     | 默认值  |
-| ----------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------- |
-| size              | 按钮尺寸                                                                    | ^[enum]`'large' \| 'default' \| 'small'`                                                                 | —       |
-| type              | 按钮类型，当设置 `color` 时，后者优先                                       | ^[enum]`'default' \| 'primary' \| 'success' \| 'warning' \| 'danger' \| 'info' \| '' \| 'text' (已废弃)` | —       |
-| plain             | 是否为朴素按钮                                                              | ^[boolean]                                                                                               | false   |
-| text              | 是否为文字按钮                                                              | ^[boolean]                                                                                               | false   |
-| bg                | 是否始终显示文字按钮的背景色                                                | ^[boolean]                                                                                               | false   |
-| link              | 是否为链接按钮                                                              | ^[boolean]                                                                                               | false   |
-| round             | 是否为圆角按钮                                                              | ^[boolean]                                                                                               | false   |
-| circle            | 是否为圆形按钮                                                              | ^[boolean]                                                                                               | false   |
-| loading           | 是否为加载中状态                                                            | ^[boolean]                                                                                               | false   |
-| loading-icon      | 自定义加载图标组件                                                          | ^[string] / ^[Component]                                                                                 | Loading |
-| disabled          | 按钮是否为禁用状态                                                          | ^[boolean]                                                                                               | false   |
-| icon              | 图标组件                                                                    | ^[string] / ^[Component]                                                                                 | —       |
-| autofocus         | 原生 `autofocus` 属性                                                       | ^[boolean]                                                                                               | false   |
-| native-type       | 原生 `type` 属性                                                            | ^[enum]`'button' \| 'submit' \| 'reset'`                                                                 | button  |
-| auto-insert-space | 自动在两个中文字符之间插入空格（仅当文本长度为 2 且所有字符都是中文时生效） | ^[boolean]                                                                                               | false   |
-| color             | 自定义按钮颜色，自动计算 `hover` 和 `active` 颜色                           | ^[string]                                                                                                | —       |
-| dark              | 深色模式，自动将 `color` 转换为深色模式颜色                                 | ^[boolean]                                                                                               | false   |
-| tag               | 自定义元素标签                                                              | ^[string] / ^[Component]                                                                                 | button  |
+| 名称              | 说明                                                                      | 类型                                                                                                     | 默认值 |
+| ----------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------ |
+| size              | 按钮尺寸                                                                  | ^[enum]`'large' \| 'default' \| 'small'`                                                                 | —      |
+| type              | 按钮类型，设置 `color` 时优先级高于 `type`                                | ^[enum]`'default' \| 'primary' \| 'success' \| 'warning' \| 'danger' \| 'info' \| '' \| 'text' (已废弃)` | —      |
+| plain             | 是否为朴素按钮                                                            | ^[boolean]                                                                                               | false  |
+| text              | 是否为文字按钮                                                            | ^[boolean]                                                                                               | false  |
+| bg                | 文字按钮是否始终显示背景色                                                | ^[boolean]                                                                                               | false  |
+| link              | 是否为链接按钮                                                            | ^[boolean]                                                                                               | false  |
+| round             | 是否为圆角按钮                                                            | ^[boolean]                                                                                               | false  |
+| circle            | 是否为圆形按钮                                                            | ^[boolean]                                                                                               | false  |
+| loading           | 是否为加载状态                                                            | ^[boolean]                                                                                               | false  |
+| disabled          | 是否禁用按钮                                                              | ^[boolean]                                                                                               | false  |
+| autofocus         | 原生自动聚焦属性                                                          | ^[boolean]                                                                                               | false  |
+| native-type       | 原生 button 标签的 type 属性                                              | ^[enum]`'button' \| 'submit' \| 'reset'`                                                                 | button |
+| auto-insert-space | 自动在两个中文字符之间插入空格（仅在文字长度为 2 且全部为中文字符时生效） | ^[boolean]                                                                                               | false  |
+| color             | 自定义按钮颜色，会自动计算 hover 和 active 状态的颜色                     | ^[string]                                                                                                | —      |
+| dark              | 暗黑模式，自动将 `color` 转换为暗黑模式下的颜色                           | ^[boolean]                                                                                               | false  |
+| tag               | 自定义根元素标签                                                          | ^[string] / ^[Component]                                                                                 | button |
 
 </details>
 
 ### Button 插槽
 
 <details>
-<summary>Element Plus Button 插槽</summary>
+<summary>Element Plus Button 原生插槽</summary>
 
-| 名称    | 说明             |
-| ------- | ---------------- |
-| default | 自定义默认内容   |
-| loading | 自定义加载中组件 |
-| icon    | 自定义图标组件   |
+| 名称    | 说明           |
+| ------- | -------------- |
+| default | 自定义默认内容 |
+| loading | 自定义加载组件 |
+| icon    | 自定义图标组件 |
 
 </details>
 
-### Button 暴露方法
+### Button 暴露的属性
 
 <details>
-<summary>Element Plus Button 暴露</summary>
+<summary>Element Plus Button 原生暴露属性</summary>
 
-| 名称           | 说明           | 类型                                                                                                           |
-| -------------- | -------------- | -------------------------------------------------------------------------------------------------------------- |
-| ref            | 按钮 html 元素 | ^[object]`Ref<HTMLButtonElement>`                                                                              |
-| size           | 按钮尺寸       | ^[object]`ComputedRef<'' \| 'small' \| 'default' \| 'large'>`                                                  |
-| type           | 按钮类型       | ^[object]`ComputedRef<'' \| 'default' \| 'primary' \| 'success' \| 'warning' \| 'info' \| 'danger' \| 'text'>` |
-| disabled       | 按钮是否禁用   | ^[object]`ComputedRef<boolean>`                                                                                |
-| shouldAddSpace | 是否添加空格   | ^[object]`ComputedRef<boolean>`                                                                                |
+| 名称           | 说明             | 类型                                                                                                           |
+| -------------- | ---------------- | -------------------------------------------------------------------------------------------------------------- |
+| ref            | 按钮 DOM 元素    | ^[object]`Ref<HTMLButtonElement>`                                                                              |
+| size           | 按钮尺寸         | ^[object]`ComputedRef<'' \| 'small' \| 'default' \| 'large'>`                                                  |
+| type           | 按钮类型         | ^[object]`ComputedRef<'' \| 'default' \| 'primary' \| 'success' \| 'warning' \| 'info' \| 'danger' \| 'text'>` |
+| disabled       | 按钮是否禁用     | ^[object]`ComputedRef<boolean>`                                                                                |
+| shouldAddSpace | 是否需要添加空格 | ^[object]`ComputedRef<boolean>`                                                                                |
 
 </details>
 
@@ -185,39 +185,23 @@ button/tag
 ### ButtonGroup 属性
 
 <details>
-<summary>Element Plus ButtonGroup 属性</summary>
+<summary>Element Plus ButtonGroup 原生属性</summary>
 
 | 名称      | 说明                     | 类型                                                               | 默认值     |
 | --------- | ------------------------ | ------------------------------------------------------------------ | ---------- |
-| size      | 控制该按钮组内按钮的大小 | ^[enum]`'large' \| 'default' \| 'small'`                           | —          |
-| type      | 控制该按钮组内按钮的类型 | ^[enum]`'primary' \| 'success' \| 'warning' \| 'danger' \| 'info'` | —          |
-| direction | 显示方向                 | ^[enum]`'horizontal' \| 'vertical'`                                | horizontal |
+| size      | 控制按钮组内所有按钮尺寸 | ^[enum]`'large' \| 'default' \| 'small'`                           | —          |
+| type      | 控制按钮组内所有按钮类型 | ^[enum]`'primary' \| 'success' \| 'warning' \| 'danger' \| 'info'` | —          |
+| direction | 按钮组排列方向           | ^[enum]`'horizontal' \| 'vertical'`                                | horizontal |
 
 </details>
 
 ### ButtonGroup 插槽
 
 <details>
-<summary>Element Plus ButtonGroup 插槽</summary>
+<summary>Element Plus ButtonGroup 原生插槽</summary>
 
 | 名称    | 说明             | 子标签 |
 | ------- | ---------------- | ------ |
 | default | 自定义按钮组内容 | Button |
-
-</details>
-
-## 类型声明
-
-<details>
-  <summary>显示声明</summary>
-
-```ts
-import type { ButtonProps } from "element-plus"
-import type { Component } from "vue"
-
-export interface ButtonProps extends Omit<ButtonProps, "icon"> {
-  icon?: string | Component
-}
-```
 
 </details>

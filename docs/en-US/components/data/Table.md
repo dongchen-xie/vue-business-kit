@@ -5,13 +5,15 @@ lang: en-US
 
 # Table
 
-Table component enhanced based on [Element Plus Table](https://element-plus.org/en-US/component/table) with additional features like search, pagination, export, and number formatting.
+Table component enhanced based on [Element Plus Table](https://element-plus.org/en-US/component/table).
+
+Display multiple data with similar format. You can sort, filter, compare your data in a table.
 
 ## Basic Usage
 
 Basic table with raw data and column configuration.
 
-:::demo Use `raw-data` to provide table data and `columns` to define table structure. Each column object supports all Element Plus table column properties.
+:::demo Use `raw-data` to provide table data and either `bk-table-column` components or `columns` prop to define table structure. Each column can be configured with `prop`, `label`, and `width` properties.
 
 table/basic
 
@@ -39,7 +41,7 @@ table/with-border
 
 You can highlight your table content to distinguish between "success, information, warning, danger" and other states.
 
-:::demo Use `row-class-name` in `el-table` to add custom classes to a certain row. Then you can style it with custom classes.
+:::demo Use `row-class-name` in `bk-table` to add custom classes to a certain row. Then you can style it with custom classes.
 
 table/with-status
 
@@ -59,7 +61,7 @@ table/show-overflow-tooltip
 
 When there are too many rows, you can use a fixed header.
 
-:::demo By setting the attribute `height` of `el-table`, you can fix the table header without any other codes.
+:::demo By setting the attribute `height` of `bk-table`, you can fix the table header without any other codes.
 
 table/fixed-header
 
@@ -69,7 +71,7 @@ table/fixed-header
 
 When there are too many columns, you can fix some of them.
 
-:::demo Attribute `fixed` is used in `columns`, it accepts a `Boolean`. If `true`, the column will be fixed at left. It also accepts two string literals: 'left' and 'right', both indicating that the column will be fixed at corresponding direction.
+:::demo Attribute `fixed` is used in `columns` (Or the `bk-table-column` component), it accepts a `Boolean`. If `true`, the column will be fixed at left. It also accepts two string literals: 'left' and 'right', both indicating that the column will be fixed at corresponding direction.
 
 table/fixed-column
 
@@ -89,7 +91,7 @@ table/fixed-column-and-header
 
 When the the data is dynamically changed, you might want the table to have a maximum height rather than a fixed height and to show the scroll bar if needed.
 
-:::demo By setting the attribute `max-height` of `el-table`, you can fix the table header. The table body scrolls only if the height of the rows exceeds the max height value.
+:::demo By setting the attribute `max-height` of `bk-table`, you can fix the table header. The table body scrolls only if the height of the rows exceeds the max height value.
 
 table/fixed-header-with-fluid-header
 
@@ -109,7 +111,7 @@ table/grouping-header
 
 Single row selection is supported.
 
-:::demo Table supports single row selection. You can activate it by adding the `highlight-current-row` attribute. An event called `current-change` will be triggered when row selection changes, and its parameters are the rows after and before this change: `currentRow` and `oldCurrentRow`. If you need to display row index,simply add a column object with `type: 'index'` in the `columns`, and you will see the index starting from 1.
+:::demo Table supports single row selection. You can activate it by adding the `highlight-current-row` attribute. An event called `current-change` will be triggered when row selection changes, and its parameters are the rows after and before this change: `currentRow` and `oldCurrentRow`. If you need to display row index,simply add a column object with `type` submits the value as `index` in the `columns` attribute (Or the `bk-table-column` component), and you will see the index starting from 1.
 
 table/single-select
 
@@ -143,7 +145,7 @@ table/sort
 
 Filter the table to find desired data.
 
-:::demo Set attribute `filters` and `filter-method` in `el-table-column` makes this column filterable. `filters` is an array, and `filter-method` is a function deciding which rows are displayed. It has three parameters: `value`, `row` and `column`.
+:::demo Set attribute `filters` and `filter-method` in `bk-table-column` makes this column filterable. `filters` is an array, and `filter-method` is a function deciding which rows are displayed. It has three parameters: `value`, `row` and `column`.
 
 table/filter
 
@@ -181,7 +183,7 @@ When the row content is too long and you do not want to display the horizontal s
 
 `preserve-expanded-content` is added to control whether to preserve expanded row content in DOM when collapsed.
 
-:::demo Activate expandable row by adding type="expand" and slot. The template for el-table-column will be rendered as the contents of the expanded row, and you can access the same attributes as when you are using `slot` in custom column templates.
+:::demo Activate expandable row by adding type="expand" and slot. The template for bk-table-column will be rendered as the contents of the expanded row, and you can access the same attributes as when you are using `slot` in custom column templates.
 
 table/expandable-row
 
@@ -291,7 +293,9 @@ table/number-format
 
 ## Edit Data
 
-:::demo
+The Table component supports editing data with customizable edit modes and positions.
+
+:::demo Enable editing by setting `enable-edit` to `true`. Configure edit mode with `edit-mode` (default: 'dialog') and edit position with `edit-position` (default: 'outside'). Each column can be configured for editing using the `edit` property.
 
 table/edit
 
@@ -461,12 +465,12 @@ table/edit
 
 Extends all Element Plus TableColumnCtx properties with additional features:
 
-| Name          | Description                                                                                                                                                                                                                                                                                                              | Type                                                                                                                                             | Default |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
-| slots         | Custom slot configuration, When set to `true`, enables all slots with auto-generated names `{prop}`, `{prop}-header`, `{prop}-filterIcon`, and `{prop}-expand`. In object form, each property can be boolean or string for custom slot names. Boolean `true` uses auto-generated name, string specifies custom slot name | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -       |
-| number-format | Number formatting config, When set to `true`, use default number formatting. When set to an object, provide custom formatting options. This overrides the table-level `numberFormat` setting for this specific column                                                                                                    | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -       |
-| children      | Array of child columns for grouping headers. Each child column can also have its own `children` for nested grouping. Used for creating multi-level table headers                                                                                                                                                         | ^[array]`TableColumnCtx[]`                                                                                                                       | -       |
-| edit          | Edit form configuration, used for inline editing. When set to `FormItemCtx`, enables form-based editing for this column.                                                                                                                                                                                                 | ^[object]`FormItemCtx`                                                                                                                           | -       |
+| Name          | Description                                                                                                                                                                                                                                                                                                                  | Type                                                                                                                                             | Default |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
+| slots         | Custom slot configuration, When set to `true`, enables all slots with auto-generated names `{prop}`, `{prop}-header`, `{prop}-filterIcon`, and `{prop}-expand`. In object form, each property can be boolean or string for custom slot names. Boolean `true` uses auto-generated name, string specifies custom slot name     | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -       |
+| number-format | Number formatting config, When set to `true`, use default number formatting. When set to an object, provide custom formatting options. This overrides the table-level `numberFormat` setting for this specific column                                                                                                        | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -       |
+| children      | Array of child columns for grouping headers. Each child column can also have its own `children` for nested grouping. Used for creating multi-level table headers                                                                                                                                                             | ^[array]`TableColumnCtx[]`                                                                                                                       | -       |
+| edit          | Edit form configuration, used for inline editing. When set to `FormItemCtx`, enables form-based editing for this column. The `FormItemCtx` interface extends Element Plus FormItemProps and includes additional properties: `type` (string), `componentProps` (Record<string, any>), and `children` (Record<string, any>[]). | ^[object]`FormItemCtx`                                                                                                                           | -       |
 
 <details>
 <summary>Element Plus Table Column Attributes</summary>
@@ -486,7 +490,7 @@ Extends all Element Plus TableColumnCtx properties with additional features:
 | sort-method           | sorting method, works when `sortable` is `true`. Should return a number, just like Array.sort                                                                                                                      | ^[Function]`<T = any>(a: T, b: T) => number`                                                                                                                                | —                                 |
 | sort-by               | specify which property to sort by, works when `sortable` is `true` and `sort-method` is `undefined`. If set to an Array, the column will sequentially sort by the next property if the previous one is equal       | ^[Function]`(row: any, index: number) => string` / ^[string] / ^[object]`string[]`                                                                                          | —                                 |
 | sort-orders           | the order of the sorting strategies used when sorting the data, works when `sortable` is `true`. Accepts an array, as the user clicks on the header, the column is sorted in order of the elements in the array    | ^[object]`('ascending' \| 'descending' \| null)[]`                                                                                                                          | ['ascending', 'descending', null] |
-| resizable             | whether column width can be resized, works when `border` of `el-table` is `true`                                                                                                                                   | ^[boolean]                                                                                                                                                                  | true                              |
+| resizable             | whether column width can be resized, works when `border` of `bk-table` is `true`                                                                                                                                   | ^[boolean]                                                                                                                                                                  | true                              |
 | formatter             | function that formats cell content                                                                                                                                                                                 | ^[function]`(row: any, column: TableColumnCtx<T>, cellValue: any, index: number) => VNode \| string`                                                                        | —                                 |
 | show-overflow-tooltip | whether to hide extra content and show them in a tooltip when hovering on the cell                                                                                                                                 | ^[boolean] / [`object`](#table-attributes)                                                                                                                                  | undefined                         |
 | align                 | alignment                                                                                                                                                                                                          | ^[enum]`'left' \| 'center' \| 'right'`                                                                                                                                      | left                              |
@@ -525,11 +529,11 @@ Extends all Element Plus TableColumnCtx properties with additional features:
 
 ```vue{4}
 <template>
-  <el-table-column width="180">
+  <bk-table-column width="180">
     <template #default="scope">
       <el-image preview-teleported :preview-src-list="srcList" />
     </template>
-  </el-table-column>
+  </bk-table-column>
 </template>
 ```
 

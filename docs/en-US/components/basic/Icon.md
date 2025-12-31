@@ -5,7 +5,9 @@ lang: en-US
 
 # Icon
 
-Icon component enhanced based on [Element Plus Icon](https://element-plus.org/en-US/component/icon) with support for Iconify icons.
+Icon component enhanced based on [Element Plus Icon](https://element-plus.org/en-US/component/icon).
+
+Support for Iconify icons.
 
 ## Icon Usage
 
@@ -43,7 +45,7 @@ import { Edit } from "@element-plus/icons-vue"
 </script>
 
 <template>
-  <el-icon><Edit /></el-icon>
+  <bk-icon><Edit /></bk-icon>
 </template>
 ```
 
@@ -77,6 +79,6 @@ icon/basic
 
 ### Icon Slots
 
-| Name    | Description               |
-| ------- | ------------------------- |
-| default | customize default content |
+| Name                | Description               |
+| ------------------- | ------------------------- |
+| default ^(extended) | customize default content |

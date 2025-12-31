@@ -53,6 +53,10 @@ export default {
           {
             text: "Form",
             items: generateSidebar("en-US", "components/form")
+          },
+          {
+            text: "Navigation",
+            items: generateSidebar("en-US", "components/navigation")
           }
         ],
         "/en-US/utils/": [

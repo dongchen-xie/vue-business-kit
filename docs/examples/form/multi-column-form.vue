@@ -1,5 +1,5 @@
 <template>
-  <bk-form :inline="true" :model="formInline" :items="items" class="demo-form-inline">
+  <bk-form :model="formData" :items="items" :col-num="3" class="demo-form-multi">
     <el-form-item>
       <el-button type="primary" @click="onSubmit">Query</el-button>
     </el-form-item>
@@ -10,7 +10,7 @@
 import { reactive } from "vue"
 import type { FormItemCtx } from "vue-business-kit"
 
-const formInline = reactive({
+const formData = reactive({
   user: "",
   region: "",
   date: ""
@@ -62,11 +62,11 @@ const onSubmit = () => {
 </script>
 
 <style>
-.demo-form-inline .el-input {
+.demo-form-multi .el-input {
   --el-input-width: 220px;
 }
 
-.demo-form-inline .el-select {
+.demo-form-multi .el-select {
   --el-select-width: 220px;
 }
 </style>

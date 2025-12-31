@@ -4,7 +4,7 @@
   <bk-button
     type="primary"
     tag="a"
-    href="https://github.com/element-plus/element-plus"
+    href="https://github.com/dongchen-xie/vue-business-kit"
     target="_blank"
     rel="noopener noreferrer"
     class="!color-#fff"
