@@ -57,12 +57,18 @@ importers:
       '@element-plus/icons-vue':
         specifier: ^2.3.1
         version: 2.3.2(vue@3.5.25(typescript@5.9.3))
+      echarts:
+        specifier: ^6.0.0
+        version: 6.0.0
       element-plus:
         specifier: ^2.12.0
         version: 2.12.0(vue@3.5.25(typescript@5.9.3))
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.22
+      vue-echarts:
+        specifier: ^8.0.1
+        version: 8.0.1(echarts@6.0.0)(vue@3.5.25(typescript@5.9.3))
       xlsx:
         specifier: ^0.18.5
         version: 0.18.5
@@ -1367,6 +1373,9 @@ packages:
   duplexer@0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
 
+  echarts@6.0.0:
+    resolution: {integrity: sha512-Tte/grDQRiETQP4xz3iZWSvoHrkCQtwqd6hs+mifXcjrCuo2iKWbajFObuLJVBlDIJlOzgQPd1hsaKt/3+OMkQ==}
+
   element-plus@2.12.0:
     resolution: {integrity: sha512-M9YLSn2np9OnqrSKWsiXvGe3qnF8pd94+TScsHj1aTMCD+nSEvucXermf807qNt6hOP040le0e5Aft7E9ZfHmA==}
     peerDependencies:
@@ -1887,6 +1896,9 @@ packages:
   trim-lines@3.0.1:
     resolution: {integrity: sha512-kRj8B+YHZCc9kQYdWfJB2/oUl9rA99qbowYYBtr4ui4mZyAQ2JpvVBd/6U2YloATfqBhBTSMhTpgBHtU0Mf3Rg==}
 
+  tslib@2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
+
   tsx@4.20.6:
     resolution: {integrity: sha512-ytQKuwgmrrkDTFP4LjR0ToE2nqgy886GpvRSpU0JAnrdBYppuY5rLkRUYPU1yCryb24SsKBTL/hlDQAEFVwtZg==}
     engines: {node: '>=18.0.0'}
@@ -2081,6 +2093,12 @@ packages:
       '@vue/composition-api':
         optional: true
 
+  vue-echarts@8.0.1:
+    resolution: {integrity: sha512-23rJTFLu1OUEGRWjJGmdGt8fP+8+ja1gVgzMYPIPaHWpXegcO1viIAaeu2H4QHESlVeHzUAHIxKXGrwjsyXAaA==}
+    peerDependencies:
+      echarts: ^6.0.0
+      vue: ^3.3.0
+
   vue-flow-layout@0.2.0:
     resolution: {integrity: sha512-zKgsWWkXq0xrus7H4Mc+uFs1ESrmdTXlO0YNbR6wMdPaFvosL3fMB8N7uTV308UhGy9UvTrGhIY7mVz9eN+L0Q==}
 
@@ -2124,6 +2142,9 @@ packages:
 
   yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
+
+  zrender@6.0.0:
+    resolution: {integrity: sha512-41dFXEEXuJpNecuUQq6JlbybmnHaqqpGlbH1yxnA5V9MMP4SbohSVZsJIwz+zdjQXSSlR1Vc34EgH1zxyTDvhg==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -3360,6 +3381,11 @@ snapshots:
 
   duplexer@0.1.2: {}
 
+  echarts@6.0.0:
+    dependencies:
+      tslib: 2.3.0
+      zrender: 6.0.0
+
   element-plus@2.12.0(vue@3.5.25(typescript@5.9.3)):
     dependencies:
       '@ctrl/tinycolor': 3.6.1
@@ -3938,6 +3964,8 @@ snapshots:
 
   trim-lines@3.0.1: {}
 
+  tslib@2.3.0: {}
+
   tsx@4.20.6:
     dependencies:
       esbuild: 0.25.12
@@ -4160,6 +4188,11 @@ snapshots:
     dependencies:
       vue: 3.5.25(typescript@5.9.3)
 
+  vue-echarts@8.0.1(echarts@6.0.0)(vue@3.5.25(typescript@5.9.3)):
+    dependencies:
+      echarts: 6.0.0
+      vue: 3.5.25(typescript@5.9.3)
+
   vue-flow-layout@0.2.0: {}
 
   vue-router@4.6.4(vue@3.5.25(typescript@5.9.3)):
@@ -4206,5 +4239,9 @@ snapshots:
       word: 0.3.0
 
   yallist@4.0.0: {}
+
+  zrender@6.0.0:
+    dependencies:
+      tslib: 2.3.0
 
   zwitch@2.0.4: {}

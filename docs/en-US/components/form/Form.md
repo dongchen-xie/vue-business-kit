@@ -3,7 +3,7 @@ title: Form
 lang: zh-CN
 ---
 
-# 表单
+# Form
 
 Form component enhanced based on [Element Plus Form](https://element-plus.org/en-US/component/form).
 
