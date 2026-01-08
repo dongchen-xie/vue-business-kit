@@ -8,7 +8,7 @@ defineOptions({ name: "BkButton", inheritAttrs: false })
 
 const props = defineProps<ButtonInternalProps>()
 
-const buttonRef = ref<InstanceType<typeof ElButton>>()
+const epButton = ref<InstanceType<typeof ElButton>>()
 
 const iconComponent = computed(() => {
   if (!props.icon) return undefined
@@ -26,12 +26,13 @@ const loadingIconComponent = computed(() => {
   return props.loadingIcon
 })
 
-defineExpose({ buttonRef })
+defineExpose({ epButton })
 </script>
 
 <template>
   <el-button
-    ref="buttonRef"
+    class="bk-button"
+    ref="epButton"
     v-bind="$attrs"
     :icon="iconComponent"
     :loading-icon="loadingIconComponent"

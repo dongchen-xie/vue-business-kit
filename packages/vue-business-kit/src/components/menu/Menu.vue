@@ -12,7 +12,7 @@ defineOptions({
 const props = defineProps<MenuInternalProps>()
 const attrs = useAttrs()
 
-const menuRef = ref<InstanceType<typeof ElMenu>>()
+const epMenu = ref<InstanceType<typeof ElMenu>>()
 
 const { menuItems, defaultActive } = useMenu(props)
 
@@ -24,11 +24,11 @@ const mergedAttrs = computed(() => {
   return mergedAttrs
 })
 
-defineExpose({ menuRef })
+defineExpose({ epMenu })
 </script>
 
 <template>
-  <el-menu ref="menuRef" class="bk-menu" v-bind="mergedAttrs">
+  <el-menu class="bk-menu" ref="epMenu" v-bind="mergedAttrs">
     <template v-if="menuItems">
       <component :is="item" v-for="(item, index) in menuItems" :key="item.key || index" />
     </template>

@@ -28,7 +28,7 @@ const currentRow = ref()
 const singleTableRef = ref<TableInstance>()
 
 const setCurrent = (row?: User) => {
-  singleTableRef.value!.tableRef!.setCurrentRow(row)
+  singleTableRef.value!.epTable!.setCurrentRow(row)
 }
 const handleCurrentChange = (val: User | undefined) => {
   currentRow.value = val

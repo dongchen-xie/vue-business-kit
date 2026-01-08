@@ -1,6 +1,6 @@
 export interface FormatNumberOptions {
   prec?: boolean | number
-  unit?: "%" | "k" | "M" | "none"
+  unit?: "%" | "k" | "M" | "none" | string
   separator?: boolean
   showUnit?: boolean
 }

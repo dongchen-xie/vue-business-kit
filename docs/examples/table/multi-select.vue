@@ -40,10 +40,10 @@ const defaultSelection = ref<number[]>([7])
 const toggleSelection = (rows?: User[], ignoreSelectable?: boolean) => {
   if (rows) {
     rows.forEach((row) => {
-      multipleTableRef.value!.tableRef!.toggleRowSelection(row, undefined, ignoreSelectable)
+      multipleTableRef.value!.epTable!.toggleRowSelection(row, undefined, ignoreSelectable)
     })
   } else {
-    multipleTableRef.value!.tableRef!.clearSelection()
+    multipleTableRef.value!.epTable!.clearSelection()
   }
 }
 const handleSelectionChange = (val: User[]) => {

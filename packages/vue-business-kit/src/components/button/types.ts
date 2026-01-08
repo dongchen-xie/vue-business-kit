@@ -11,7 +11,7 @@ export interface ButtonProps
     ButtonInternalProps {}
 
 export interface ButtonInstance {
-  buttonRef?: EpButtonInstance
+  epButton?: EpButtonInstance
 }
 
 export type { ButtonGroupInstance, buttonEmits } from "element-plus"

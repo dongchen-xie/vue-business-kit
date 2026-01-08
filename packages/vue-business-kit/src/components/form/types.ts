@@ -18,7 +18,7 @@ export interface FormInternalProps {
 export interface FormProps extends EpFormProps, FormInternalProps {}
 
 export interface FormInstance {
-  formRef?: EpFormInstance
+  epForm?: EpFormInstance
 }
 
 export type { FormRules, FormEmits } from "element-plus"

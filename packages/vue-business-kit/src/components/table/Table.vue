@@ -63,7 +63,7 @@ const attrs = useAttrs() as Partial<EpTableProps<any>>
 const instance = getCurrentInstance()
 const locale = useLocale()
 
-const tableRef = ref<InstanceType<typeof ElTable>>()
+const epTable = ref<InstanceType<typeof ElTable>>()
 const formRef = ref<InstanceType<typeof BkForm>>()
 
 const t = computed(() => locale.value.bk.table)
@@ -96,7 +96,7 @@ const { shouldFormatNumber, formatCellValue } = useTableFormat(props)
 
 const { selectedRow, initSelection, selectable, selectedRows } = useTableSelection(
   props,
-  tableRef,
+  epTable,
   filteredData
 )
 
@@ -124,7 +124,7 @@ const handleExport = () => {
   }
 }
 
-defineExpose({ tableRef })
+defineExpose({ epTable })
 </script>
 <template>
   <div class="bk-table">
@@ -207,7 +207,7 @@ defineExpose({ tableRef })
       </div>
     </div>
     <el-table
-      ref="tableRef"
+      ref="epTable"
       v-bind="attrs"
       :data="filteredData"
       :span-method="mergedSpanMethod"

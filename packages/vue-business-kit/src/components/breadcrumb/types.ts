@@ -30,7 +30,7 @@ export interface BreadcrumbInternalProps {
 export interface BreadcrumbProps extends EpBreadcrumbProps, BreadcrumbInternalProps {}
 
 export interface BreadcrumbInstance {
-  breadcrumbRef?: EpBreadcrumbInstance
+  epBreadcrumb?: EpBreadcrumbInstance
 }
 
 export type { BreadcrumbItemInstance } from "element-plus"

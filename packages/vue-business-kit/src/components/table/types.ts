@@ -58,7 +58,7 @@ export interface TableEmits {
 }
 
 export interface TableInstance {
-  tableRef?: EpTableInstance
+  epTable?: EpTableInstance
 }
 
 export type {

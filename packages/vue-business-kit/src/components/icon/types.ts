@@ -7,5 +7,5 @@ export interface IconInternalProps {
 export interface IconProps extends EpIconProps, IconInternalProps {}
 
 export interface IconInstance {
-  iconRef?: EpIconInstance
+  epIcon?: EpIconInstance
 }

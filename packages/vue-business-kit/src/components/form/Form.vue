@@ -11,12 +11,12 @@ const props = withDefaults(defineProps<FormInternalProps>(), {
   colNum: 1
 })
 
-const formRef = ref<InstanceType<typeof ElForm>>()
+const epForm = ref<InstanceType<typeof ElForm>>()
 
-defineExpose({ formRef })
+defineExpose({ epForm })
 </script>
 <template>
-  <el-form ref="formRef" v-bind="$attrs">
+  <el-form class="bk-form" ref="epForm" v-bind="$attrs">
     <el-row :gutter="24" v-if="props.items">
       <el-col :span="24 / colNum" v-for="(item, _index) in props.items" :key="_index">
         <BkFormItemRender :item="item" :model="($attrs.model as any)"> </BkFormItemRender>

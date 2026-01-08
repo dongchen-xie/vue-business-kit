@@ -30,7 +30,7 @@ export interface MenuInternalProps {
 export interface MenuProps extends EpMenuProps, MenuInternalProps {}
 
 export interface MenuInstance {
-  MenuRef?: EpMenuInstance
+  epMenu?: EpMenuInstance
 }
 
 export type { MenuItemInstance, MenuItemGroupInstance, SubMenuInstance } from "element-plus"

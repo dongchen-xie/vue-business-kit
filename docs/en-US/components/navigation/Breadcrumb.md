@@ -11,7 +11,7 @@ Displays the location of the current page, making it easier to browser back.
 
 ## Basic usage
 
-:::demo `bk-breadcrumb` 组件支持两种使用方式：
+:::dem `bk-breadcrumb` 组件支持两种使用方式：
 
 1. **手动方式**：通过 `<bk-breadcrumb-item>` 标签手动定义每个面包屑项，适用于简单的、静态的面包屑导航。
 2. **数据驱动方式**：通过 `data` 和 `currentRoute` 属性自动根据路由生成面包屑路径，适用于动态的、基于树形结构的数据。
@@ -24,7 +24,7 @@ breadcrumb/basic
 
 ## Icon separator
 
-:::demo Set `separator-icon` to use `svg icon` as the separator，it will cover `separator`
+:::dem Set `separator-icon` to use `svg icon` as the separator，it will cover `separator`
 
 breadcrumb/icon
 

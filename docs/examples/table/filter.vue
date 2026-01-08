@@ -30,10 +30,10 @@ interface User {
 const tableRef = ref<TableInstance>()
 
 const resetDateFilter = () => {
-  tableRef.value!.tableRef!.clearFilter(["date"])
+  tableRef.value!.epTable!.clearFilter(["date"])
 }
 const clearFilter = () => {
-  tableRef.value!.tableRef!.clearFilter()
+  tableRef.value!.epTable!.clearFilter()
 }
 const formatter = (row: User, column: TableColumnCtx<User>) => {
   return row.address

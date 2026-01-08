@@ -36,7 +36,7 @@ const numberValidateForm = reactive({
 
 const submitForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
-  formEl.formRef?.validate((valid) => {
+  formEl.epForm?.validate((valid) => {
     if (valid) {
       console.log("submit!")
     } else {
@@ -47,6 +47,6 @@ const submitForm = (formEl: FormInstance | undefined) => {
 
 const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
-  formEl.formRef?.resetFields()
+  formEl.epForm?.resetFields()
 }
 </script>
