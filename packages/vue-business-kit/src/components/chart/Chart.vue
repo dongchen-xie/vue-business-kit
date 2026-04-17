@@ -33,23 +33,22 @@ const slots: Readonly<Slots> = useSlots()
 
 const chartOption = computed<EChartsOption>(() => {
   const {
+    title = {},
     grid = {},
     tooltip = {},
     xAxis = {},
     yAxis = {},
     series = []
   } = props.config as EChartsOption
-  const data = ((props.data || []) as { name: string; value: number }[]).map((v, index) => {
-    return isObject(v)
-      ? { ...v, value: formatNumber(v.value, props.valueFormat) }
-      : { name: String(index), value: formatNumber(v, props.valueFormat) }
-  })
+  const data = (props.data || []).map((item, index) => {
+    return isObject(item) ? item : { name: String(index), value: item }
+  }) as { name: string; value: number }[]
   const baseline: any = props.baseline
     ? isArray(props.baseline)
-      ? props.baseline.map((v) => (isObject(v) ? v : { value: formatNumber(v, props.valueFormat) }))
+      ? props.baseline.map((item) => (isObject(item) ? item : { value: item }))
       : isObject(props.baseline)
-      ? props.baseline
-      : { value: formatNumber(props.baseline!, props.valueFormat) }
+        ? props.baseline
+        : { value: props.baseline }
     : []
 
   let seriesData: any[] = []
@@ -61,8 +60,11 @@ const chartOption = computed<EChartsOption>(() => {
   }
   return {
     animation: props.animation,
+    title: {
+      ...title
+    },
     grid: {
-      top: 0,
+      top: 12,
       left: 0,
       right: 0,
       bottom: 0,
@@ -84,9 +86,7 @@ const chartOption = computed<EChartsOption>(() => {
     },
     yAxis: {
       axisLabel: {
-        formatter: (value: string) => {
-          return `${value}${props.valueFormat?.unit}`
-        }
+        formatter: (value: string) => formatNumber(value, props.valueFormat)
       },
       axisLine: {
         show: true,
@@ -103,6 +103,7 @@ const chartOption = computed<EChartsOption>(() => {
       axisPointer: {
         type: "line"
       },
+      valueFormatter: (value: string) => formatNumber(value, props.valueFormat),
       ...tooltip
     }
   } as EChartsOption

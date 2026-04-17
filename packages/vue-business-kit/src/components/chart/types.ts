@@ -17,6 +17,7 @@ export type VChartProps = {
 }
 
 export interface BaselineConfig {
+  name?: string
   value: number
   lineStyle?: LineStyleOption
 }

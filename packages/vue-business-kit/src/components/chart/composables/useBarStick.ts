@@ -1,8 +1,9 @@
-import { isNumber, subtract } from "lodash-es"
+import { add, isNumber, subtract } from "lodash-es"
 import type { BaselineConfig, EChartsOption, SparklineInternalProps, SeriesOption } from "../types"
+import { formatNumber } from "../../../utils"
 
 export const useBarStick = (
-  _props: SparklineInternalProps,
+  props: SparklineInternalProps,
   data: { name: string; value: number }[],
   baseline: BaselineConfig,
   isDetail: boolean = false
@@ -11,9 +12,9 @@ export const useBarStick = (
     ...val,
     value: subtract(val.value, baseline.value)
   }))
-
   const series: SeriesOption[] = [
     {
+      name: baseline?.name,
       type: "line",
       data: Array(processedData.length).fill(0),
       symbol: "none",
@@ -24,13 +25,19 @@ export const useBarStick = (
       }
     },
     {
+      name: "Value",
       type: "bar",
       data: processedData,
       barWidth: 5,
       itemStyle: {
         color: "#d9d9d9"
       },
-      label: { show: false }
+      label: {
+        show: isDetail,
+        formatter: (params: any) =>
+          formatNumber(add(params.value, baseline.value), props.valueFormat),
+        position: "top"
+      }
     }
   ]
 
@@ -40,12 +47,37 @@ export const useBarStick = (
       return Math.abs(value)
     })
   )
-  const yAxis = {
-    min: -max,
-    max
-  }
   return {
     series,
-    yAxis
+    xAxis: {
+      type: "category",
+      show: false
+    },
+    yAxis: {
+      type: "value",
+      min: -max,
+      max,
+      show: false,
+      axisLine: {
+        show: false
+      },
+      axisLabel: {
+        show: false
+      },
+      axisTick: {
+        show: false
+      },
+      splitLine: {
+        show: false
+      }
+    },
+    tooltip: {
+      show: isDetail,
+      trigger: "axis",
+      axisPointer: {
+        type: "line"
+      },
+      valueFormatter: (value: any) => formatNumber(add(value, baseline.value), props.valueFormat)
+    }
   }
 }

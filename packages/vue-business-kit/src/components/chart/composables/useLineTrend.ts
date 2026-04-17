@@ -87,7 +87,7 @@ export const useLineTrend = (
 
   castArray(baseline).map((v: any) => {
     series.push({
-      name: "Goal",
+      name: v?.name,
       type: "line",
       data: new Array(data!.length).fill(isNumber(v) ? v : v?.value),
       symbol: "none",

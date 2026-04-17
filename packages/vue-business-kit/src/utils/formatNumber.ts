@@ -1,3 +1,5 @@
+import { isNumber } from "lodash-es"
+
 export interface FormatNumberOptions {
   prec?: boolean | number
   unit?: "%" | "k" | "M" | "none" | string
@@ -40,7 +42,8 @@ export function formatNumber(value: number | string, options: FormatNumberOption
 
   // 保留小数位数
   let result: string
-  if (prec && num !== Math.floor(num)) {
+
+  if ((prec === true || isNumber(prec)) && num !== Math.floor(num)) {
     result = num.toFixed(prec === true ? 1 : prec)
   } else {
     result = num.toString()
