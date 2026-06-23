@@ -49,6 +49,7 @@ export function useTableEdit(
                 type: "textarea",
                 rows: 10,
                 placeholder: (editForm.value.action == "add" ? editColumns.value : props.columns)
+                  ?.filter((v) => v.edit?.componentProps?.disabled != true)
                   ?.map((v) => (v.edit?.required ? `${v.label}(*)` : v.label))
                   .join("   ")
               }
@@ -83,13 +84,7 @@ export function useTableEdit(
       .split("\n")
       .map(trim)
       .filter((row) => !isEmpty(row))
-      .map((row) =>
-        chain(row)
-          .split("\t")
-          .filter((col) => !isEmpty(col))
-          .value()
-      )
-      .filter((row) => row.length === keys.length)
+      .map((row) => row.split("\t").filter((col) => !isEmpty(col)))
       .value()
     return map(rows, (row) => zipObject(keys, row))
   }
@@ -127,11 +122,11 @@ export function useTableEdit(
       type: "warning",
       appendTo: "html"
     })
-      .then(() => {
+      .then(async () => {
         if (!hasRowKey.value) {
           console.warn(t.value.rowKeyWarning)
         }
-        emits("delete", {
+        await emits("delete", {
           action: "delete",
           data: rows
         })
@@ -216,6 +211,7 @@ export function useTableEdit(
 
   const handleClose = () => {
     editVisible.value = false
+    formRef.value.elFormRef.resetFields()
   }
 
   return {

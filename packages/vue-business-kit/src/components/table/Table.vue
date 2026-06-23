@@ -71,21 +71,6 @@ const formRef = ref<InstanceType<typeof BkForm>>()
 
 const t = computed(() => locale.value.bk.table)
 
-// 使用编辑功能组合式函数
-const {
-  editForm,
-  editVisible,
-  editTitle,
-  isEditEnabled,
-  formItems,
-  handleBatch,
-  handleAdd,
-  handleEdit,
-  handleDelete,
-  handleSave,
-  handleClose
-} = useTableEdit(props, attrs, emits, t, formRef)
-
 // 使用组合式函数
 const { searchText, selectedColumns, searchableColumns, searchedData, handleSearch } =
   useTableSearch(props, emits)
@@ -102,6 +87,21 @@ const { selectedRow, initSelection, selectable, selectedRows } = useTableSelecti
   elTableRef,
   filteredData
 )
+
+// 使用编辑功能组合式函数
+const {
+  editForm,
+  editVisible,
+  editTitle,
+  isEditEnabled,
+  formItems,
+  handleBatch,
+  handleAdd,
+  handleEdit,
+  handleDelete,
+  handleSave,
+  handleClose
+} = useTableEdit(props, attrs, emits, t, formRef)
 
 onMounted(() => {
   initSelection()
@@ -214,7 +214,7 @@ defineExpose({ elTableRef })
       v-bind="attrs"
       :data="filteredData"
       :span-method="mergedSpanMethod"
-      @current-change="(row : any) => (selectedRow = row)"
+      @current-change="(row: any) => (selectedRow = row)"
     >
       <TableColumnRender
         v-for="column in columns"

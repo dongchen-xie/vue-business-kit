@@ -1,4 +1,3 @@
-import { isUndefined } from "lodash-es"
 import { TableInternalProps } from "../types"
 import { computed, ref } from "vue"
 
@@ -40,10 +39,7 @@ export function useTableSelection(props: TableInternalProps, tableRef: any, filt
 
   const selectedRows = computed(() => {
     if (!tableRef.value) return []
-    return [
-      ...tableRef.value.getSelectionRows(),
-      ...(isUndefined(selectedRow.value) ? [] : [selectedRow.value])
-    ]
+    return [...tableRef.value.getSelectionRows(), ...(selectedRow.value ? [selectedRow.value] : [])]
   })
 
   return {
