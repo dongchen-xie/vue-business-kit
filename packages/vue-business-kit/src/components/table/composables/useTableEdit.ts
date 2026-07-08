@@ -1,6 +1,6 @@
 import { ref, computed, ComputedRef } from "vue"
 import type { TableInternalProps } from "../types"
-import { chain, isEmpty, isUndefined, map, pick, toLower, trim, zipObject } from "lodash-es"
+import { chain, isEmpty, isUndefined, map, pick, toLower, zipObject } from "lodash-es"
 import { FormItem } from "@/components/form"
 import { ElMessageBox } from "element-plus"
 
@@ -82,9 +82,7 @@ export function useTableEdit(
     if (isEmpty(keys)) return []
     const rows = chain(text)
       .split("\n")
-      .map(trim)
-      .filter((row) => !isEmpty(row))
-      .map((row) => row.split("\t").filter((col) => !isEmpty(col)))
+      .map((row) => row.split("\t"))
       .value()
     return map(rows, (row) => zipObject(keys, row))
   }
