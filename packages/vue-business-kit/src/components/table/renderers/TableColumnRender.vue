@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed } from "vue"
+import { computed, useSlots } from "vue"
+import type { Slots } from "vue"
 import { ElTableColumn } from "element-plus"
 import type { TableColumnItem } from "../types"
 import { omit } from "lodash-es"
@@ -10,16 +11,18 @@ const props = defineProps<{
   formatCellValue: (value: any, column?: TableColumnItem) => string
 }>()
 
+const slots: Readonly<Slots> = useSlots()
+
 const isSpecialType = computed(() =>
   ["selection", "index", "expand"].includes(props.column.type || "")
 )
 
 const getSlotName = (type: "default" | "header" | "filterIcon" | "expand") => {
-  const slots = props.column.slots
+  const tmpSlots = props.column.slots
   const suffix = type === "default" ? "" : `-${type}`
-  if (slots === true) return `${props.column.prop}${suffix}`
-  if (typeof slots === "object") {
-    const slot = slots[type]
+  if (tmpSlots === true) return `${props.column.prop}${suffix}`
+  if (typeof tmpSlots === "object") {
+    const slot = tmpSlots[type]
     if (slot === true) return `${props.column.prop}${suffix}`
     return slot || undefined
   }
@@ -50,6 +53,10 @@ const expandSlotName = computed(() => getSlotName("expand"))
           :should-format-number="shouldFormatNumber"
           :format-cell-value="formatCellValue"
         >
+          <!-- @vue-ignore -->
+          <template v-for="name in Object.keys(slots)" :key="name" #[name]="slotProps">
+            <slot :name="name" v-bind="slotProps" />
+          </template>
         </TableColumnRender>
       </template>
       <slot v-else-if="defaultSlotName" :name="defaultSlotName" v-bind="scope" />
