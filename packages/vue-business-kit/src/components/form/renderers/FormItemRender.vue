@@ -93,16 +93,21 @@ const omitItem = computed(() => omit(props.item, ["type", "componentProps", "chi
       </template>
 
       <!-- Radio Group -->
-      <template v-else-if="item.type === 'radio-group' && item.children?.length">
-        <component
-          :is="item.componentProps?.type === 'button' ? 'el-radio-button' : 'el-radio'"
-          v-for="opt in item.children"
-          :key="opt.value"
+      <template
+        v-else-if="item.type === 'radio-group' && item.children?.length"
+        v-for="opt in item.children"
+        :key="opt.value"
+      >
+        <el-radio-button
           :label="opt.value"
           v-bind="opt.componentProps || {}"
+          v-if="item.componentProps?.type === 'button'"
         >
           {{ opt.label }}
-        </component>
+        </el-radio-button>
+        <el-radio :label="opt.value" v-bind="opt.componentProps || {}" v-else>
+          {{ opt.label }}
+        </el-radio>
       </template>
     </component>
   </el-form-item>
