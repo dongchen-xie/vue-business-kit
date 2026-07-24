@@ -431,9 +431,10 @@ table/edit
 
 ### Table 插槽
 
-| 插槽名       | 说明                 |
-| ------------ | -------------------- |
-| toolbar-left | 工具栏左侧自定义内容 |
+| 插槽名        | 说明                 |
+| ------------- | -------------------- |
+| toolbar-left  | 工具栏左侧自定义内容 |
+| toolbar-right | 工具栏右侧自定义内容 |
 
 <details>
 <summary>Element Plus Table 原生插槽</summary>

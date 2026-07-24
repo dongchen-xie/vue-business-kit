@@ -182,6 +182,7 @@ defineExpose({ elTableRef })
         <slot name="toolbar-left" />
       </div>
       <div class="bk-table-toolbar-right">
+        <slot name="toolbar-right" />
         <el-input
           v-if="showSearch"
           v-model="searchText"
