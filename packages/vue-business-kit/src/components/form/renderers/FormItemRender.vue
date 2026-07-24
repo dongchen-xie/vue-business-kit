@@ -22,7 +22,8 @@ import {
   ElAutocomplete,
   ElDivider,
   ElButton,
-  ElInputTag
+  ElInputTag,
+  ElRadioButton
 } from "element-plus"
 import { omit } from "lodash-es"
 import type { FormItem } from "../types"
@@ -45,6 +46,7 @@ const typeMap: Record<string, any> = {
   "input-number": ElInputNumber,
   "input-tag": ElInputTag,
   radio: ElRadio,
+  "radio-button": ElRadioButton,
   "radio-group": ElRadioGroup,
   rate: ElRate,
   select: ElSelect,
