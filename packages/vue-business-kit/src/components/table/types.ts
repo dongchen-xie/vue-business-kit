@@ -8,8 +8,9 @@ import type { FormatNumberOptions } from "../../utils/formatNumber"
 import { DefaultRow } from "element-plus/es/components/table/src/table/defaults.mjs"
 import type { FormItem } from "../form/types"
 
-export interface TableColumnItem<T extends DefaultRow = DefaultRow>
-  extends Partial<Omit<ElTableColumnCtx<T>, "children">> {
+export interface TableColumnItem<T extends DefaultRow = DefaultRow> extends Partial<
+  Omit<ElTableColumnCtx<T>, "children">
+> {
   slots?:
     | boolean
     | {
@@ -21,6 +22,7 @@ export interface TableColumnItem<T extends DefaultRow = DefaultRow>
   numberFormat?: boolean | FormatNumberOptions
   children?: TableColumnItem[]
   edit?: FormItem
+  showColumn?: boolean
 }
 
 export interface TableInternalProps {

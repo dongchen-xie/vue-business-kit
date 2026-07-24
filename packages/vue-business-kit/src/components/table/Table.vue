@@ -216,17 +216,18 @@ defineExpose({ elTableRef })
       :span-method="mergedSpanMethod"
       @current-change="(row: any) => (selectedRow = row)"
     >
-      <TableColumnRender
-        v-for="column in columns"
-        :key="column.prop || column.label"
-        :column="column.type === 'selection' ? { ...column, selectable } : column"
-        :should-format-number="shouldFormatNumber"
-        :format-cell-value="formatCellValue"
-      >
-        <template v-for="name in Object.keys(slots)" :key="name" #[name]="scope">
-          <slot :name="name" v-bind="scope" />
-        </template>
-      </TableColumnRender>
+      <template v-for="column in columns" :key="column.prop || column.label">
+        <TableColumnRender
+          v-if="column.showColumn != false"
+          :column="column.type === 'selection' ? { ...column, selectable } : column"
+          :should-format-number="shouldFormatNumber"
+          :format-cell-value="formatCellValue"
+        >
+          <template v-for="name in Object.keys(slots)" :key="name" #[name]="scope">
+            <slot :name="name" v-bind="scope" />
+          </template>
+        </TableColumnRender>
+      </template>
       <el-table-column
         v-if="isEditEnabled && props.editPosition === 'inline'"
         :label="t.operations"

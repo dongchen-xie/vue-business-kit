@@ -387,6 +387,7 @@ table/edit
 | number-format | 数字格式化配置：设为 `true` 时使用默认数字格式化；设为对象时传入自定义格式化选项，优先级高于表格级的 `numberFormat` 设置                                                                                                                        | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -      |
 | children      | 表头分组的子列数组，子列可嵌套 `children` 实现多级分组，用于创建多层级表头                                                                                                                                                                      | ^[array]`TableColumnItem[]`                                                                                                                      | -      |
 | edit          | 编辑表单配置（用于行内编辑）：设为 `FormItem` 时启用该列编辑功能，`FormItem` 接口继承 Element Plus FormItemProps，包含额外属性：`type`（组件类型字符串）、`componentProps`（组件额外属性）、`children`（嵌套表单项配置）                        | ^[object]`FormItem`                                                                                                                              | -      |
+| show-column   | 是否显示表头列                                                                                                                                                                                                                                  | ^[boolean]                                                                                                                                       | true   |
 
 ### Table 事件
 
