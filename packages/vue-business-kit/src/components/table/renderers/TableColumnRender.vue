@@ -45,10 +45,13 @@ const expandSlotName = computed(() => getSlotName("expand"))
       <slot :name="expandSlotName" v-bind="scope" />
     </template>
     <template v-if="!isSpecialType" #default="scope">
-      <template v-if="column.children?.length">
+      <template
+        v-if="column.children?.length"
+        v-for="child in column.children"
+        :key="child.prop || child.label"
+      >
         <TableColumnRender
-          v-for="child in column.children"
-          :key="child.prop || child.label"
+          v-if="child.showColumn != false"
           :column="child"
           :should-format-number="shouldFormatNumber"
           :format-cell-value="formatCellValue"
