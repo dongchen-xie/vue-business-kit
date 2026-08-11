@@ -391,16 +391,17 @@ table/edit
 
 ### Table 事件
 
-| 事件名            | 说明               | 类型                                                         |
-| ----------------- | ------------------ | ------------------------------------------------------------ |
-| refresh           | 点击刷新按钮时触发 | ^[Function]`()`                                              |
-| export            | 点击导出按钮时触发 | ^[Function]`(data: any[], columns: TableColumnCtx[])`        |
-| search            | 执行搜索操作时触发 | ^[Function]`(value: string, columns: string[])`              |
-| pagination-change | 分页状态变化时触发 | ^[Function]`(page: number, size: number)`                    |
-| add               | 执行新增操作时触发 | ^[Function]`(data: { action: 'add'; data: any })`            |
-| edit              | 执行编辑操作时触发 | ^[Function]`(data: { action: 'edit'; data: any }, row: any)` |
-| delete            | 执行删除操作时触发 | ^[Function]`(data: { action: 'delete'; data: any })`         |
-| batch             | 执行批量操作时触发 | ^[Function]`(data: { action: 'batch'; data: any })`          |
+| 事件名            | 说明                             | 类型                                                                   |
+| ----------------- | -------------------------------- | ---------------------------------------------------------------------- |
+| refresh           | 点击刷新按钮时触发               | ^[Function]`()`                                                        |
+| export            | 点击导出按钮时触发               | ^[Function]`(data: any[], columns: TableColumnCtx[])`                  |
+| search            | 执行搜索操作时触发               | ^[Function]`(value: string, columns: string[])`                        |
+| pagination-change | 分页状态变化时触发               | ^[Function]`(page: number, size: number)`                              |
+| open              | 打开新增/编辑/批量操作弹框时触发 | ^[Function]`(data: { action: 'add' \| 'edit' \| 'batch' }, row?: any)` |
+| add               | 执行新增操作时触发               | ^[Function]`(data: { action: 'add'; data: any })`                      |
+| edit              | 执行编辑操作时触发               | ^[Function]`(data: { action: 'edit'; data: any }, row: any)`           |
+| delete            | 执行删除操作时触发               | ^[Function]`(data: { action: 'delete'; data: any })`                   |
+| batch             | 执行批量操作时触发               | ^[Function]`(data: { action: 'batch'; data: any })`                    |
 
 <details>
 <summary>Element Plus Table 原生事件</summary>

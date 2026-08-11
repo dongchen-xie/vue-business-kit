@@ -53,6 +53,7 @@ export interface TableEmits {
   export: [data: any[], columns: TableColumnItem[]]
   search: [value: string, columns: string[]]
   paginationChange: [page: number, size: number]
+  open: [data: { action: "add" | "edit" | "batch" }, row?: any]
   add: [data: { action: "add"; data: any }]
   edit: [data: { action: "edit"; data: any }, row: any]
   delete: [data: { action: "delete"; data: any }]

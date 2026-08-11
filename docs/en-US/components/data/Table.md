@@ -391,16 +391,17 @@ Extends all Element Plus TableColumnCtx properties with additional features:
 
 ### Table Events
 
-| Name              | Description                                  | Type                                                         |
-| ----------------- | -------------------------------------------- | ------------------------------------------------------------ |
-| refresh           | Triggered when refresh button is clicked     | ^[Function]`()`                                              |
-| export            | Triggered when export button is clicked      | ^[Function]`(data: any[], columns: TableColumnCtx[])`        |
-| search            | Triggered when search is performed           | ^[Function]`(value: string, columns: string[])`              |
-| pagination-change | Triggered when pagination changes            | ^[Function]`(page: number, size: number)`                    |
-| add               | Triggered when add operation is performed    | ^[Function]`(data: { action: 'add'; data: any })`            |
-| edit              | Triggered when edit operation is performed   | ^[Function]`(data: { action: 'edit'; data: any }, row: any)` |
-| delete            | Triggered when delete operation is performed | ^[Function]`(data: { action: 'delete'; data: any })`         |
-| batch             | Triggered when batch operation is performed  | ^[Function]`(data: { action: 'batch'; data: any })`          |
+| Name              | Description                                        | Type                                                                   |
+| ----------------- | -------------------------------------------------- | ---------------------------------------------------------------------- |
+| refresh           | Triggered when refresh button is clicked           | ^[Function]`()`                                                        |
+| export            | Triggered when export button is clicked            | ^[Function]`(data: any[], columns: TableColumnCtx[])`                  |
+| search            | Triggered when search is performed                 | ^[Function]`(value: string, columns: string[])`                        |
+| pagination-change | Triggered when pagination changes                  | ^[Function]`(page: number, size: number)`                              |
+| open              | Triggered when the add/edit/batch dialog is opened | ^[Function]`(data: { action: 'add' \| 'edit' \| 'batch' }, row?: any)` |
+| add               | Triggered when add operation is performed          | ^[Function]`(data: { action: 'add'; data: any })`                      |
+| edit              | Triggered when edit operation is performed         | ^[Function]`(data: { action: 'edit'; data: any }, row: any)`           |
+| delete            | Triggered when delete operation is performed       | ^[Function]`(data: { action: 'delete'; data: any })`                   |
+| batch             | Triggered when batch operation is performed        | ^[Function]`(data: { action: 'batch'; data: any })`                    |
 
 <details>
 <summary>Element Plus Table Events</summary>

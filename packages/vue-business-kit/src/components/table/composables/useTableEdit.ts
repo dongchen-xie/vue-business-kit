@@ -93,6 +93,7 @@ export function useTableEdit(
       action: "add"
     }
     editVisible.value = true
+    emits("open", { action: "batch" })
   }
 
   // 处理编辑相关逻辑
@@ -101,6 +102,7 @@ export function useTableEdit(
     editRow.value = null
     editForm.value = {}
     editVisible.value = true
+    emits("open", { action: "add" })
   }
 
   const handleEdit = (row: any) => {
@@ -111,6 +113,7 @@ export function useTableEdit(
     editRow.value = row
     editForm.value = { ...row }
     editVisible.value = true
+    emits("open", { action: "edit" }, row)
   }
 
   const handleDelete = (rows: any) => {
