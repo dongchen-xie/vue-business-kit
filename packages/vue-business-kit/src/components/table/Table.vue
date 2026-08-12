@@ -297,16 +297,15 @@ defineExpose({ elTableRef })
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
 
-    &-left {
-      display: flex;
-      gap: 8px;
-    }
-
+    &-left,
     &-right {
       display: flex;
       gap: 8px;
+
+      &:not(:empty) {
+        margin-bottom: 10px;
+      }
     }
   }
 
