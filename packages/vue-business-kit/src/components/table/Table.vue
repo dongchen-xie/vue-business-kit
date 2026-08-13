@@ -301,6 +301,7 @@ defineExpose({ elTableRef })
     &-left,
     &-right {
       display: flex;
+      align-items: center;
       gap: 8px;
 
       &:not(:empty) {
