@@ -8,9 +8,9 @@ module.exports = {
   // 每一行的宽度
   printWidth: 100,
   // 每个tab相当于多少个空格（默认2）ab进行缩进（默认false）
-  tabWidth: 2, 
+  tabWidth: 2,
   // 是否使用tab
-  useTabs:false,
+  useTabs: false,
   // 在对象中的括号之间是否用空格来间隔
   bracketSpacing: true,
   // 箭头函数的参数无论有几个，都要括号包裹
@@ -18,9 +18,9 @@ module.exports = {
   // 换行符的使用
   endOfLine: "auto",
   // 是否采用单引号
-  singleQuote: false,
+  singleQuote: true,
   // 对象或者数组的最后一个元素后面不要加逗号
-  trailingComma: "none",
+  trailingComma: "all",
   // 是否加分号
   semi: false,
   // vue 文件中是否缩进 <style> 和 <script> 标签，默认 false
@@ -30,5 +30,5 @@ module.exports = {
   // 当文件已经被 Prettier 格式化之后，是否会在文件顶部插入一个特殊的 @format 标记，默认false
   insertPragma: false,
   // 是否只格式化在文件顶部包含特定注释(@prettier| @format)的文件，默认false
-  requirePragma: false,
+  requirePragma: false
 }

@@ -1,6 +1,6 @@
 {
   "name": "vue-business-kit",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Ready-to-use component library based on Vue3 + TypeScript + Element Plus + Lodash",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -54,7 +54,8 @@
     "element-plus": "^2.12.0",
     "lodash-es": "^4.17.21",
     "vue-echarts": "^8.0.1",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "xlsx-js-style": "^1.2.0"
   },
   "devDependencies": {
     "@iconify-json/tabler": "^1.2.23",
